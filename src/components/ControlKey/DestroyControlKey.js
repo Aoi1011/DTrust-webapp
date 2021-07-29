@@ -44,7 +44,7 @@ export default function DestroyControlKey() {
 
   return (
     <div>
-      <div className={classes.pageTitle}>Destroy a Control Key</div>
+      <div className={classes.pageTitle}>Destroy Control Key</div>
       <Container className={classes.container}>
         <form noValidate autoComplete="off">
           <Grid container spacing={3}>

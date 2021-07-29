@@ -73,9 +73,9 @@ export default function Home() {
       </Grid>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6} className={classes.subsec}>
-          <div className={classes.subtitle}>Destroy a Control Key</div>
+          <div className={classes.subtitle}>Destroy Control Key</div>
           <div className={classes.subdesc}>
-            DTrust includes a burn function to permanently destroy control keys. For example, a settlor may want to turn a revocable dtrust into an irrevocable dtrust by destroying the revocation key. Click "Destroy a Control Key” to use the control key burn function.
+            DTrust includes a burn function to permanently destroy control keys. For example, a settlor may want to turn a revocable dtrust into an irrevocable dtrust by destroying the revocation key. Click "Destroy Control Key” to use the control key burn function.
               <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/destroycontrolkey">Destroy</Button>
           </div>
         </Grid>
