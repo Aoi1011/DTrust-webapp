@@ -1,0 +1,105 @@
+import React from 'react';
+import { Container, InputLabel, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import emailjs from 'emailjs-com';
+
+const useContactStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiGrid-container': {
+      marginBottom: '10px',
+    },
+    '& .MuiGrid-item': {
+      paddingTop: '3px',
+      paddingBottom: '3px',
+    },
+    '& fieldset': {
+      borderRadius: 0,
+    },
+  },
+  pageTitle: {
+    padding: '10px 0 0 20px',
+    fontSize: '30px',
+  },
+  label: {
+    color: 'black',
+    fontWeight: 600,
+    padding: '10.5px 0',
+    [theme.breakpoints.down('sm')]: {
+      padding: '15px 0 0 0',
+    },
+  },
+  button: {
+    backgroundColor: '#ffffff',
+    textTransform: 'none',
+    fontWeight: 600,
+    border: '4px solid #fe8d4a',
+    borderRadius: 0,
+    color: '#fe8d4a',
+    width: '100%',
+    '&:hover': {
+      backgroundColor: '#ffffffdd',
+    },
+  },
+  input: {
+    width: '100%',
+  },
+}));
+
+export default function Contact() {
+  const classes = useContactStyles();
+
+  const onContact = e => {
+    e.preventDefault();
+    emailjs.send(
+      'service_9ewdy8n', 'template_hr848up',
+      {}
+    ).then(res => {
+      console.log('Email successfully sent!')
+    })
+      // Handle errors here however you like, or use a React error boundary
+      .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured', err));
+  }
+
+  return (
+    <div className={classes.root}>
+      <div className={classes.pageTitle}>Contact</div>
+      <Container maxWidth="sm">
+        <form noValidate autoComplete="off">
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+              <InputLabel className={classes.label}>Name</InputLabel>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <TextField className={classes.input} label="Name" id="" variant="outlined" size="small" />
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+              <InputLabel className={classes.label}>Email Address</InputLabel>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <TextField className={classes.input} label="Email Address" id="" variant="outlined" size="small" />
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={3}>
+              <InputLabel className={classes.label}>Message</InputLabel>
+            </Grid>
+            <Grid item xs={12} sm={9}>
+              <TextField className={classes.input} label="Message" id="" variant="outlined" size="small" multiline rows={12} />
+            </Grid>
+          </Grid>
+          <Grid container spacing={2}>
+            <Grid item xs={1} sm={4}>
+            </Grid>
+            <Grid item xs={10} sm={4}>
+              <Button className={classes.button} onClick={onContact}>Enter</Button>
+            </Grid>
+          </Grid>
+        </form>
+      </Container>
+    </div>
+  );
+}
