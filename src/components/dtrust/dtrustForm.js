@@ -3,6 +3,9 @@ import { Container, InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
+import Web3 from "web3";
+
+import { ABI, ADDRESS } from "../../dtrustFactroyConfig";
 
 const usedtrustStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -86,6 +89,9 @@ const usedtrustStyles = makeStyles((theme) => ({
 
 export default function DTrustForm(props) {
   const classes = usedtrustStyles();
+  const [settlorAddress, setSettlorAddress] = useState("");
+  const [beneficiaryAddress, setBeneficiaryAddress] = useState("");
+  const [trusteeAddress, setTrusteeAddress] = useState("");
   const [settlorCBWA, setSettlorCBWA] = useState(true);
   const [settlorCDS, setSettlorCDS] = useState(true);
   const [trusteeCDS, setTrusteeCDS] = useState(true);
@@ -96,10 +102,30 @@ export default function DTrustForm(props) {
   const [trusteeCBWA, setTrusteeCBWA] = useState(true);
   const [settlorILT, setSettlorILT] = useState(true);
 
-  const onSubmit = e => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    
-    props.setdtruststate('success');
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const accounts = await web3.eth.getAccounts();
+    const selectedAccount = window.ethereum.selectedAddress;
+    let config = {
+      from: accounts[0],
+    };
+    const contractInstance = new web3.eth.Contract(ABI, ADDRESS, {
+      from: accounts[0],
+    });
+    if (settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
+      alert("Please input address");
+    }
+    else {
+      contractInstance.methods
+        .createDTRUST("", "", "", settlorAddress, beneficiaryAddress, trusteeAddress)
+        .send(config)
+        .on("receipt", (res) => {
+          console.log(res.events.CreateDTRUST.returnValues);
+        })
+      props.setdtruststate('success');
+    }
+
   };
   return (
     <div>
@@ -122,7 +148,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>What is the settlor’s wallet address?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Settlor's Wallet" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} label="Settlor's Wallet" id="" variant="outlined" size="small" value={settlorAddress} onChange={(e) => setSettlorAddress(e.target.value)} />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -133,7 +159,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>What is/are the beneficiary wallet addresses? </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Beneficiary Wallet" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} label="Beneficiary Wallet" id="" variant="outlined" size="small" value={beneficiaryAddress} onChange={(e) => setBeneficiaryAddress(e.target.value)} />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -144,7 +170,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>If there is a trustee, what is the trustee’s wallet address?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Trustee's Wallet" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} label="Trustee's Wallet" id="" variant="outlined" size="small" value={trusteeAddress} onChange={(e) => setTrusteeAddress(e.target.value)} />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
