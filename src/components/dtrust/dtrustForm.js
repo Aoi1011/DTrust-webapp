@@ -98,6 +98,7 @@ export default function DTrustForm(props) {
 
   const onSubmit = e => {
     e.preventDefault();
+    
     props.setdtruststate('success');
   };
   return (
