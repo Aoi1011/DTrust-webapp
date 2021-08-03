@@ -1,16 +1,41 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
 // import { MemoryRouter as Router } from "react-router";
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
+import { AppBar, Button, Grid, Link, MenuItem, Menu, Toolbar } from '@material-ui/core';
 
 // import FormDtrust from './FormDtrust.js';
 import logo from '../img/logo.jpg';
 import background from '../img/background.jpg';
+
+const StyledMenu = withStyles({
+  paper: {
+    border: '1px solid #d3d4d5',
+  },
+})((props) => (
+  <Menu
+    elevation={0}
+    getContentAnchorEl={null}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'left',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'left',
+    }}
+    {...props}
+  />
+));
+
+const StyledMenuItem = withStyles((theme) => ({
+  root: {
+    '& .MuiLink-root': {
+      color: '#fe8d4a',
+      textDecoration: 'none',
+    },
+  },
+}))(MenuItem);
 
 const useTemplateStyles = makeStyles((theme) => ({
   root: {
@@ -123,6 +148,15 @@ const useTemplateStyles = makeStyles((theme) => ({
 
 export default function Template(props) {
   const classes = useTemplateStyles();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <div className={classes.root}>
@@ -132,12 +166,37 @@ export default function Template(props) {
             <img src={logo} alt="Logo" />
           </Button>
           {/* <Router> */}
-          <Link component={RouterLink} to="/formdtrust" className={classes.link}>Form a dtrust</Link>
-          <Link component={RouterLink} to="/usecontrolkey" className={classes.link}>Use Control Key</Link>
-          <Link component={RouterLink} to="/destroycontrolkey" className={classes.link}>Destroy Control Key</Link>
-          <Link component={RouterLink} to="/promote" className={classes.link}>Promote</Link>
+          <Link
+            href="#"
+            onClick={handleClick}
+            className={classes.link}
+          >
+            Begin&nbsp;&#9660;
+          </Link>
+          <StyledMenu
+            id="customized-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+          >
+            <StyledMenuItem onClick={handleClose}>
+              <Link component={RouterLink} to="/formdtrust">Form a dtrust</Link>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+              <Link component={RouterLink} to="/usecontrolkey">Use Control Key</Link>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+              <Link component={RouterLink} to="/destroycontrolkey">Destroy Control Key</Link>
+            </StyledMenuItem>
+            <StyledMenuItem onClick={handleClose}>
+              <Link component={RouterLink} to="/promote">Promote</Link>
+            </StyledMenuItem>
+          </StyledMenu>
           <Link component={RouterLink} to="/tokenomics" className={classes.link}>Tokenomics</Link>
           <Link component={RouterLink} to="/legal" className={classes.link}>Legal</Link>
+          <Link component={RouterLink} to="/" className={classes.link}>About Us</Link>
+          <Link component={RouterLink} to="/" className={classes.link}>Docs</Link>
           {/* </Router> */}
         </Toolbar>
       </AppBar>
