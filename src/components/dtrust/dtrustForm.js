@@ -104,10 +104,6 @@ export default function DTrustForm(props) {
   const [trusteeCBWA, setTrusteeCBWA] = useState(true);
   const [settlorILT, setSettlorILT] = useState(true);
 
-  useEffect(() => {
-    console.log(process.env);
-  }, [])
-
   const onSubmit = async (e) => {
     e.preventDefault();
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
