@@ -7,6 +7,7 @@ import Web3 from "web3";
 import emailjs from 'emailjs-com';
 
 import { DTRUSTFACTORY_ADDRESS, DTRUST_ABI } from "../../dtrustFactroyConfig";
+import { CONTROLKEY_ABI, CONTROLKEY_ADDRESS } from "../../controlKeyConfig";
 
 const usedtrustStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -112,7 +113,7 @@ export default function DTrustForm(props) {
     let config = {
       from: accounts[0],
     };
-    const contractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
+    const DTRUSTContractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
       from: accounts[0],
     });
     if (settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
@@ -124,13 +125,13 @@ export default function DTrustForm(props) {
         from_name: 'DTRUST',
         message: '',
       };
-      contractInstance.methods
+      DTRUSTContractInstance.methods
         .createDTRUST("", "", "", settlorAddress, beneficiaryAddress, trusteeAddress)
         .send(config)
         .on("receipt", (res) => {
           console.log(res);
           templateParams.message = res.events.CreateDTRUST.returnValues[2];
-          contractInstance.methods
+          DTRUSTContractInstance.methods
             .getAllDeployedDTRUSTs()
             .call()
             .then((res) => {
