@@ -57,11 +57,13 @@ export default function UseControlKey() {
       from: accounts[0],
     });
     contractInstance.methods
-      .generateControlKey("Hello", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC")
+      .handleUsableControlKey(idNumber)
       .send(config)
       .on('receipt', (res) => {
         console.log(res);
-      })
+      });
+
+    setIdNumber("");
   }
 
   return (
