@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Grid } from '@material-ui/core';
+import Web3 from "web3";
 
 import PromoteAlarm from './PromoteAlarm';
+import { DTRUSTFACTORY_ADDRESS, DTRUST_ABI } from "../../dtrustFactroyConfig";
 
 const useGetPromoteStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -44,7 +46,35 @@ const useGetPromoteStyles = makeStyles((theme) => ({
 export default function GetPromote() {
   const classes = useGetPromoteStyles();
   const [promotestate, setPromotestate] = useState('none');
-  const onSubmit = e => {
+  const [dtrust, setDtrust] = useState("");
+  const [address, setAddress] = useState("");
+  const [dtrustContract, setDtrustContract] = useState({});
+
+
+  useEffect(() => {
+    async function getDTrustFactroyContract() {
+      const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+      const accounts = await web3.eth.getAccounts();
+      setAddress(accounts[0]);
+      const DTRUSTContractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
+        from: accounts[0],
+      });
+      setDtrustContract(DTRUSTContractInstance);
+    }
+    getDTrustFactroyContract();
+  }, []);
+
+  const onSubmit = async (e) => {
+    let config = {
+      from: address,
+    };
+    let tokenKey = "Hello";
+    dtrustContract.methods
+      .createPrToken(dtrust, tokenKey)
+      .send(config)
+      .on("receipt", (res) => {
+        console.log(res);
+      })
     setPromotestate('get');
   }
   return (
@@ -55,10 +85,16 @@ export default function GetPromote() {
           <form noValidate autoComplete="off">
             <Grid container spacing={3}>
               <Grid item xs={12} sm={7}>
+                <InputLabel className={classes.label}>Enter the your DTRUST.</InputLabel>
+              </Grid>
+              <Grid item xs={8} sm={4}>
+                <TextField className={classes.input} label="DTrust" id="" variant="outlined" size="small" value={dtrust} onChange={(e) => setDtrust(e.target.value)} />
+              </Grid>
+              <Grid item xs={12} sm={7}>
                 <InputLabel className={classes.label}>Enter the wallet address that you would like to receive the Promote token.</InputLabel>
               </Grid>
               <Grid item xs={8} sm={4}>
-                <TextField className={classes.input} label="Wallet Address" id="" variant="outlined" size="small" />
+                <TextField className={classes.input} label="Wallet Address" id="" variant="outlined" size="small" value={address} onChange={(e) => setAddress(e.target.value)} />
               </Grid>
               <Grid item xs={4} sm={1}>
                 <Button className={classes.button} onClick={onSubmit}>Enter</Button>
