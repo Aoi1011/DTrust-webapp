@@ -1,9 +1,15 @@
-export const DTRUSTFACTORY_ADDRESS = "0xec59D728e405cE10E588595e65690Ec2d7fd4522";
+export const DTRUSTFACTORY_ADDRESS = "0x60201Bc29c2945B5F0cA9A36adE5cc2Bc3f9B7B7";
 
 export const DTRUST_ABI = [
     {
         "anonymous": false,
         "inputs": [
+            {
+                "indexed": false,
+                "internalType": "contract DTRUST",
+                "name": "createdDtrust",
+                "type": "address"
+            },
             {
                 "indexed": false,
                 "internalType": "string",

@@ -59,7 +59,7 @@ export default function UseControlKey() {
     contractInstance.methods
       .generateControlKey("Hello", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC")
       .send(config)
-      .on('recei[t', (res) => {
+      .on('receipt', (res) => {
         console.log(res);
       })
   }
