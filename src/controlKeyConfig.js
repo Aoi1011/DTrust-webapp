@@ -1,6 +1,25 @@
-export const CONTROLKEY_ADDRESS = "0xe203B76EB2BeEEAfd4f9DA86f47B20B0e8e88cb0";
+export const CONTROLKEY_ADDRESS = "0x6eBe550DFB80bF8581691EB29d8Fa4Ad9323fCfC";
 
 export const CONTROLKEY_ABI = [
+    {
+        "anonymous": false,
+        "inputs": [
+            {
+                "indexed": true,
+                "internalType": "uint256",
+                "name": "controlKeyId",
+                "type": "uint256"
+            },
+            {
+                "indexed": false,
+                "internalType": "string",
+                "name": "privateKey",
+                "type": "string"
+            }
+        ],
+        "name": "GenerateControlKey",
+        "type": "event"
+    },
     {
         "inputs": [],
         "name": "numControlKey",

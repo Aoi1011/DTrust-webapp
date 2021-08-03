@@ -116,6 +116,9 @@ export default function DTrustForm(props) {
     const DTRUSTContractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
       from: accounts[0],
     });
+    const controlKeyContractInstance = new web3.eth.Contract(CONTROLKEY_ABI, CONTROLKEY_ADDRESS, {
+      from: accounts[0],
+    });
     if (settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
       alert("Please input address");
     }
@@ -125,6 +128,8 @@ export default function DTrustForm(props) {
         from_name: 'DTRUST',
         message: '',
       };
+
+      // dtrust contract
       DTRUSTContractInstance.methods
         .createDTRUST("", "", "", settlorAddress, beneficiaryAddress, trusteeAddress)
         .send(config)
@@ -134,17 +139,28 @@ export default function DTrustForm(props) {
           DTRUSTContractInstance.methods
             .getAllDeployedDTRUSTs()
             .call()
-            .then((res) => {
-              console.log(res);
+            .then((result) => {
+              console.log(result);
 
-              emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
-                .then((result) => {
-                  console.log('Success!', result.status, result.text);
-                }, (error) => {
-                  console.log("Failed..", error.status);
-                });
+              // emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
+              //   .then((result) => {
+              //     console.log('Success!', result.status, result.text);
+              //   }, (error) => {
+              //     console.log("Failed..", error.status);
+              //   });
+
+              let secretKey = "Hello";
+              controlKeyContractInstance.methods
+                .generateControlKey(secretKey, settlorAddress, beneficiaryAddress, trusteeAddress)
+                .send(config)
+                .on("receipt", (res) => {
+                  console.log(res);
+                })
             });
         });
+
+      // control key contract
+
 
 
       props.setdtruststate('success');
