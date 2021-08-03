@@ -86,12 +86,15 @@ const usedtrustStyles = makeStyles((theme) => ({
 
 export default function DTrustForm(props) {
   const classes = usedtrustStyles();
-  const [changeBWA, setChangeBWA] = useState(true);
-  const [changeSDS, setChangeSDS] = useState(true);
-  const [changeTDS, setChangeTDS] = useState(true);
-  const [revokeD, setRevokeD] = useState(true);
-  const [swapA, setSwapA] = useState(true);
-  const [transactA, setTransactA] = useState(true);
+  const [settlorCBWA, setSettlorCBWA] = useState(true);
+  const [settlorCDS, setSettlorCDS] = useState(true);
+  const [trusteeCDS, setTrusteeCDS] = useState(true);
+  const [settlorRD, setSettlorRD] = useState(true);
+  const [settlorSA, setSettlorSA] = useState(true);
+  const [trusteeTA, setTrusteeTA] = useState(true);
+  const [trusteeRD, setTrusteeRD] = useState(true);
+  const [trusteeCBWA, setTrusteeCBWA] = useState(true);
+  const [settlorILT, setSettlorILT] = useState(true);
 
   const onSubmit = e => {
     e.preventDefault();
@@ -151,10 +154,10 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>May the settlor change the beneficiary wallet address(es)?</InputLabel>
             </Grid>
             <Grid item xs={6} md={2}>
-              <Button className={classes.buttonYes} choosen={changeBWA.toString()} onClick={e => { setChangeBWA(true) }}>Yes</Button>
+              <Button className={classes.buttonYes} choosen={settlorCBWA.toString()} onClick={e => { setSettlorCBWA(true) }}>Yes</Button>
             </Grid>
             <Grid item xs={6} md={2}>
-              <Button className={classes.buttonNo} choosen={changeBWA.toString()} onClick={e => { setChangeBWA(false) }}>No</Button>
+              <Button className={classes.buttonNo} choosen={settlorCBWA.toString()} onClick={e => { setSettlorCBWA(false) }}>No</Button>
             </Grid>
           </Grid>
           <Grid container spacing={3}>
@@ -172,29 +175,44 @@ export default function DTrustForm(props) {
             [
               {
                 desc: "May the settlor change the distribution schedule?",
-                value: changeSDS,
-                func: setChangeSDS,
+                value: settlorCDS,
+                func: setSettlorCDS,
               },
               {
                 desc: "May the trustee change the distribution schedule?",
-                value: changeTDS,
-                func: setChangeTDS,
+                value: trusteeCDS,
+                func: setTrusteeCDS,
               },
               {
                 desc: "May the settlor revoke the dtrust? (assets return to settlor wallet)",
-                value: revokeD,
-                func: setRevokeD,
+                value: settlorRD,
+                func: setSettlorRD,
               },
               {
                 desc: "May the settlor swap the assets in the dtrust for assets of equivalent value?",
-                value: swapA,
-                func: setSwapA,
+                value: settlorSA,
+                func: setSettlorSA,
               },
               {
                 desc: "May the trustee transact with the assets?",
-                value: transactA,
-                func: setTransactA,
-              }
+                value: trusteeTA,
+                func: setTrusteeTA,
+              },
+              {
+                desc: "May the trustee revoke the dtrust?",
+                value: trusteeRD,
+                func: setTrusteeRD,
+              },
+              {
+                desc: "May the trustee change the beneficiary wallet address(es)?",
+                value: trusteeCBWA,
+                func: setTrusteeCBWA,
+              },
+              {
+                desc: "Does the settlor intend that this dtrust is a legal trust?",
+                value: settlorILT,
+                func: setSettlorILT,
+              },
             ].map((item, index) =>
               <Grid key={index} container spacing={3}>
                 <Grid item xs={12} md={6}>
@@ -209,6 +227,17 @@ export default function DTrustForm(props) {
               </Grid>
             )
           }
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <InputLabel className={classes.label}>Under what jurisdiction does the settlor intend that this dtrust be a legal trust?</InputLabel>
+            </Grid>
+            <Grid item xs={8} md={4}>
+              <TextField className={classes.input} label="Jurisdiction" id="" variant="outlined" size="small" />
+            </Grid>
+            <Grid item xs={4} md={2}>
+              <Button className={classes.button}>Enter</Button>
+            </Grid>
+          </Grid>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <InputLabel className={classes.label}>What annual fee should the trustee recieve? (for one percent, enter 1 not 0.01)</InputLabel>
