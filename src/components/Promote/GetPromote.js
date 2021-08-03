@@ -73,9 +73,13 @@ export default function GetPromote() {
       .createPrToken(dtrust, tokenKey)
       .send(config)
       .on("receipt", (res) => {
-        console.log(res);
-      })
-    setPromotestate('get');
+        if (res.events.CreatePrToken.returnValues[2]) {
+          setPromotestate('get');
+        } else {
+          alert("We can not create Promote token.");
+        }
+      });
+
   }
   return (
     promotestate === 'none' ?
