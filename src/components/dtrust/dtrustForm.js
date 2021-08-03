@@ -119,14 +119,15 @@ export default function DTrustForm(props) {
     const controlKeyContractInstance = new web3.eth.Contract(CONTROLKEY_ABI, CONTROLKEY_ADDRESS, {
       from: accounts[0],
     });
-    if (settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
+    if (emailAddress === "" || settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
       alert("Please input address");
     }
     else {
       var templateParams = {
         to_email: emailAddress,
         from_name: 'DTRUST',
-        message: '',
+        dtrust: "",
+        control_key: "",
       };
 
       // dtrust contract
@@ -135,20 +136,21 @@ export default function DTrustForm(props) {
         .send(config)
         .on("receipt", (res) => {
           console.log(res);
-          templateParams.message = res.events.CreateDTRUST.returnValues[2];
+          templateParams.dtrust = res.events.CreateDTRUST.returnValues[0];
           DTRUSTContractInstance.methods
             .getAllDeployedDTRUSTs()
             .call()
             .then((result) => {
               console.log(result);
 
+               // control key contract
               let secretKey = "Hello";
               controlKeyContractInstance.methods
                 .generateControlKey(secretKey, settlorAddress, beneficiaryAddress, trusteeAddress)
                 .send(config)
                 .on("receipt", (res) => {
                   console.log(res);
-
+                  templateParams.control_key = res.events.GenerateControlKey.returnValues[0];
                   emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
                     .then((result) => {
                       console.log('Success!', result.status, result.text);
@@ -158,11 +160,7 @@ export default function DTrustForm(props) {
                 })
             });
         });
-
-      // control key contract
-
-
-
+        
       props.setdtruststate('success');
     }
 
