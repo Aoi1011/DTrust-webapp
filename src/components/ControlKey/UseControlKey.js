@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Grid } from '@material-ui/core';
+import Web3 from "web3";
+
+import { CONTROLKEY_ABI, CONTROLKEY_ADDRESS } from "../../controlKeyConfig";
 
 const useUsekeyStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -41,6 +44,25 @@ const useUsekeyStyles = makeStyles((theme) => ({
 
 export default function UseControlKey() {
   const classes = useUsekeyStyles();
+  const [idNumber, setIdNumber] = useState("");
+
+  const handleControlKey = async () => {
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const accounts = await web3.eth.getAccounts();
+    const selectedAccount = window.ethereum.selectedAddress;
+    let config = {
+      from: accounts[0],
+    };
+    const contractInstance = new web3.eth.Contract(CONTROLKEY_ABI, CONTROLKEY_ADDRESS, {
+      from: accounts[0],
+    });
+    contractInstance.methods
+      .generateControlKey("Hello", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC", "0x9670FC247365E4360e1b9d40Df084dd5f622E4AC")
+      .send(config)
+      .on('recei[t', (res) => {
+        console.log(res);
+      })
+  }
 
   return (
     <div>
@@ -52,10 +74,10 @@ export default function UseControlKey() {
               <InputLabel className={classes.label}>Enter the identification number (the wallet addres) for the dtrust.</InputLabel>
             </Grid>
             <Grid item xs={8} sm={4}>
-              <TextField className={classes.input} label="ID number" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} label="ID number" id="" variant="outlined" size="small" value={idNumber} onChange={(e) => setIdNumber(e.target.value)} />
             </Grid>
             <Grid item xs={4} sm={1}>
-              <Button className={classes.button}>Enter</Button>
+              <Button className={classes.button} onClick={handleControlKey}>Enter</Button>
             </Grid>
           </Grid>
         </form>

@@ -1,6 +1,6 @@
-export const ADDRESS = "0xf3B6A0F4560cD929dF31DE716e476D81801c419a";
+export const DTRUSTFACTORY_ADDRESS = "0xf3B6A0F4560cD929dF31DE716e476D81801c419a";
 
-export const ABI = [
+export const DTRUST_ABI = [
     {
         "anonymous": false,
         "inputs": [

@@ -6,7 +6,7 @@ import Button from '@material-ui/core/Button';
 import Web3 from "web3";
 import emailjs from 'emailjs-com';
 
-import { ABI, ADDRESS } from "../../dtrustFactroyConfig";
+import { DTRUSTFACTORY_ADDRESS, DTRUST_ABI } from "../../dtrustFactroyConfig";
 
 const usedtrustStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -112,7 +112,7 @@ export default function DTrustForm(props) {
     let config = {
       from: accounts[0],
     };
-    const contractInstance = new web3.eth.Contract(ABI, ADDRESS, {
+    const contractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
       from: accounts[0],
     });
     if (settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
