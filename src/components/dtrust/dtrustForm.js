@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Web3 from "web3";
+import emailjs from 'emailjs-com';
 
 import { ABI, ADDRESS } from "../../dtrustFactroyConfig";
 
@@ -89,6 +90,7 @@ const usedtrustStyles = makeStyles((theme) => ({
 
 export default function DTrustForm(props) {
   const classes = usedtrustStyles();
+  const [emailAddress, setEmailAddress] = useState("");
   const [settlorAddress, setSettlorAddress] = useState("");
   const [beneficiaryAddress, setBeneficiaryAddress] = useState("");
   const [trusteeAddress, setTrusteeAddress] = useState("");
@@ -101,6 +103,10 @@ export default function DTrustForm(props) {
   const [trusteeRD, setTrusteeRD] = useState(true);
   const [trusteeCBWA, setTrusteeCBWA] = useState(true);
   const [settlorILT, setSettlorILT] = useState(true);
+
+  useEffect(() => {
+    console.log(process.env);
+  }, [])
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -117,12 +123,33 @@ export default function DTrustForm(props) {
       alert("Please input address");
     }
     else {
+      var templateParams = {
+        to_email: emailAddress,
+        from_name: 'DTRUST',
+        message: '',
+      };
       contractInstance.methods
         .createDTRUST("", "", "", settlorAddress, beneficiaryAddress, trusteeAddress)
         .send(config)
         .on("receipt", (res) => {
-          console.log(res.events.CreateDTRUST.returnValues);
-        })
+          console.log(res);
+          templateParams.message = res.events.CreateDTRUST.returnValues[2];
+          contractInstance.methods
+            .getAllDeployedDTRUSTs()
+            .call()
+            .then((res) => {
+              console.log(res);
+
+              emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
+                .then((result) => {
+                  console.log('Success!', result.status, result.text);
+                }, (error) => {
+                  console.log("Failed..", error.status);
+                });
+            });
+        });
+
+
       props.setdtruststate('success');
     }
 
@@ -137,7 +164,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>Which email address(es) should recieve information about this dtrust?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Email Address(es)" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} label="Email Address(es)" id="" variant="outlined" size="small" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
