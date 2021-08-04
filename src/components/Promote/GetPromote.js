@@ -50,7 +50,6 @@ export default function GetPromote() {
   const [address, setAddress] = useState("");
   const [dtrustContract, setDtrustContract] = useState({});
 
-
   useEffect(() => {
     async function getDTrustFactroyContract() {
       const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
@@ -89,7 +88,7 @@ export default function GetPromote() {
           <form noValidate autoComplete="off">
             <Grid container spacing={3}>
               <Grid item xs={12} sm={7}>
-                <InputLabel className={classes.label}>Enter the your DTRUST.</InputLabel>
+                <InputLabel className={classes.label}>Enter your DTRUST.</InputLabel>
               </Grid>
               <Grid item xs={8} sm={4}>
                 <TextField className={classes.input} label="DTrust" id="" variant="outlined" size="small" value={dtrust} onChange={(e) => setDtrust(e.target.value)} />

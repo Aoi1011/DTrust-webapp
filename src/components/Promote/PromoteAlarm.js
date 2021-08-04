@@ -58,8 +58,8 @@ export default function PromoteAlarm(props) {
             <div className={classes.content}>
               "If a dtrust is formed with this link, then the first two years of 0.5% fees from that dtrust will go to your Promote token."
             </div>
-            <TextField className={classes.input} label="" id="" variant="outlined" size="small" />
-            <Link className={classes.link} component={RouterLink} to="/formdtrust">The link here would go to a page identical to the “Form a dtrust” page.</Link>
+            <TextField className={classes.input} label="" id="" variant="outlined" size="small" value={props.link} />
+            <Link className={classes.link} component={RouterLink} to="/formdtrust" >The link here would go to a page identical to the “Form a dtrust” page.</Link>
           </>
         }
       </Container>
