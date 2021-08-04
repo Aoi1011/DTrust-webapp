@@ -63,7 +63,7 @@ export default function GetPromote() {
     getDTrustFactroyContract();
   }, []);
 
-  const onSubmit = async (e) => {
+  const onSubmit = () => {
     let config = {
       from: address,
     };
