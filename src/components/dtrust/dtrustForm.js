@@ -119,7 +119,7 @@ export default function DTrustForm(props) {
       from: accounts[0],
     });
     if (emailAddress === "" || settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
-      alert("Please input address");
+      alert("Please input address and email");
     }
     else {
       var templateParams = {

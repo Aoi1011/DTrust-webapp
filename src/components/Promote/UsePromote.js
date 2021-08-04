@@ -65,7 +65,7 @@ export default function UsePromote() {
     getDTrustFactroyContract();
   }, []);
 
-  const onSubmit = async (e) => {
+  const onSubmit = () => {
     dtrustContract.methods
       .usePrToken(dtrust, tokenKey)
       .call()
