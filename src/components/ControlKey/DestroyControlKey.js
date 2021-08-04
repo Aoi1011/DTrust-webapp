@@ -44,13 +44,11 @@ const useDestroykeyStyles = makeStyles((theme) => ({
 
 export default function DestroyControlKey() {
   const classes = useDestroykeyStyles();
-
   const [idNumber, setIdNumber] = useState("");
 
   const handleDestroy = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
     const accounts = await web3.eth.getAccounts();
-    const selectedAccount = window.ethereum.selectedAddress;
     let config = {
       from: accounts[0],
     };

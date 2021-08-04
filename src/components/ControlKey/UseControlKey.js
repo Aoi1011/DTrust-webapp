@@ -49,7 +49,6 @@ export default function UseControlKey() {
   const handleControlKey = async () => {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
     const accounts = await web3.eth.getAccounts();
-    const selectedAccount = window.ethereum.selectedAddress;
     let config = {
       from: accounts[0],
     };
@@ -60,8 +59,11 @@ export default function UseControlKey() {
       .handleUsableControlKey(idNumber)
       .send(config)
       .on('receipt', (res) => {
-        console.log(res);
-      });
+        alert("Success!");
+      })
+      .on('error', (error) => {
+        alert("Failed..")
+      });;
 
     setIdNumber("");
   }
