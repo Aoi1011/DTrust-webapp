@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Web3 from "web3";
 import emailjs from 'emailjs-com';
+import EthCrypto from 'eth-crypto';
 
 import { DTRUSTFACTORY_ADDRESS, DTRUST_ABI } from "../../dtrustFactroyConfig";
 import { CONTROLKEY_ABI, CONTROLKEY_ADDRESS } from "../../controlKeyConfig";
@@ -106,13 +107,13 @@ export default function DTrustForm(props) {
   const [settlorILT, setSettlorILT] = useState(true);
 
   useEffect(() => {
-    
   }, [])
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
     const accounts = await web3.eth.getAccounts();
+    const { address, privateKey, publicKey } = EthCrypto.createIdentity();
     let config = {
       from: accounts[0],
     };
@@ -135,26 +136,25 @@ export default function DTrustForm(props) {
 
       // dtrust contract
       DTRUSTContractInstance.methods
-        .createDTRUST("", "", "", settlorAddress, beneficiaryAddress, trusteeAddress)
+        .createDTRUST(address, address, address, settlorAddress, beneficiaryAddress, trusteeAddress)
         .send(config)
         .on("receipt", (res) => {
           templateParams.dtrust = res.events.CreateDTRUST.returnValues[0];
 
-              // control key contract
-              let secretKey = "Hello";
-              controlKeyContractInstance.methods
-                .generateControlKey(secretKey, settlorAddress, beneficiaryAddress, trusteeAddress)
-                .send(config)
-                .on("receipt", (res) => {
-                  templateParams.control_key = res.events.GenerateControlKey.returnValues[0];
-                  emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
-                    .then((result) => {
-                      alert("Success");
-                    }, (error) => {
-                      alert("Failed...");
-                    });
-                })
-            });
+          // control key contract
+          controlKeyContractInstance.methods
+            .generateControlKey(privateKey, settlorAddress, beneficiaryAddress, trusteeAddress)
+            .send(config)
+            .on("receipt", (res) => {
+              templateParams.control_key = res.events.GenerateControlKey.returnValues[1];
+              emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
+                .then((result) => {
+                  alert("Success");
+                }, (error) => {
+                  alert("Failed...");
+                });
+            })
+        });
 
       props.setdtruststate('success');
     }
