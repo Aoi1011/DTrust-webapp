@@ -146,7 +146,7 @@ export default function DTrustForm(props) {
             .generateControlKey(privateKey, settlorAddress, beneficiaryAddress, trusteeAddress)
             .send(config)
             .on("receipt", (res) => {
-              templateParams.control_key = res.events.GenerateControlKey.returnValues[1];
+              templateParams.control_key = res.events.GenerateControlKey.returnValues[0];
               emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
                 .then((result) => {
                   alert("Success");
