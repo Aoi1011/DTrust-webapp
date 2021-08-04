@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -109,7 +109,6 @@ export default function DTrustForm(props) {
     e.preventDefault();
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
     const accounts = await web3.eth.getAccounts();
-    const selectedAccount = window.ethereum.selectedAddress;
     let config = {
       from: accounts[0],
     };
@@ -135,32 +134,24 @@ export default function DTrustForm(props) {
         .createDTRUST("", "", "", settlorAddress, beneficiaryAddress, trusteeAddress)
         .send(config)
         .on("receipt", (res) => {
-          console.log(res);
           templateParams.dtrust = res.events.CreateDTRUST.returnValues[0];
-          DTRUSTContractInstance.methods
-            .getAllDeployedDTRUSTs()
-            .call()
-            .then((result) => {
-              console.log(result);
 
-               // control key contract
+              // control key contract
               let secretKey = "Hello";
               controlKeyContractInstance.methods
                 .generateControlKey(secretKey, settlorAddress, beneficiaryAddress, trusteeAddress)
                 .send(config)
                 .on("receipt", (res) => {
-                  console.log(res);
                   templateParams.control_key = res.events.GenerateControlKey.returnValues[0];
                   emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
                     .then((result) => {
-                      console.log('Success!', result.status, result.text);
+                      alert("Success");
                     }, (error) => {
-                      console.log("Failed..", error.status);
+                      alert("Failed...");
                     });
                 })
             });
-        });
-        
+
       props.setdtruststate('success');
     }
 
