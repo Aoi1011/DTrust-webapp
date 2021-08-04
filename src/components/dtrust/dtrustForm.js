@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -104,6 +104,10 @@ export default function DTrustForm(props) {
   const [trusteeRD, setTrusteeRD] = useState(true);
   const [trusteeCBWA, setTrusteeCBWA] = useState(true);
   const [settlorILT, setSettlorILT] = useState(true);
+
+  useEffect(() => {
+    
+  }, [])
 
   const onSubmit = async (e) => {
     e.preventDefault();
