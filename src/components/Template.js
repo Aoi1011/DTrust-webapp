@@ -1,49 +1,21 @@
 import React from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
 // import { MemoryRouter as Router } from "react-router";
-import { AppBar, Button, Grid, Link, MenuItem, Menu, Toolbar } from '@material-ui/core';
+import { AppBar, Button, Grid, Link, Toolbar } from '@material-ui/core';
 
 // import FormDtrust from './FormDtrust.js';
 import logo from '../img/logo.jpg';
-import background from '../img/background.jpg';
-
-const StyledMenu = withStyles({
-  paper: {
-    border: '1px solid #d3d4d5',
-  },
-})((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'left',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'left',
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles((theme) => ({
-  root: {
-    '& .MuiLink-root': {
-      color: '#fe8d4a',
-      textDecoration: 'none',
-    },
-  },
-}))(MenuItem);
+// import background from '../img/background.jpg';
 
 const useTemplateStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+    // backgroundImage: `url(${background})`,
+    // backgroundSize: 'cover',
+    // backgroundPosition: 'center',
+    // backgroundRepeat: 'no-repeat',
+    backgroundColor: '#ffffff',
   },
   appBar: {
     backgroundColor: '#fe8d4a',
@@ -58,9 +30,19 @@ const useTemplateStyles = makeStyles((theme) => ({
       maxHeight: '20px',
     },
   },
-  link: {
+  linksBar: {
     flexGrow: 1,
+    textAlign: 'center',
+  },
+  link: {
+    // flexGrow: 1,
+    margin: '0 30px',
+    [theme.breakpoints.down('xs')]: {
+      display: 'block',
+      margin: '0 10px',
+    },
     color: '#ffffff',
+    whiteSpace: 'nowrap',
     transition: 'color .3s ease',
     fontWeight: 500,
     textShadow: '0 2px rgba(0,0,0,0.5)',
@@ -68,6 +50,16 @@ const useTemplateStyles = makeStyles((theme) => ({
       textDecoration: 'none',
       color: '#efefef',
     },
+  },
+  startButton: {
+    color: '#ffffff',
+    backgroundColor: '#fe8d4a',
+    '&:hover': {
+      backgroundColor: '#fe8d4acc',
+    },
+    border: '1px solid #ffffff',
+    padding: '3px 30px 3px 30px',
+    borderRadius: '30px',
   },
   bottomBar: {
     top: 'auto',
@@ -134,29 +126,23 @@ const useTemplateStyles = makeStyles((theme) => ({
     },
   },
   contactButton: {
-    fontSize: '12px',
-    padding: '10px 0 10px 0',
-    width: '100%',
-    color: '#ffffff',
+    fontSize: '16px',
+    fontWeight: '600',
+    borderRadius: '0',
+    border: '4px solid #fe8d4a',
+    padding: '3px 0 3px 0',
+    width: '200px',
     textTransform: 'none',
-    backgroundColor: '#fe8d4a',
+    color: '#fe8d4a',
+    backgroundColor: '#ffffff',
     '&:hover': {
-      backgroundColor: '#fe8d4acc',
+      backgroundColor: '#ffffffdd',
     }
   },
 }));
 
 export default function Template(props) {
   const classes = useTemplateStyles();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   return (
     <div className={classes.root}>
@@ -166,14 +152,7 @@ export default function Template(props) {
             <img src={logo} alt="Logo" />
           </Button>
           {/* <Router> */}
-          <Link
-            href="#"
-            onClick={handleClick}
-            className={classes.link}
-          >
-            Begin&nbsp;&#9660;
-          </Link>
-          <StyledMenu
+          {/* <StyledMenu
             id="customized-menu"
             anchorEl={anchorEl}
             keepMounted
@@ -192,11 +171,15 @@ export default function Template(props) {
             <StyledMenuItem onClick={handleClose}>
               <Link component={RouterLink} to="/promote">Promote</Link>
             </StyledMenuItem>
-          </StyledMenu>
-          <Link component={RouterLink} to="/tokenomics" className={classes.link}>Tokenomics</Link>
-          <Link component={RouterLink} to="/legal" className={classes.link}>Legal</Link>
-          <Link component={RouterLink} to="/" className={classes.link}>About Us</Link>
-          <Link component={RouterLink} to="/" className={classes.link}>Docs</Link>
+          </StyledMenu> */}
+          <div className={classes.linksBar}>
+            <Link component={RouterLink} to="/docs" className={classes.link}>Docs</Link>
+            <Link component={RouterLink} to="/legal" className={classes.link}>Legal</Link>
+            <Link component={RouterLink} to="/dttokens" className={classes.link}>DT Tokens</Link>
+          </div>
+          <Button className={classes.startButton} component={RouterLink} to="/start">
+            Start
+          </Button>
           {/* </Router> */}
         </Toolbar>
       </AppBar>
@@ -211,11 +194,11 @@ export default function Template(props) {
         </div>
         <div className={classes.bottomContact}>
           <Grid container spacing={0}>
-            <Grid item xs={12} sm={6}>
-              <h2>DTrust is about solving legal problems with technology. Contact us to request the whitepaper.</h2>
+            <Grid item xs={12}>
+              <h2>DTrust is about solving legal problems with technology.</h2>
             </Grid>
             <Grid item xs />
-            <Grid item xs={8} sm={4}>
+            <Grid item xs={12}>
               <Button className={classes.contactButton} component={RouterLink} to="/contact">Contact</Button>
             </Grid>
             <Grid item xs />

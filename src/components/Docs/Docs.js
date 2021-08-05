@@ -18,8 +18,8 @@ function TabPanel(props) {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
-          { children}
+        <Box p={3} minHeight="60vh">
+          {children}
         </Box>
       )}
     </div>
@@ -54,7 +54,7 @@ function allyProps(index) {
   };
 }
 
-const useLegaltyles = makeStyles((theme) => ({
+const useDocsStyles = makeStyles((theme) => ({
   root: {
     [theme.breakpoints.up('md')]: {
       flexGrow: 1,
@@ -82,8 +82,8 @@ const useLegaltyles = makeStyles((theme) => ({
   },
 }));
 
-function Legal(props) {
-  const classes = useLegaltyles();
+function Docs(props) {
+  const classes = useDocsStyles();
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -100,37 +100,33 @@ function Legal(props) {
         aria-label="Vertical tabs example"
         className={classes.tabs}
       >
-        <StyledTab label="Legal" {...allyProps(0)} />
-        <StyledTab label="Asset Protection" {...allyProps(1)} />
-        <StyledTab label="Probate Aviodance" {...allyProps(2)} />
-        <StyledTab label="Estate Administration" {...allyProps(3)} />
-        <StyledTab label="Tax Planning" {...allyProps(4)} />
-        <StyledTab label="Structured Giving" {...allyProps(4)} />
-        <StyledTab label="Asset Management" {...allyProps(4)} />
+        <StyledTab label="Introduction" {...allyProps(0)} />
+        <StyledTab label="Knowledge Base" {...allyProps(1)} />
+        <StyledTab label="Code" {...allyProps(2)} />
+        <StyledTab label="Testing" {...allyProps(3)} />
+        <StyledTab label="Audit" {...allyProps(4)} />
       </Tabs>
       <TabPanel value={value} index={0}>
-        <div className={classes.title}>Legal</div>
-        <div className={classes.desc}>DTrust generates customized dtrusts that can effectuate a wide range of legal strategies. These pages provide just a basic discussion of some common uses of traditional legal trusts applied to the DTrust context. These pages are only a basic discussion of an emerging field of law. </div>
+        <div className={classes.title}>Introduction</div>
+        <div className={classes.desc}>This documentation is a comprehsive source of DTrust public material.</div>
+        <div className={classes.desc}>“Knowledge Base” provides information to users to answer thier functional questions.</div>
+        <div className={classes.desc}>“Code” shows a substantial portion of the DTrust source code to demonstrate the DApp efficacy and answer potential user questions.</div>
+        <div className={classes.desc}> “Testing” shows the results of our security testing. “Audit” show the results of the DTrust audit from Hacken.io.</div>
       </TabPanel >
       <TabPanel value={value} index={1}>
-        <div className={classes.title}>Asset Protection</div>
+        <div className={classes.title}>Knowledge Base</div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        <div className={classes.title}>Probate Aviodance</div>
+        <div className={classes.title}>Code</div>
       </TabPanel>
       <TabPanel value={value} index={3}>
-        <div className={classes.title}>Estate Administration</div>
+        <div className={classes.title}>Testing</div>
       </TabPanel>
       <TabPanel value={value} index={4}>
-        <div className={classes.title}>Tax Planning</div>
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        <div className={classes.title}>Structured Giving</div>
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        <div className={classes.title}>Asset Management</div>
+        <div className={classes.title}>Audit</div>
       </TabPanel>
     </div >
   );
 }
-export default withWidth()(Legal);
+
+export default withWidth()(Docs);
