@@ -107,7 +107,7 @@ export default function DTrustForm(props) {
         <form noValidate autoComplete="off">
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>Which email address(es) should recieve information about this dtrust?</InputLabel>
+              <InputLabel className={classes.label}>Which email address(es) should receive information about this dtrust?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
               <TextField className={classes.input} label="Email Address(es)" id="" variant="outlined" size="small" />
@@ -184,9 +184,14 @@ export default function DTrustForm(props) {
                 func: setTrusteeCDS,
               },
               {
-                desc: "May the settlor revoke the dtrust? (assets return to settlor wallet)",
+                desc: "May the settlor revoke the dtrust? (assets return to settlor's wallet)",
                 value: settlorRD,
                 func: setSettlorRD,
+                },
+              {
+                desc: "May the trustee revoke the dtrust? (assets return to settlor's wallet)",
+                value: trusteeRD,
+                func: setTrusteeRD,
               },
               {
                 desc: "May the settlor swap the assets in the dtrust for assets of equivalent value?",
@@ -197,11 +202,6 @@ export default function DTrustForm(props) {
                 desc: "May the trustee transact with the assets?",
                 value: trusteeTA,
                 func: setTrusteeTA,
-              },
-              {
-                desc: "May the trustee revoke the dtrust?",
-                value: trusteeRD,
-                func: setTrusteeRD,
               },
               {
                 desc: "May the trustee change the beneficiary wallet address(es)?",
@@ -240,7 +240,7 @@ export default function DTrustForm(props) {
           </Grid>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>What annual fee should the trustee recieve? (for one percent, enter 1 not 0.01)</InputLabel>
+              <InputLabel className={classes.label}>What annual fee should the trustee receive? (for one percent, enter 1 not 0.01)</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
               <TextField className={classes.input} label="Annual Fee" id="" variant="outlined" size="small" />
