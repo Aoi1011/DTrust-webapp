@@ -143,36 +143,36 @@ export default function Home() {
       </div>
       <div className={classes.content}>
         <div className={classes.desc}>
-          Trust law enables estate administration, probate avoidance, asset protection, tax planning, and other crucial legal functions. Now you can do digital asset trusts on the etheruem virtual machine with DTrust. On this site you can access the DTrust decentralized application to form customized dtrusts, use control keys on existing dtrusts, permanently destroy control keys and earn income as a dtrust pomoter.
+          Trust law enables asset protection, probate avoidance, estate administration, tax planning, structured giving, asset management, and other crucial legal functions. Now you can do digital asset trusts on the etheruem virtual machine with DTrust. On this site you can access the DTrust decentralized application to form customized dtrusts, use control keys on existing dtrusts, permanently destroy control keys and earn income as a dtrust pomoter.
         </div>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <div className={classes.subtitle}>Form a dtrust</div>
             <div className={classes.subdesc}>
-              A series of input questions allow settlors and trustees to form customized dtrusts for specific goals under different rules. Click "Form a dtrust" to see the customization options and follow the prompts to form your dtrust.
+              A series of input questions allow settlors and trustees to form customized dtrusts for specific goals under different rules. Follow the prompts to form your dtrust.
               <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/formdtrust">Start</Button>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <div className={classes.subtitle}>Use a Control Key</div>
             <div className={classes.subdesc}>
-              When a settlor forms a dtrust, the settlor decides what control keys will be created for that dtrust. Control keys enable key-holders to exercise revocation, amendment, management, or other rights with respect to existing dtrusts.
+              When a settlor forms a dtrust, the settlor decides what control keys will be created for that dtrust. Control keys enable key-holders to exercise revocation, amendment, management, or other rights with respect to existing dtrusts. 
               <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/usecontrolkey">Start</Button>
             </div>
           </Grid>
         </Grid>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} className={classes.subsec}>
-            <div className={classes.subtitle}>Destroy Control Key</div>
+            <div className={classes.subtitle}>Destroy a Control Key</div>
             <div className={classes.subdesc}>
-              DTrust has a burn function to permanently destroy control keys. For example, a settlor may want to turn a revocable dtrust into an irrevocable dtrust by destroying the revocation key.
+              DTrust has a burn function to permanently destroy control keys. For example, a settlor may want to turn a revocable dtrust into an irrevocable dtrust by destroying the revocation key. 
               <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/destroycontrolkey">Start</Button>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <div className={classes.subtitle}>Promote</div>
             <div className={classes.subdesc}>
-              Anyone can earn income with DTrust as a promoter. If you arrange the formation of a dtrust, then you can recieve the first two years 0.5%fee as a promoter. You can use this site to form receive your Promote token or to use your Promote token.
+              Anyone can earn income with DTrust as a promoter. If you arrange the formation of a dtrust, then you can recieve the first two years 0.5% fee as a promoter. You can use this site to form receive your Promote token or to use your Promote token. 
               </div>
             <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/promote">Start</Button>
           </Grid>
