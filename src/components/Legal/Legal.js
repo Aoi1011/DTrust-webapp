@@ -105,30 +105,41 @@ function Legal(props) {
         <StyledTab label="Probate Aviodance" {...allyProps(2)} />
         <StyledTab label="Estate Administration" {...allyProps(3)} />
         <StyledTab label="Tax Planning" {...allyProps(4)} />
-        <StyledTab label="Structured Giving" {...allyProps(4)} />
-        <StyledTab label="Asset Management" {...allyProps(4)} />
+        <StyledTab label="Structured Giving" {...allyProps(5)} />
+        <StyledTab label="Asset Management" {...allyProps(6)} />
+        <StyledTab label="Regional Guides" {...allyProps(7)} />
       </Tabs>
       <TabPanel value={value} index={0}>
         <div className={classes.title}>Legal</div>
-        <div className={classes.desc}>DTrust generates customized dtrusts that can effectuate a wide range of legal strategies. These pages provide just a basic discussion of some common uses of traditional legal trusts applied to the DTrust context. These pages are only a basic discussion of an emerging field of law. </div>
+        <div className={classes.desc}>DTrust generates customized dtrusts that can effectuate a wide range of legal strategies. These pages provide just a basic discussion of some common uses of traditional legal trusts applied to the DTrust context. These pages are only a basic discussion of an emerging field of law.</div>
       </TabPanel >
       <TabPanel value={value} index={1}>
         <div className={classes.title}>Asset Protection</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className={classes.title}>Probate Aviodance</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div className={classes.title}>Estate Administration</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={4}>
         <div className={classes.title}>Tax Planning</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={5}>
         <div className={classes.title}>Structured Giving</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={6}>
         <div className={classes.title}>Asset Management</div>
+        <div className={classes.desc}>...Coming Soon...</div>
+      </TabPanel>
+      <TabPanel value={value} index={7}>
+        <div className={classes.title}>Regional Guides</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
     </div >
   );

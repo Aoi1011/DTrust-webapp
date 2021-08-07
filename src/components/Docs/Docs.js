@@ -114,20 +114,23 @@ function Docs(props) {
         <div className={classes.desc}>This documentation is a comprehsive source of DTrust public material.</div>
         <div className={classes.desc}>“Knowledge Base” provides information to users to answer thier functional questions.</div>
         <div className={classes.desc}>“Code” shows a substantial portion of the DTrust source code to demonstrate the DApp efficacy and answer potential user questions.</div>
-        <div className={classes.desc}> “Testing” shows the results of our security testing.</div>
-        <div className={classes.desc}> “Audit” show the results of the DTrust audit from Hacken.io.</div>
+        <div className={classes.desc}> “Testing” shows the results of our security testing. “Audit” show the results of the DTrust audit from Hacken.io.</div>
       </TabPanel >
       <TabPanel value={value} index={1}>
         <div className={classes.title}>Knowledge Base</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className={classes.title}>Code</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div className={classes.title}>Testing</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
       <TabPanel value={value} index={4}>
         <div className={classes.title}>Audit</div>
+        <div className={classes.desc}>...Coming Soon...</div>
       </TabPanel>
     </div >
   );
