@@ -5,7 +5,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { AppBar, Button, Grid, Link, Toolbar } from '@material-ui/core';
 
 // import FormDtrust from './FormDtrust.js';
-import logo from '../img/logo.jpg';
+import logo from '../img/favicon.ico';
 // import background from '../img/background.jpg';
 
 const useTemplateStyles = makeStyles((theme) => ({
@@ -21,14 +21,20 @@ const useTemplateStyles = makeStyles((theme) => ({
     backgroundColor: '#fe8d4a',
   },
   toolBar: {
-    minHeight: '50px',
+    paddingLeft: '0',
     flexWrap: 'wrap',
   },
   menuButton: {
     marginRight: theme.spacing(2),
     '& img': {
-      maxHeight: '20px',
+      maxHeight: '30px',
     },
+    textTransform: 'none',
+    color: '#ffffff',
+    backgroundColor: '#fe7e34',
+    fontSize: '24px',
+    fontWeight: '600',
+    padding: '10px 20px',
   },
   linksBar: {
     flexGrow: 1,
@@ -149,7 +155,7 @@ export default function Template(props) {
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <Button className={classes.menuButton} component={RouterLink} to="/">
-            <img src={logo} alt="Logo" />
+            <img src={logo} alt="Logo" />&nbsp;DTrust
           </Button>
           {/* <Router> */}
           {/* <StyledMenu
@@ -173,7 +179,15 @@ export default function Template(props) {
             </StyledMenuItem>
           </StyledMenu> */}
           <div className={classes.linksBar}>
-            <Link component={RouterLink} to="/docs" className={classes.link}>Docs</Link>
+            <Link
+              component={RouterLink}
+              to={{
+                pathname: "/docs",
+                state: {
+                  tabIndex: 0,
+                },
+              }}
+              className={classes.link}>Docs</Link>
             <Link component={RouterLink} to="/legal" className={classes.link}>Legal</Link>
             <Link component={RouterLink} to="/dttokens" className={classes.link}>DT Tokens</Link>
           </div>

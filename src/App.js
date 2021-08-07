@@ -40,7 +40,7 @@ function App() {
             <Route path="/promote">
               <Promote />
             </Route>
-            <Route path="/docs" exact>
+            <Route path="/docs/:tabIndex([0-4])?" exact>
               <Docs />
             </Route>
             <Route path="/legal" exact>

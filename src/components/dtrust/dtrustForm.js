@@ -149,17 +149,32 @@ export default function DTrustForm(props) {
               <Button className={classes.button}>Enter</Button>
             </Grid>
           </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>May the settlor change the beneficiary wallet address(es)?</InputLabel>
-            </Grid>
-            <Grid item xs={6} md={2}>
-              <Button className={classes.buttonYes} choosen={settlorCBWA.toString()} onClick={e => { setSettlorCBWA(true) }}>Yes</Button>
-            </Grid>
-            <Grid item xs={6} md={2}>
-              <Button className={classes.buttonNo} choosen={settlorCBWA.toString()} onClick={e => { setSettlorCBWA(false) }}>No</Button>
-            </Grid>
-          </Grid>
+          {
+            [
+              {
+                desc: "May the settlor change the beneficiary wallet address(es)?",
+                value: settlorCBWA,
+                func: setSettlorCBWA,
+              },
+              {
+                desc: "May the trustee change the beneficiary wallet address(es)?",
+                value: trusteeCBWA,
+                func: setTrusteeCBWA,
+              },
+            ].map((item, index) =>
+              <Grid key={index} container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <InputLabel className={classes.label}>{item.desc}</InputLabel>
+                </Grid>
+                <Grid item xs={6} md={2}>
+                  <Button className={classes.buttonYes} choosen={item.value.toString()} onClick={e => { item.func(true) }}>Yes</Button>
+                </Grid>
+                <Grid item xs={6} md={2}>
+                  <Button className={classes.buttonNo} choosen={item.value.toString()} onClick={e => { item.func(false) }}>No</Button>
+                </Grid>
+              </Grid>
+            )
+          }
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <InputLabel className={classes.label}>What assets will be distributed and when will the assets be distributed?</InputLabel>

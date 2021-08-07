@@ -7,6 +7,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 import background from '../../img/background.jpg';
 import avatar from '../../img/avatar.png';
+import avatar2 from '../../img/avatar2.jpg';
 
 const useHometyles = makeStyles((theme) => ({
   root: {
@@ -96,19 +97,17 @@ const useHometyles = makeStyles((theme) => ({
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    '& > div': {
+    textAlign: 'center',
+    '& > div:first-child': {
       margin: '0 auto',
-      textAlign: 'center',
       maxWidth: '400px',
-      '& > div:first-child': {
-        fontSize: '36px',
-      },
-      '& > img': {
-        width: '150px',
-      },
-      '& > div:last-child > a': {
+      fontSize: '36px',
+    },
+    '& img': {
+      height: '150px',
+      '& + div > a': {
         color: '#000000',
-      }
+      },
     },
   },
 }));
@@ -120,7 +119,7 @@ export default function Home() {
     <Container className={classes.root} maxWidth={false}>
       <div className={classes.cover}>
         <div className="carousel-wrapper">
-          <Carousel infiniteLoop useKeyboardArrows autoPlay showThumbs={false} showArrows={false} showIndicators={false} interval={4000} className={classes.carouselContainer}>
+          <Carousel infiniteLoop useKeyboardArrows autoPlay showThumbs={false} showArrows={false} showIndicators={false} interval={4000} stopOnHover={false} className={classes.carouselContainer}>
             {
               [
                 "Code is law.",
@@ -182,26 +181,49 @@ export default function Home() {
         <div>Audited and Verified</div>
         <div>
           DTrust uses proven openzeppelin smart contrcats.&nbsp;
-          <RouterLink to="/">See contracts</RouterLink>
+          <RouterLink to={{
+            pathname: "/docs",
+            state: {
+              tabIndex: 2,
+            },
+          }}>See contracts</RouterLink>
         </div>
         <div>
           DTrust underwent rigorous security analysis.&nbsp;
-          <RouterLink to="/">See testing</RouterLink>
+          <RouterLink to={{
+            pathname: "/docs",
+            state: {
+              tabIndex: 3,
+            },
+          }}>See testing</RouterLink>
         </div>
         <div>
           DTrust received an audit from Hacken.io.&nbsp;
-          <RouterLink to="/">See audit</RouterLink>
+          <RouterLink to={{
+            pathname: "/docs",
+            state: {
+              tabIndex: 4,
+            },
+          }}>See audit</RouterLink>
         </div>
       </div>
       <div className={classes.about}>
-        <div>
-          <div>About Us</div>
-          <img src={avatar} alt="avatar"></img>
-          <div>
-            David Newman Brunk created DTrust after studying law at New York Univeristy. You can download the initial whitepaper&nbsp;
-            <RouterLink to="/">here</RouterLink>.
-          </div>
-        </div>
+        <div>About Us</div>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} className={classes.subsec}>
+            <img src={avatar} alt="avatar"></img>
+            <div>
+              David Newman Brunk created DTrust after studying law at New York Univeristy. You can download the initial whitepaper&nbsp;
+              <RouterLink to="docs/DTrust_WhitePaper.docx" target="_blank" download>here</RouterLink>.
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={6} className={classes.subsec}>
+            <img src={avatar2} alt="avatar2"></img>
+            <div>
+              Aoi Kurokawa was the main solidity developer behind the project.&nbsp;
+            </div>
+          </Grid>
+        </Grid>
       </div>
     </Container>
   );

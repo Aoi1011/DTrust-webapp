@@ -5,6 +5,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import { useLocation } from 'react-router-dom';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -83,8 +84,10 @@ const useDocsStyles = makeStyles((theme) => ({
 }));
 
 function Docs(props) {
+  const location = useLocation()
+  const { tabIndex } = location.state
   const classes = useDocsStyles();
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(tabIndex);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
