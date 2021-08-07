@@ -114,15 +114,25 @@ function Docs(props) {
         <div className={classes.desc}>This documentation is a comprehsive source of DTrust public material.</div>
         <div className={classes.desc}>“Knowledge Base” provides information to users to answer thier functional questions.</div>
         <div className={classes.desc}>“Code” shows a substantial portion of the DTrust source code to demonstrate the DApp efficacy and answer potential user questions.</div>
-        <div className={classes.desc}> “Testing” shows the results of our security testing. “Audit” show the results of the DTrust audit from Hacken.io.</div>
+        <div className={classes.desc}>“Testing” shows the results of our security testing.</div>
+        <div className={classes.desc}>“Audit” show the results of the DTrust audit from Hacken.io.</div>
       </TabPanel >
       <TabPanel value={value} index={1}>
         <div className={classes.title}>Knowledge Base</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+        <div className={classes.desc}>What is a dtrust? A decentralized trust (dtrust) is a smart trust agreement. DTrusts bring the law of trusts onto the ethereum blockchain. These customizable smart contracts administer digital assets and manage rights with respect to the assets. A dtrust can implement a wide range of legal, estate planning, and tax strategies in different jurisdictions. </div>
+        <div className={classes.desc}>Is a dtrust a legal trust? It depends. Depending on your jurisdiction, you could structure your dtrust to be a legal trust in its own right, to exist as a layer within another existing trust, or to exist entirely independent of any traditional legal structures. When a settlor forms a dtrust, the settlor must specify whether the settlor intends for the dtrust to be a legal trust. That intention will interact with trust formation rules. Consult the trust formation rules in your jurisdiction to find out whether you want the dtrust to be a legal trust and how to make it a legal trust.</div>
+        <div className={classes.desc}>What are some uses of dtrusts? A dtrust can be a part of any trust strategies. The principle goals are asset protection, probate avoidance, estate administration, tax planing, structured giving, and asset management. The possible uses vary greatly by jurisdiction. See "Legal" for more information.</div>
+        <div className={classes.desc}>Are dtrusts free? No. DTrusts cost 0.5% be year. Buy DT tokens if you would like to earn fees.</div>
+        <div className={classes.desc}>Are dtrusts customizable? Yes. DTrust can create 512 different possible dtrusts. Link to a page with the customization questions.</div>
+        <div className={classes.desc}>Can I make money with DTrusts? Yes. Anyone can earn fees as a dtrust promoter.</div>
+        
       </TabPanel>
       <TabPanel value={value} index={2}>
         <div className={classes.title}>Code</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+        <div className={classes.desc}>DTrust is a decentralized application on the Ethereum virtual machine that generates smart trust agreements, also known as decentralized trusts (dtrusts). It allows users to manage and separate the control and enjoyment of digital assets across time. Like traditional legal trusts, DTrust enables asset protection, probate avoidance, estate administration, tax planning, structured giving, asset management, and other crucial legal functions.</div>
+        <div className={classes.desc}>This documentation explains the behavior of solidity codes behind DTrust. In these docs, you will find the DTrust codes commented to explain various functions and contracts. The code comment have been written based on NatSpec guidelines. These comments have been added to help developers and end-users to understand the code.</div>
+        <div className={classes.desc}>A concise, accurate comment can save hours for developers. Code context exists only in the developers head, but comments can share that context with new developers.</div>
+         <div className={classes.desc}>This comprehensive code comment documentation was created to ensure that the code is readable, can be easily understood, and maintained by anyone, even if the provider changes. These comments will trace DTrust’s front-end functionalities to its backend functions.</div>
       </TabPanel>
       <TabPanel value={value} index={3}>
         <div className={classes.title}>Testing</div>
