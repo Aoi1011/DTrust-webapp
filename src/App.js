@@ -4,12 +4,14 @@ import { init } from 'emailjs-com';
 import './App.css';
 import Home from './components/Home/Home';
 import Template from './components/Template';
+import Start from './components/Start/Start';
 import Formdtrust from './components/dtrust/Formdtrust';
 import UseControlKey from './components/ControlKey/UseControlKey';
 import DestroyControlKey from './components/ControlKey/DestroyControlKey';
 import Promote from './components/Promote/Promote';
-import Tokenomics from './components/Tokenomics/Tokenomics';
+import Docs from './components/Docs/Docs';
 import Legal from './components/Legal/Legal';
+import DTTokens from './components/DTTokens/DTTokens';
 import Contact from './components/Contact/Contact';
 
 init("user_y2e2B4RkPGGgKgzhsVXSG");
@@ -23,6 +25,9 @@ function App() {
             <Route path="/" exact>
               <Home />
             </Route>
+            <Route path="/start" exact>
+              <Start />
+            </Route>
             <Route path="/formdtrust" exact>
               <Formdtrust />
             </Route>
@@ -35,11 +40,14 @@ function App() {
             <Route path="/promote">
               <Promote />
             </Route>
-            <Route path="/tokenomics" exact>
-              <Tokenomics />
+            <Route path="/docs/:tabIndex([0-4])?" exact>
+              <Docs />
             </Route>
             <Route path="/legal" exact>
               <Legal />
+            </Route>
+            <Route path="/dttokens" exact>
+              <DTTokens />
             </Route>
             <Route path="/contact" exact>
               <Contact />

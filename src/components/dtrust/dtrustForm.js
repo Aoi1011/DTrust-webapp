@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Container, InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -92,10 +92,6 @@ const usedtrustStyles = makeStyles((theme) => ({
 
 export default function DTrustForm(props) {
   const classes = usedtrustStyles();
-  const [emailAddress, setEmailAddress] = useState("");
-  const [settlorAddress, setSettlorAddress] = useState("");
-  const [beneficiaryAddress, setBeneficiaryAddress] = useState("");
-  const [trusteeAddress, setTrusteeAddress] = useState("");
   const [settlorCBWA, setSettlorCBWA] = useState(true);
   const [settlorCDS, setSettlorCDS] = useState(true);
   const [trusteeCDS, setTrusteeCDS] = useState(true);
@@ -159,6 +155,9 @@ export default function DTrustForm(props) {
       props.setdtruststate('success');
     }
 
+  const onSubmit = e => {
+    e.preventDefault();
+    props.setdtruststate('success');
   };
   return (
     <div>
@@ -170,7 +169,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>Which email address(es) should recieve information about this dtrust?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Email Address(es)" id="" variant="outlined" size="small" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} />
+              <TextField className={classes.input} label="Email Address(es)" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -181,7 +180,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>What is the settlor’s wallet address?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Settlor's Wallet" id="" variant="outlined" size="small" value={settlorAddress} onChange={(e) => setSettlorAddress(e.target.value)} />
+              <TextField className={classes.input} label="Settlor's Wallet" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -192,7 +191,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>What is/are the beneficiary wallet addresses? </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Beneficiary Wallet" id="" variant="outlined" size="small" value={beneficiaryAddress} onChange={(e) => setBeneficiaryAddress(e.target.value)} />
+              <TextField className={classes.input} label="Beneficiary Wallet" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -203,23 +202,38 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>If there is a trustee, what is the trustee’s wallet address?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Trustee's Wallet" id="" variant="outlined" size="small" value={trusteeAddress} onChange={(e) => setTrusteeAddress(e.target.value)} />
+              <TextField className={classes.input} label="Trustee's Wallet" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
             </Grid>
           </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>May the settlor change the beneficiary wallet address(es)?</InputLabel>
-            </Grid>
-            <Grid item xs={6} md={2}>
-              <Button className={classes.buttonYes} choosen={settlorCBWA.toString()} onClick={e => { setSettlorCBWA(true) }}>Yes</Button>
-            </Grid>
-            <Grid item xs={6} md={2}>
-              <Button className={classes.buttonNo} choosen={settlorCBWA.toString()} onClick={e => { setSettlorCBWA(false) }}>No</Button>
-            </Grid>
-          </Grid>
+          {
+            [
+              {
+                desc: "May the settlor change the beneficiary wallet address(es)?",
+                value: settlorCBWA,
+                func: setSettlorCBWA,
+              },
+              {
+                desc: "May the trustee change the beneficiary wallet address(es)?",
+                value: trusteeCBWA,
+                func: setTrusteeCBWA,
+              },
+            ].map((item, index) =>
+              <Grid key={index} container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <InputLabel className={classes.label}>{item.desc}</InputLabel>
+                </Grid>
+                <Grid item xs={6} md={2}>
+                  <Button className={classes.buttonYes} choosen={item.value.toString()} onClick={e => { item.func(true) }}>Yes</Button>
+                </Grid>
+                <Grid item xs={6} md={2}>
+                  <Button className={classes.buttonNo} choosen={item.value.toString()} onClick={e => { item.func(false) }}>No</Button>
+                </Grid>
+              </Grid>
+            )
+          }
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <InputLabel className={classes.label}>What assets will be distributed and when will the assets be distributed?</InputLabel>
