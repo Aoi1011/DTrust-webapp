@@ -129,7 +129,7 @@ export default function Home() {
                 "Use a dtrust for estate administration.",
                 "Use a dtrust for tax planning.",
                 "Use a dtrust for structured giving.",
-                "Use a dtrust for asset management",
+                "Use a dtrust for asset management.",
               ].map((item, index) =>
                 <div key={index}>{item}</div>)
             }
