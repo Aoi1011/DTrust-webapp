@@ -36,7 +36,7 @@ export default function Start() {
       <div className={classes.title}>Start the decentralized application...</div>
       <Grid container spacing={3}>
         <Grid item xs={12} md={3}>
-          <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/formdtrust">Form a<br />DTrust</Button>
+          <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/formdtrust">Form a<br />dtrust</Button>
         </Grid>
         <Grid item xs={12} md={3}>
           <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/usecontrolkey">Use a<br />Control Key</Button>
