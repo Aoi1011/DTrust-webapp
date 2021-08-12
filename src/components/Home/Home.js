@@ -171,7 +171,7 @@ export default function Home() {
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <div className={classes.subtitle}>Promote</div>
             <div className={classes.subdesc}>
-              Anyone can earn income with DTrust as a promoter. If you arrange the formation of a dtrust, then you can recieve the first two years 0.5%fee as a promoter. You can use this site to form receive your Promote token or to use your Promote token.
+              Anyone can earn income with DTrust as a promoter. If someone forms a dtrust associated with your promote token, then you will recieve the first two years 0.5% fee as a promoter. You can use this site to receive your Promote token or to use your Promote token.
               </div>
             <Button className={classes.sublink} variant="outlined" component={RouterLink} to="/promote">Start</Button>
           </Grid>
