@@ -258,9 +258,14 @@ export default function DTrustForm(props) {
                 func: setTrusteeCDS,
               },
               {
-                desc: "May the settlor revoke the dtrust? (assets return to settlor wallet)",
+                desc: "May the settlor revoke the dtrust? (assets return to settlor's wallet)",
                 value: settlorRD,
                 func: setSettlorRD,
+              },
+              {
+                desc: "May the trustee revoke the dtrust? (assets return to settlor's wallet)",
+                value: trusteeRD,
+                func: setTrusteeRD,
               },
               {
                 desc: "May the settlor swap the assets in the dtrust for assets of equivalent value?",
@@ -271,16 +276,6 @@ export default function DTrustForm(props) {
                 desc: "May the trustee transact with the assets?",
                 value: trusteeTA,
                 func: setTrusteeTA,
-              },
-              {
-                desc: "May the trustee revoke the dtrust?",
-                value: trusteeRD,
-                func: setTrusteeRD,
-              },
-              {
-                desc: "May the trustee change the beneficiary wallet address(es)?",
-                value: trusteeCBWA,
-                func: setTrusteeCBWA,
               },
               {
                 desc: "Does the settlor intend that this dtrust is a legal trust?",
