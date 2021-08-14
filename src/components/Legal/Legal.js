@@ -1,17 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { createStyles, makeStyles, withStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
-import withWidth, { isWidthUp } from "@material-ui/core/withWidth";
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
+import axios from 'axios';
+
+const initialState = [{ type: 'paragraph', text: [{ annotations: {}, plain_text: '...Coming Soon...' }] }];
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'reset':
+      return action.payload;
+    case 'push':
+      return [...state, action.payload];
+    default:
+      throw new Error();
+  }
+}
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
   return (
     <div
-      role="tabpanel"
+      role='tabpanel'
       hidden={value !== index}
       id={`vertical-tabpanel-${index}`}
       aria-labelledby={`vertical-tab-${index}`}
@@ -73,73 +87,243 @@ const useLegaltyles = makeStyles((theme) => ({
       maxWidth: '100%',
     },
   },
-  title: {
-    fontSize: '36px',
-  },
-  desc: {
-    marginTop: '15px',
-    lineHeight: '25px',
-  },
+  tabPanel: {
+    '& .title': {
+      fontSize: '36px',
+    },
+    '& .desc': {
+      marginTop: '15px',
+      lineHeight: '25px',
+    },
+  }
 }));
 
 function Legal(props) {
   const classes = useLegaltyles();
-  const [value, setValue] = React.useState(0);
+  // const assetProtection = useRef(null);
+  const [value, setValue] = useState(0);
+  const [assetProtection, dispatchAssetProtection] = useReducer(reducer, initialState);
+  const [probateAvoidance, dispatchProbateAvoidance] = useReducer(reducer, initialState);
+  const [estateAdministration, dispatchEstateAdministration] = useReducer(reducer, initialState);
+  const [taxPlanning, dispatchTaxPlanning] = useReducer(reducer, initialState);
+  const [structuredGiving, dispatchStructuredGiving] = useReducer(reducer, initialState);
+  const [assetManagement, dispatchAssetManagement] = useReducer(reducer, initialState);
+  const [regionalGuides, dispatchRegionalGuides] = useReducer(reducer, initialState);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const renderChildren = (data) => data.map((item, key1) => {
+    return <div className="desc" key={key1}>
+      {
+        item.text.map((text, key2) => {
+          return <span key={key2} style={{ fontWeight: (text.annotations.bold ? "bold" : "normal") }}>{text.plain_text}</span>
+        })
+      }
+    </div>;
+  })
+
+  const fetchAssetProtection = () => {
+    axios.get('/children/f7bb47a7e19043629e8ec78179f6014a')
+      .then(function (response) {
+        // handle success
+        dispatchAssetProtection({ type: 'reset', payload: [] })
+        console.log('AssetProtection Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchAssetProtection({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  const fetchProbateAvoidance = () => {
+    axios.get('/children/8bda4fa70e83415bac0adebdc8365440')
+      .then(function (response) {
+        // handle success
+        dispatchProbateAvoidance({ type: 'reset', payload: [] })
+        console.log('ProbateAvoidance Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchProbateAvoidance({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  const fetchEstateAdministration = () => {
+    axios.get('/children/616895b2a6734ac0859ff99ecc096c07')
+      .then(function (response) {
+        // handle success
+        dispatchEstateAdministration({ type: 'reset', payload: [] })
+        console.log('EstateAdministration Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchEstateAdministration({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  const fetchTaxPlanning = () => {
+    axios.get('/children/e0b944bb660641fab0626921847cc762')
+      .then(function (response) {
+        // handle success
+        dispatchTaxPlanning({ type: 'reset', payload: [] })
+        console.log('TaxPlanning Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchTaxPlanning({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  const fetchStructuredGiving = () => {
+    axios.get('/children/417e32d648ed4dfcaed68b9453fed624')
+      .then(function (response) {
+        // handle success
+        dispatchStructuredGiving({ type: 'reset', payload: [] })
+        console.log('StructuredGiving Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchStructuredGiving({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  const fetchAssetManagement = () => {
+    axios.get('/children/604e447603cc4628accbbbae85d45cac')
+      .then(function (response) {
+        // handle success
+        dispatchAssetManagement({ type: 'reset', payload: [] })
+        console.log('AssetManagement Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchAssetManagement({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  const fetchRegionalGuides = () => {
+    axios.get('/children/59b2e3186cf64a0b91c95120eccd7a99')
+      .then(function (response) {
+        // handle success
+        dispatchRegionalGuides({ type: 'reset', payload: [] })
+        console.log('RegionalGuides Success');
+        var items = response.data.results;
+        items.forEach((item) => {
+          dispatchRegionalGuides({ type: 'push', payload: { type: item.type, text: item[item.type].text } });
+        })
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+  }
+
+  useEffect(() => {
+    fetchAssetProtection();
+    fetchProbateAvoidance();
+    fetchEstateAdministration();
+    fetchTaxPlanning();
+    fetchStructuredGiving();
+    fetchAssetManagement();
+    fetchRegionalGuides();
+  }, []);
+
   return (
     <div className={classes.root}>
       <Tabs
-        orientation={isWidthUp("md", props.width) ? "vertical" : "horizontal"}
-        variant="scrollable"
+        orientation={isWidthUp('md', props.width) ? 'vertical' : 'horizontal'}
+        variant='scrollable'
         value={value}
         onChange={handleChange}
-        aria-label="Vertical tabs example"
+        aria-label='Vertical tabs example'
         className={classes.tabs}
       >
-        <StyledTab label="Legal" {...allyProps(0)} />
-        <StyledTab label="Asset Protection" {...allyProps(1)} />
-        <StyledTab label="Probate Aviodance" {...allyProps(2)} />
-        <StyledTab label="Estate Administration" {...allyProps(3)} />
-        <StyledTab label="Tax Planning" {...allyProps(4)} />
-        <StyledTab label="Structured Giving" {...allyProps(5)} />
-        <StyledTab label="Asset Management" {...allyProps(6)} />
-        <StyledTab label="Regional Guides" {...allyProps(7)} />
+        <StyledTab label='Legal' {...allyProps(0)} />
+        <StyledTab label='Asset Protection' {...allyProps(1)} />
+        <StyledTab label='Probate Aviodance' {...allyProps(2)} />
+        <StyledTab label='Estate Administration' {...allyProps(3)} />
+        <StyledTab label='Tax Planning' {...allyProps(4)} />
+        <StyledTab label='Structured Giving' {...allyProps(5)} />
+        <StyledTab label='Asset Management' {...allyProps(6)} />
+        <StyledTab label='Regional Guides' {...allyProps(7)} />
       </Tabs>
-      <TabPanel value={value} index={0}>
-        <div className={classes.title}>Legal</div>
-        <div className={classes.desc}>DTrust generates customized dtrusts that can effectuate a wide range of legal strategies. These pages provide just a basic discussion of some common uses of traditional legal trusts applied to the DTrust context. These pages are only a basic discussion of an emerging field of law.</div>
+      <TabPanel className={classes.tabPanel} value={value} index={0}>
+        <div className='title'>Legal</div>
+        <div className='desc'>DTrust generates customized dtrusts that can effectuate a wide range of legal strategies. These pages provide just a basic discussion of some common uses of traditional legal trusts applied to the DTrust context. These pages are only a basic discussion of an emerging field of law.</div>
       </TabPanel >
-      <TabPanel value={value} index={1}>
-        <div className={classes.title}>Asset Protection</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={1}>
+        <div className='title'>Asset Protection</div>
+        {renderChildren(assetProtection)}
       </TabPanel>
-      <TabPanel value={value} index={2}>
-        <div className={classes.title}>Probate Aviodance</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={2}>
+        <div className='title'>Probate Aviodance</div>
+        {renderChildren(probateAvoidance)}
       </TabPanel>
-      <TabPanel value={value} index={3}>
-        <div className={classes.title}>Estate Administration</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={3}>
+        <div className='title'>Estate Administration</div>
+        {renderChildren(estateAdministration)}
       </TabPanel>
-      <TabPanel value={value} index={4}>
-        <div className={classes.title}>Tax Planning</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={4}>
+        <div className='title'>Tax Planning</div>
+        {renderChildren(taxPlanning)}
       </TabPanel>
-      <TabPanel value={value} index={5}>
-        <div className={classes.title}>Structured Giving</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={5}>
+        <div className='title'>Structured Giving</div>
+        {renderChildren(structuredGiving)}
       </TabPanel>
-      <TabPanel value={value} index={6}>
-        <div className={classes.title}>Asset Management</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={6}>
+        <div className='title'>Asset Management</div>
+        {renderChildren(assetManagement)}
       </TabPanel>
-      <TabPanel value={value} index={7}>
-        <div className={classes.title}>Regional Guides</div>
-        <div className={classes.desc}>...Coming Soon...</div>
+      <TabPanel className={classes.tabPanel} value={value} index={7}>
+        <div className='title'>Regional Guides</div>
+        {renderChildren(regionalGuides)}
       </TabPanel>
     </div >
   );

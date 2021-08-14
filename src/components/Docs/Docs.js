@@ -85,9 +85,9 @@ const useDocsStyles = makeStyles((theme) => ({
 
 function Docs(props) {
   const location = useLocation()
-  const { tabIndex } = location.state
+  const { tabIndex } = location.state || {};
   const classes = useDocsStyles();
-  const [value, setValue] = React.useState(tabIndex);
+  const [value, setValue] = React.useState(tabIndex || 0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
