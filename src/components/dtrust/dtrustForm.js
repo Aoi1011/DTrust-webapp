@@ -102,14 +102,22 @@ export default function DTrustForm(props) {
   const [trusteeCBWA, setTrusteeCBWA] = useState(true);
   const [settlorILT, setSettlorILT] = useState(true);
 
-  useEffect(() => {
-  }, [])
+  const [emailAddress, setEamilAddress] = useState("");
+  const [settlorAddress, setSettlorAddress] = useState("");
+  const [beneficiaryAddress, setBeneficiaryAddress] = useState("");
+  const [trusteeAddress, setTrusteeAddress] = useState("");
+
+  const onInput = (e, setFunc) => {
+    e.preventDefault();
+    console.log(e.target.value);
+    // setFunc(e.target.value);
+  }
 
   const onSubmit = async (e) => {
     e.preventDefault();
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
     const accounts = await web3.eth.getAccounts();
-    const { address, privateKey, publicKey } = EthCrypto.createIdentity();
+    const { address, privateKey } = EthCrypto.createIdentity();
     let config = {
       from: accounts[0],
     };
@@ -154,11 +162,12 @@ export default function DTrustForm(props) {
 
       props.setdtruststate('success');
     }
+  }
 
-  const onSubmit = e => {
-    e.preventDefault();
-    props.setdtruststate('success');
-  };
+  // const onSubmit = e => {
+  //   e.preventDefault();
+  //   props.setdtruststate('success');
+  // };
   return (
     <div>
       <div className={classes.pageTitle}>Form a dtrust</div>
@@ -169,7 +178,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>Which email address(es) should recieve information about this dtrust?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Email Address(es)" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} onChange={ event => onInput(event, setEamilAddress)} label="Email Address(es)" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -180,7 +189,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>What is the settlor’s wallet address?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Settlor's Wallet" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} onChange={ event => onInput(event, setSettlorAddress)} label="Settlor's Wallet" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -191,7 +200,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>What is/are the beneficiary wallet addresses? </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Beneficiary Wallet" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} onChange={ event => onInput(event, setBeneficiaryAddress)} label="Beneficiary Wallet" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -202,7 +211,7 @@ export default function DTrustForm(props) {
               <InputLabel className={classes.label}>If there is a trustee, what is the trustee’s wallet address?</InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Trustee's Wallet" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} onChange={ event => onInput(event, setTrusteeAddress)} label="Trustee's Wallet" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -238,9 +247,7 @@ export default function DTrustForm(props) {
             <Grid item xs={12} md={6}>
               <InputLabel className={classes.label}>What assets will be distributed and when will the assets be distributed?</InputLabel>
             </Grid>
-            <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Distribution Schedule" id="" variant="outlined" size="small" />
-            </Grid>
+            <Grid item xs={4} md={4} />
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
             </Grid>

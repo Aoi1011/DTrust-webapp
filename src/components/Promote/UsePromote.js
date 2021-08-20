@@ -47,7 +47,7 @@ export default function UsePromote() {
   const classes = useUsePromoteStyles();
   const [promotestate, setPromotestate] = useState('none');
   const [dtrust, setDtrust] = useState("");
-  const [address, setAddress] = useState("");
+  // const [address, setAddress] = useState("");
   const [dtrustContract, setDtrustContract] = useState({});
   const [tokenKey, setTokenKey] = useState("");
   const [link, setLink] = useState("");
@@ -56,7 +56,7 @@ export default function UsePromote() {
     async function getDTrustFactroyContract() {
       const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
       const accounts = await web3.eth.getAccounts();
-      setAddress(accounts[0]);
+      // setAddress(accounts[0]);
       const DTRUSTContractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
         from: accounts[0],
       });
