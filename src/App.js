@@ -12,6 +12,8 @@ import Promote from './components/Promote/Promote'
 import Docs from './components/Docs/Docs'
 import Legal from './components/Legal/Legal'
 import DTTokens from './components/DTTokens/DTTokens'
+import AddYourFunds from './components/DigitalAssets/AddYourFunds'
+import GiveYourFunds from './components/DigitalAssets/GiveYourFunds'
 import Contact from './components/Contact/Contact'
 
 init('user_y2e2B4RkPGGgKgzhsVXSG')
@@ -33,6 +35,12 @@ function App() {
             </Route>
             <Route path="/usecontrolkey" exact>
               <UseControlKey />
+            </Route>
+            <Route path="/addyourfunds" exact>
+              <AddYourFunds />
+            </Route>
+            <Route path="/giveyourfunds" exact>
+              <GiveYourFunds />
             </Route>
             <Route path="/destroycontrolkey" exact>
               <DestroyControlKey />

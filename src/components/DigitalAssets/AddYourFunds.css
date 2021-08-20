@@ -1,0 +1,135 @@
+.form_container {
+  width: 50%;
+  min-height: 50vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 30px;
+}
+
+.form-container_title {
+  color: #fe7e32;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 44px;
+
+  letter-spacing: 0.04em;
+}
+.form-container_label {
+  width: 140px;
+  height: 22px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 22px;
+
+  letter-spacing: 0.04em;
+}
+.form-container_inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.form-container_input_item {
+  flex: 1;
+  padding: 10px;
+  height: 55px;
+  background: #ffffff;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+
+  font-family: Montserrat;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  letter-spacing: 0.04em;
+}
+
+.form-container_add {
+  text-align: right;
+  margin-top: 15px;
+}
+
+.form-container_add_btn {
+  font-family: Montserrat;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+  border: none;
+  background: transparent;
+  font-weight: 600;
+  cursor: pointer;
+
+  color: #000000;
+}
+
+.save_block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  margin-top: 100px;
+}
+
+.save_block_btn {
+  width: 214px;
+  height: 65px;
+  border: none;
+  background: #fe7e32;
+  box-shadow: 0px 4px 12px #c4c4c4;
+  border-radius: 6px;
+  color: #fff;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 24px;
+}
+.ntf-blcok {
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3 s ease-in;
+  height: 0;
+}
+
+.active_ntf {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.3 s ease-in;
+}
+
+.selectParent select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 2px 2px 2px 20px;
+  background: transparent url('../../img/Vector1.svg') no-repeat right 10px
+    center;
+  outline: none;
+}
+
+.funds_rout {
+  text-align: center;
+  width: 380px;
+
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+  color: #000000;
+
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+}

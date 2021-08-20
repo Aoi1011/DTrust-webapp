@@ -3,6 +3,8 @@ import { Container, InputLabel, TextField } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
+import './dtrustForm.css'
 
 const usedtrustStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -82,6 +84,16 @@ const usedtrustStyles = makeStyles((theme) => ({
   input: {
     width: '100%',
   },
+  link: {
+    color: '#fe8d4a',
+    width: '100%',
+    /* border: 4px solid #fe8d4a; */
+    fontWeight: '600',
+    borderRadius: '0',
+    textTransform: 'none',
+    textTecoration: 'none',
+    backgroundColor: '#ffffff',
+  },
 }))
 
 export default function DTrustForm(props) {
@@ -141,7 +153,9 @@ export default function DTrustForm(props) {
               />
             </Grid>
             <Grid item xs={4} md={2}>
-              <Button className={classes.button}>Enter</Button>
+              <Link className={classes.link}>
+                <Button className={classes.button}>Enter</Button>
+              </Link>
             </Grid>
           </Grid>
           <Grid container spacing={3}>
@@ -239,7 +253,9 @@ export default function DTrustForm(props) {
               />
             </Grid>
             <Grid item xs={4} md={2}>
-              <Button className={classes.button}>Enter</Button>
+              <Link to="/addyourfunds" className="link">
+                <Button className={classes.button}>Enter</Button>
+              </Link>
             </Grid>
           </Grid>
           {[
