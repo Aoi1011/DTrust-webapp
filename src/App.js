@@ -17,7 +17,7 @@ import Contact from './components/Contact/Contact';
 
 init("user_y2e2B4RkPGGgKgzhsVXSG");
 
-axios.defaults.baseURL = 'http://localhost:8080/notion';
+axios.defaults.baseURL = 'http://dtrust.io:8080/notion';
 // axios.defaults.baseURL = 'https://api.notion.com/v1';
 // axios.defaults.headers.common['Authorization'] = 'Bearer secret_8uo8xngKqFNxS1ExuaFe5t716WcE5gIVDpx9cOWxA54';
 // axios.defaults.headers.common['Notion-Version'] = '2021-07-27';
