@@ -9,7 +9,7 @@ String.prototype.splice = function (idx, rem, str) {
 
 axios.defaults.baseURL = 'https://api.notion.com/v1';
 axios.defaults.headers.common['Authorization'] = 'Bearer secret_8uo8xngKqFNxS1ExuaFe5t716WcE5gIVDpx9cOWxA54';
-axios.defaults.headers.common['Notion-Version'] = '2021-07-27';
+axios.defaults.headers.common['Notion-Version'] = '2021-05-13';
 
 // middleware that is specific to this router
 router.use(function timeLog(req, res, next) {

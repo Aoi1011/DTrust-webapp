@@ -7,29 +7,8 @@ import Box from '@material-ui/core/Box';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 import axios from 'axios';
 
-import RenderChildren from './RenderChildren';
-
-const initialState = [
-  {
-    type: 'paragraph',
-    text: [{ annotations: {}, plain_text: '...Coming Soon...' }],
-  },
-  {
-    type: 'toggle',
-    text: [{ annotations: {}, plain_text: '...Coming Soon...' }],
-  },
-];
-
-function reducer(state, action) {
-  switch (action.type) {
-    case 'reset':
-      return action.payload;
-    case 'push':
-      return [...state, action.payload];
-    default:
-      throw new Error();
-  }
-}
+import RenderChildren from '../RenderChildren';
+import reducer, { initialState } from '../reducer';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -370,7 +349,7 @@ function Legal(props) {
       >
         <StyledTab label="Legal" {...allyProps(0)} />
         <StyledTab label="Asset Protection" {...allyProps(1)} />
-        <StyledTab label="Probate Avoidance" {...allyProps(2)} />
+        <StyledTab label="Probate Aviodance" {...allyProps(2)} />
         <StyledTab label="Estate Administration" {...allyProps(3)} />
         <StyledTab label="Tax Planning" {...allyProps(4)} />
         <StyledTab label="Structured Giving" {...allyProps(5)} />
@@ -379,7 +358,7 @@ function Legal(props) {
       </Tabs>
       <TabPanel className={classes.tabPanel} value={value} index={0}>
         <div className="title">Legal</div>
-        <div className="desc">
+        <div className="paragraph">
           DTrust generates customized dtrusts that can effectuate a wide range
           of legal strategies. These pages provide just a basic discussion of
           some common uses of traditional legal trusts applied to the DTrust
@@ -392,7 +371,7 @@ function Legal(props) {
         <RenderChildren data={assetProtection} />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={2}>
-        <div className="title">Probate Avoidance</div>
+        <div className="title">Probate Aviodance</div>
         <RenderChildren data={probateAvoidance} />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={3}>
