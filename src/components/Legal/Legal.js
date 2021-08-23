@@ -363,7 +363,7 @@ function Legal(props) {
           of legal strategies. These pages provide just a basic discussion of
           some common uses of traditional legal trusts applied to the DTrust
           context. These pages are only a basic discussion of an emerging field
-          of law.
+          of law. NOTE: Neither the DTrust protocol, nor any human person associated with DTrust is your lawyer and none of the content on this site should be taken as legal advice. If you need legal advice, please consult with an attorney. 
         </div>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
