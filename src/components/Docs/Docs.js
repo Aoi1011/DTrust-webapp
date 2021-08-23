@@ -291,9 +291,10 @@ function Docs(props) {
       <TabPanel className={classes.tabPanel} value={value} index={0}>
         <div className="title">Introduction</div>
         <div className="paragraph">This documentation is a comprehsive source of DTrust public material.</div>
-        <div className="paragraph">“Knowledge Base” provides information to users to answer thier functional questions.</div>
-        <div className="paragraph">“Code” shows a substantial portion of the DTrust source code to demonstrate the DApp efficacy and answer potential user questions.</div>
-        <div className="paragraph"> “Testing” shows the results of our security testing. “Audit” show the results of the DTrust audit from Hacken.io.</div>
+        <div className="paragraph"> “Knowledge Base” provides information to users to answer thier functional questions.</div>
+        <div className="paragraph"> “Code” shows a substantial portion of the DTrust source code to demonstrate the DApp efficacy and answer potential user questions.</div>
+        <div className="paragraph"> “Testing” shows the results of our security testing.</div>
+        <div className="paragraph"> “Audit” show the results of the DTrust audit from Hacken.io.</div>
       </TabPanel >
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <div className="title">Knowledge Base</div>
