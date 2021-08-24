@@ -1,29 +1,22 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { init } from 'emailjs-com';
-import axios from 'axios';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { init } from 'emailjs-com'
 
-import './App.css';
-import Home from './components/Home/Home';
-import Template from './components/Template';
-import Start from './components/Start/Start';
-import Formdtrust from './components/dtrust/Formdtrust';
-import UseControlKey from './components/ControlKey/UseControlKey';
-import DestroyControlKey from './components/ControlKey/DestroyControlKey';
-import Promote from './components/Promote/Promote';
-import Docs from './components/Docs/Docs';
-import Legal from './components/Legal/Legal';
-import DTTokens from './components/DTTokens/DTTokens';
-import Contact from './components/Contact/Contact';
+import './App.css'
+import Home from './components/Home/Home'
+import Template from './components/Template'
+import Start from './components/Start/Start'
+import Formdtrust from './components/dtrust/Formdtrust'
+import UseControlKey from './components/ControlKey/UseControlKey'
+import DestroyControlKey from './components/ControlKey/DestroyControlKey'
+import Promote from './components/Promote/Promote'
+import Docs from './components/Docs/Docs'
+import Legal from './components/Legal/Legal'
+import DTTokens from './components/DTTokens/DTTokens'
+import AddYourFunds from './components/DigitalAssets/AddYourFunds'
+import GiveYourFunds from './components/DigitalAssets/GiveYourFunds'
+import Contact from './components/Contact/Contact'
 
-init("user_y2e2B4RkPGGgKgzhsVXSG");
-
-axios.defaults.baseURL = 'http://dtrust.io:8080/notion';
-// axios.defaults.baseURL = 'https://api.notion.com/v1';
-// axios.defaults.headers.common['Authorization'] = 'Bearer secret_8uo8xngKqFNxS1ExuaFe5t716WcE5gIVDpx9cOWxA54';
-// axios.defaults.headers.common['Notion-Version'] = '2021-07-27';
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:3000';
-// axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET, POST, OPTIONS, PUT';
-// axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Authorization, Notion-Version';
+init('user_y2e2B4RkPGGgKgzhsVXSG')
 
 function App() {
   return (
@@ -42,6 +35,12 @@ function App() {
             </Route>
             <Route path="/usecontrolkey" exact>
               <UseControlKey />
+            </Route>
+            <Route path="/addyourfunds" exact>
+              <AddYourFunds />
+            </Route>
+            <Route path="/giveyourfunds" exact>
+              <GiveYourFunds />
             </Route>
             <Route path="/destroycontrolkey" exact>
               <DestroyControlKey />
@@ -65,7 +64,7 @@ function App() {
         </Template>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

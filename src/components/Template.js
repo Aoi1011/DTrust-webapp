@@ -1,11 +1,14 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link as RouterLink } from 'react-router-dom'
 // import { MemoryRouter as Router } from "react-router";
-import { AppBar, Button, Grid, Link, Toolbar } from '@material-ui/core';
+import { AppBar, Button, Grid, Link, Toolbar } from '@material-ui/core'
 
 // import FormDtrust from './FormDtrust.js';
-import logo from '../img/favicon.ico';
+import logo from '../img/favicon.ico'
+// import { MemoryRouter as Router } from "react-router";
+
+// import FormDtrust from './FormDtrust.js';
 // import background from '../img/background.jpg';
 
 const useTemplateStyles = makeStyles((theme) => ({
@@ -31,7 +34,6 @@ const useTemplateStyles = makeStyles((theme) => ({
     },
     textTransform: 'none',
     color: '#ffffff',
-    backgroundColor: '#fe7e34',
     fontSize: '24px',
     fontWeight: '600',
     padding: '10px 20px',
@@ -115,7 +117,7 @@ const useTemplateStyles = makeStyles((theme) => ({
         lineHeight: 1,
         color: '#ffffff',
         marginLeft: '30px',
-        display: 'block'
+        display: 'block',
       },
     },
   },
@@ -143,19 +145,20 @@ const useTemplateStyles = makeStyles((theme) => ({
     backgroundColor: '#ffffff',
     '&:hover': {
       backgroundColor: '#ffffffdd',
-    }
+    },
   },
-}));
+}))
 
 export default function Template(props) {
-  const classes = useTemplateStyles();
+  const classes = useTemplateStyles()
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appBar}>
         <Toolbar className={classes.toolBar}>
           <Button className={classes.menuButton} component={RouterLink} to="/">
-            <img src={logo} alt="Logo" />&nbsp;DTrust
+            <img src={logo} alt="Logo" />
+            &nbsp;DTrust
           </Button>
           {/* <Router> */}
           {/* <StyledMenu
@@ -182,16 +185,31 @@ export default function Template(props) {
             <Link
               component={RouterLink}
               to={{
-                pathname: "/docs",
+                pathname: '/docs',
                 state: {
                   tabIndex: 0,
                 },
               }}
-              className={classes.link}>Docs</Link>
-            <Link component={RouterLink} to="/legal" className={classes.link}>Legal</Link>
-            <Link component={RouterLink} to="/dttokens" className={classes.link}>DT Tokens</Link>
+              className={classes.link}
+            >
+              Docs
+            </Link>
+            <Link component={RouterLink} to="/legal" className={classes.link}>
+              Legal
+            </Link>
+            <Link
+              component={RouterLink}
+              to="/dttokens"
+              className={classes.link}
+            >
+              DT Tokens
+            </Link>
           </div>
-          <Button className={classes.startButton} component={RouterLink} to="/start">
+          <Button
+            className={classes.startButton}
+            component={RouterLink}
+            to="/start"
+          >
             Start
           </Button>
           {/* </Router> */}
@@ -200,11 +218,26 @@ export default function Template(props) {
       {props.children}
       <div className={classes.bottomBar}>
         <div className={classes.bottomArrow}>
-          <div><span>Settlor and Trustee specify the dtrust at dtrust.io</span></div>
-          <div><span>DTrust delivers the keys and information to wallets and emails</span></div>
-          <div><span>Settlor funds the dtrust</span></div>
-          <div><span>Settlor and Trustee use, retain, or destroy keys during the life of the dtrust</span></div>
-          <div><span>All assets are distributed to beneficiaries</span></div>
+          <div>
+            <span>Settlor and Trustee specify the dtrust at dtrust.io</span>
+          </div>
+          <div>
+            <span>
+              DTrust delivers the keys and information to wallets and emails
+            </span>
+          </div>
+          <div>
+            <span>Settlor funds the dtrust</span>
+          </div>
+          <div>
+            <span>
+              Settlor and Trustee use, retain, or destroy keys during the life
+              of the dtrust
+            </span>
+          </div>
+          <div>
+            <span>All assets are distributed to beneficiaries</span>
+          </div>
         </div>
         <div className={classes.bottomContact}>
           <Grid container spacing={0}>
@@ -213,12 +246,18 @@ export default function Template(props) {
             </Grid>
             <Grid item xs />
             <Grid item xs={12}>
-              <Button className={classes.contactButton} component={RouterLink} to="/contact">Contact</Button>
+              <Button
+                className={classes.contactButton}
+                component={RouterLink}
+                to="/contact"
+              >
+                Contact
+              </Button>
             </Grid>
             <Grid item xs />
           </Grid>
         </div>
       </div>
     </div>
-  );
+  )
 }

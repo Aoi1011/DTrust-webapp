@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
-import { Container, InputLabel, TextField } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Button from '@material-ui/core/Button';
-import Web3 from "web3";
-import emailjs from 'emailjs-com';
-import EthCrypto from 'eth-crypto';
-
-import { DTRUSTFACTORY_ADDRESS, DTRUST_ABI } from "../../dtrustFactroyConfig";
-import { CONTROLKEY_ABI, CONTROLKEY_ADDRESS } from "../../controlKeyConfig";
+import React, { useState } from 'react'
+import { Container, InputLabel, TextField } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Grid from '@material-ui/core/Grid'
+import Button from '@material-ui/core/Button'
+import { Link } from 'react-router-dom'
+import './dtrustForm.css'
 
 const usedtrustStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -88,86 +84,34 @@ const usedtrustStyles = makeStyles((theme) => ({
   input: {
     width: '100%',
   },
-}));
+  link: {
+    color: '#fe8d4a',
+    width: '100%',
+    /* border: 4px solid #fe8d4a; */
+    fontWeight: '600',
+    borderRadius: '0',
+    textTransform: 'none',
+    textTecoration: 'none',
+    backgroundColor: '#ffffff',
+  },
+}))
 
 export default function DTrustForm(props) {
-  const classes = usedtrustStyles();
-  const [settlorCBWA, setSettlorCBWA] = useState(true);
-  const [settlorCDS, setSettlorCDS] = useState(true);
-  const [trusteeCDS, setTrusteeCDS] = useState(true);
-  const [settlorRD, setSettlorRD] = useState(true);
-  const [settlorSA, setSettlorSA] = useState(true);
-  const [trusteeTA, setTrusteeTA] = useState(true);
-  const [trusteeRD, setTrusteeRD] = useState(true);
-  const [trusteeCBWA, setTrusteeCBWA] = useState(true);
-  const [settlorILT, setSettlorILT] = useState(true);
+  const classes = usedtrustStyles()
+  const [settlorCBWA, setSettlorCBWA] = useState(true)
+  const [settlorCDS, setSettlorCDS] = useState(true)
+  const [trusteeCDS, setTrusteeCDS] = useState(true)
+  const [settlorRD, setSettlorRD] = useState(true)
+  const [settlorSA, setSettlorSA] = useState(true)
+  const [trusteeTA, setTrusteeTA] = useState(true)
+  const [trusteeRD, setTrusteeRD] = useState(true)
+  const [trusteeCBWA, setTrusteeCBWA] = useState(true)
+  const [settlorILT, setSettlorILT] = useState(true)
 
-  const [emailAddress, setEamilAddress] = useState("");
-  const [settlorAddress, setSettlorAddress] = useState("");
-  const [beneficiaryAddress, setBeneficiaryAddress] = useState("");
-  const [trusteeAddress, setTrusteeAddress] = useState("");
-
-  const onInput = (e, setFunc) => {
-    e.preventDefault();
-    console.log(e.target.value);
-    // setFunc(e.target.value);
+  const onSubmit = (e) => {
+    e.preventDefault()
+    props.setdtruststate('success')
   }
-
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    const web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
-    const accounts = await web3.eth.getAccounts();
-    const { address, privateKey } = EthCrypto.createIdentity();
-    let config = {
-      from: accounts[0],
-    };
-    const DTRUSTContractInstance = new web3.eth.Contract(DTRUST_ABI, DTRUSTFACTORY_ADDRESS, {
-      from: accounts[0],
-    });
-    const controlKeyContractInstance = new web3.eth.Contract(CONTROLKEY_ABI, CONTROLKEY_ADDRESS, {
-      from: accounts[0],
-    });
-    if (emailAddress === "" || settlorAddress === "" || beneficiaryAddress === "" || trusteeAddress === "") {
-      alert("Please input address and email");
-    }
-    else {
-      var templateParams = {
-        to_email: emailAddress,
-        from_name: 'DTRUST',
-        dtrust: "",
-        control_key: "",
-      };
-
-      // dtrust contract
-      DTRUSTContractInstance.methods
-        .createDTRUST(address, address, address, settlorAddress, beneficiaryAddress, trusteeAddress)
-        .send(config)
-        .on("receipt", (res) => {
-          templateParams.dtrust = res.events.CreateDTRUST.returnValues[0];
-
-          // control key contract
-          controlKeyContractInstance.methods
-            .generateControlKey(privateKey, settlorAddress, beneficiaryAddress, trusteeAddress)
-            .send(config)
-            .on("receipt", (res) => {
-              templateParams.control_key = res.events.GenerateControlKey.returnValues[0];
-              emailjs.send(process.env.REACT_APP_EMAIL_SERVICE_ID, process.env.REACT_APP_EMAIL_TEMPLATE_ID, templateParams, process.env.REACT_APP_EMAIL_USER_ID)
-                .then((result) => {
-                  alert("Success");
-                }, (error) => {
-                  alert("Failed...");
-                });
-            })
-        });
-
-      props.setdtruststate('success');
-    }
-  }
-
-  // const onSubmit = e => {
-  //   e.preventDefault();
-  //   props.setdtruststate('success');
-  // };
   return (
     <div>
       <div className={classes.pageTitle}>Form a dtrust</div>
@@ -175,10 +119,19 @@ export default function DTrustForm(props) {
         <form noValidate autoComplete="off">
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>Which email address(es) should recieve information about this dtrust?</InputLabel>
+              <InputLabel className={classes.label}>
+                1. Which email address(es) should recieve information about this
+                dtrust?
+              </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} onChange={ event => onInput(event, setEamilAddress)} label="Email Address(es)" id="" variant="outlined" size="small" />
+              <TextField
+                className={classes.input}
+                label="Email Address(es)"
+                id=""
+                variant="outlined"
+                size="small"
+              />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -186,10 +139,39 @@ export default function DTrustForm(props) {
           </Grid>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>What is the settlor’s wallet address?</InputLabel>
+              <InputLabel className={classes.label}>
+                2. What is the settlor’s wallet address?
+              </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} onChange={ event => onInput(event, setSettlorAddress)} label="Settlor's Wallet" id="" variant="outlined" size="small" />
+              <TextField
+                className={classes.input}
+                label="Settlor's Wallet"
+                id=""
+                variant="outlined"
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={4} md={2}>
+              <Link className={classes.link}>
+                <Button className={classes.button}>Enter</Button>
+              </Link>
+            </Grid>
+          </Grid>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <InputLabel className={classes.label}>
+                3. What is/are the beneficiary wallet addresses?{' '}
+              </InputLabel>
+            </Grid>
+            <Grid item xs={8} md={4}>
+              <TextField
+                className={classes.input}
+                label="Beneficiary Wallet"
+                id=""
+                variant="outlined"
+                size="small"
+              />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -197,118 +179,170 @@ export default function DTrustForm(props) {
           </Grid>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>What is/are the beneficiary wallet addresses? </InputLabel>
+              <InputLabel className={classes.label}>
+                4. If there is a trustee, what is the trustee’s wallet address?
+              </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} onChange={ event => onInput(event, setBeneficiaryAddress)} label="Beneficiary Wallet" id="" variant="outlined" size="small" />
+              <TextField
+                className={classes.input}
+                label="Trustee's Wallet"
+                id=""
+                variant="outlined"
+                size="small"
+              />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
             </Grid>
           </Grid>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>If there is a trustee, what is the trustee’s wallet address?</InputLabel>
-            </Grid>
-            <Grid item xs={8} md={4}>
-              <TextField className={classes.input} onChange={ event => onInput(event, setTrusteeAddress)} label="Trustee's Wallet" id="" variant="outlined" size="small" />
-            </Grid>
-            <Grid item xs={4} md={2}>
-              <Button className={classes.button}>Enter</Button>
-            </Grid>
-          </Grid>
-          {
-            [
-              {
-                desc: "May the settlor change the beneficiary wallet address(es)?",
-                value: settlorCBWA,
-                func: setSettlorCBWA,
-              },
-              {
-                desc: "May the trustee change the beneficiary wallet address(es)?",
-                value: trusteeCBWA,
-                func: setTrusteeCBWA,
-              },
-            ].map((item, index) =>
-              <Grid key={index} container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <InputLabel className={classes.label}>{item.desc}</InputLabel>
-                </Grid>
-                <Grid item xs={6} md={2}>
-                  <Button className={classes.buttonYes} choosen={item.value.toString()} onClick={e => { item.func(true) }}>Yes</Button>
-                </Grid>
-                <Grid item xs={6} md={2}>
-                  <Button className={classes.buttonNo} choosen={item.value.toString()} onClick={e => { item.func(false) }}>No</Button>
-                </Grid>
+          {[
+            {
+              desc: '5. May the settlor change the beneficiary wallet address(es)?',
+              value: settlorCBWA,
+              func: setSettlorCBWA,
+            },
+            {
+              desc: '6. May the trustee change the beneficiary wallet address(es)?',
+              value: trusteeCBWA,
+              func: setTrusteeCBWA,
+            },
+          ].map((item, index) => (
+            <Grid key={index} container spacing={3}>
+              <Grid item xs={12} md={6}>
+                <InputLabel className={classes.label}>{item.desc}</InputLabel>
               </Grid>
-            )
-          }
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>What assets will be distributed and when will the assets be distributed?</InputLabel>
-            </Grid>
-            <Grid item xs={4} md={4} />
-            <Grid item xs={4} md={2}>
-              <Button className={classes.button}>Enter</Button>
-            </Grid>
-          </Grid>
-          {
-            [
-              {
-                desc: "May the settlor change the distribution schedule?",
-                value: settlorCDS,
-                func: setSettlorCDS,
-              },
-              {
-                desc: "May the trustee change the distribution schedule?",
-                value: trusteeCDS,
-                func: setTrusteeCDS,
-              },
-              {
-                desc: "May the settlor revoke the dtrust? (assets return to settlor's wallet)",
-                value: settlorRD,
-                func: setSettlorRD,
-              },
-              {
-                desc: "May the trustee revoke the dtrust? (assets return to settlor's wallet)",
-                value: trusteeRD,
-                func: setTrusteeRD,
-              },
-              {
-                desc: "May the settlor swap the assets in the dtrust for assets of equivalent value?",
-                value: settlorSA,
-                func: setSettlorSA,
-              },
-              {
-                desc: "May the trustee transact with the assets?",
-                value: trusteeTA,
-                func: setTrusteeTA,
-              },
-              {
-                desc: "Does the settlor intend that this dtrust is a legal trust?",
-                value: settlorILT,
-                func: setSettlorILT,
-              },
-            ].map((item, index) =>
-              <Grid key={index} container spacing={3}>
-                <Grid item xs={12} md={6}>
-                  <InputLabel className={classes.label}>{item.desc}</InputLabel>
-                </Grid>
-                <Grid item xs={6} md={2}>
-                  <Button className={classes.buttonYes} choosen={item.value.toString()} onClick={e => { item.func(true) }}>Yes</Button>
-                </Grid>
-                <Grid item xs={6} md={2}>
-                  <Button className={classes.buttonNo} choosen={item.value.toString()} onClick={e => { item.func(false) }}>No</Button>
-                </Grid>
+              <Grid item xs={6} md={2}>
+                <Button
+                  className={classes.buttonYes}
+                  choosen={item.value.toString()}
+                  onClick={(e) => {
+                    item.func(true)
+                  }}
+                >
+                  Yes
+                </Button>
               </Grid>
-            )
-          }
+              <Grid item xs={6} md={2}>
+                <Button
+                  className={classes.buttonNo}
+                  choosen={item.value.toString()}
+                  onClick={(e) => {
+                    item.func(false)
+                  }}
+                >
+                  No
+                </Button>
+              </Grid>
+            </Grid>
+          ))}
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>Under what jurisdiction does the settlor intend that this dtrust be a legal trust?</InputLabel>
+              <InputLabel className={classes.label}>
+                7. What assets will be distributed and when will the assets be
+                distributed?
+              </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Jurisdiction" id="" variant="outlined" size="small" />
+              <TextField
+                className={classes.input}
+                label="Distribution Schedule"
+                id=""
+                variant="outlined"
+                size="small"
+              />
+            </Grid>
+            <Grid item xs={4} md={2}>
+              <Link to="/addyourfunds" className="link">
+                <Button className={classes.button}>Enter</Button>
+              </Link>
+            </Grid>
+          </Grid>
+          {[
+            {
+              desc: '8. May the settlor change the distribution schedule?',
+              value: settlorCDS,
+              func: setSettlorCDS,
+            },
+            {
+              desc: '9. May the trustee change the distribution schedule?',
+              value: trusteeCDS,
+              func: setTrusteeCDS,
+            },
+            {
+              desc: '10. May the settlor revoke the dtrust? (assets return to settlor wallet)',
+              value: settlorRD,
+              func: setSettlorRD,
+            },
+            {
+              desc: '11. May the settlor swap the assets in the dtrust for assets of equivalent value?',
+              value: settlorSA,
+              func: setSettlorSA,
+            },
+            {
+              desc: '12. May the trustee transact with the assets?',
+              value: trusteeTA,
+              func: setTrusteeTA,
+            },
+            {
+              desc: '13. May the trustee revoke the dtrust?',
+              value: trusteeRD,
+              func: setTrusteeRD,
+            },
+            {
+              desc: '14. May the trustee change the beneficiary wallet address(es)?',
+              value: trusteeCBWA,
+              func: setTrusteeCBWA,
+            },
+            {
+              desc: '15. Does the settlor intend that this dtrust is a legal trust?',
+              value: settlorILT,
+              func: setSettlorILT,
+            },
+          ].map((item, index) => (
+            <Grid key={index} container spacing={3}>
+              <Grid item xs={12} md={6}>
+                <InputLabel className={classes.label}>{item.desc}</InputLabel>
+              </Grid>
+              <Grid item xs={6} md={2}>
+                <Button
+                  className={classes.buttonYes}
+                  choosen={item.value.toString()}
+                  onClick={(e) => {
+                    item.func(true)
+                  }}
+                >
+                  Yes
+                </Button>
+              </Grid>
+              <Grid item xs={6} md={2}>
+                <Button
+                  className={classes.buttonNo}
+                  choosen={item.value.toString()}
+                  onClick={(e) => {
+                    item.func(false)
+                  }}
+                >
+                  No
+                </Button>
+              </Grid>
+            </Grid>
+          ))}
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <InputLabel className={classes.label}>
+                16. Under what jurisdiction does the settlor intend that this
+                dtrust be a legal trust?
+              </InputLabel>
+            </Grid>
+            <Grid item xs={8} md={4}>
+              <TextField
+                className={classes.input}
+                label="Jurisdiction"
+                id=""
+                variant="outlined"
+                size="small"
+              />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
@@ -316,24 +350,34 @@ export default function DTrustForm(props) {
           </Grid>
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <InputLabel className={classes.label}>What annual fee should the trustee recieve? (for one percent, enter 1 not 0.01)</InputLabel>
+              <InputLabel className={classes.label}>
+                17. What annual fee should the trustee recieve? (for one
+                percent, enter 1 not 0.01)
+              </InputLabel>
             </Grid>
             <Grid item xs={8} md={4}>
-              <TextField className={classes.input} label="Annual Fee" id="" variant="outlined" size="small" />
+              <TextField
+                className={classes.input}
+                label="Annual Fee"
+                id=""
+                variant="outlined"
+                size="small"
+              />
             </Grid>
             <Grid item xs={4} md={2}>
               <Button className={classes.button}>Enter</Button>
             </Grid>
           </Grid>
           <Grid container spacing={3}>
-            <Grid item xs={1} md={4}>
-            </Grid>
+            <Grid item xs={1} md={4}></Grid>
             <Grid item xs={10} md={4}>
-              <Button className={classes.button} onClick={onSubmit}>Form dtrust</Button>
+              <Button className={classes.button} onClick={onSubmit}>
+                Form dtrust
+              </Button>
             </Grid>
           </Grid>
         </form>
       </Container>
-    </div >
-  );
+    </div>
+  )
 }

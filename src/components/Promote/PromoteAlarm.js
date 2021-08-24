@@ -1,7 +1,7 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import { Container, Link, TextField } from '@material-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
+import React from 'react'
+import { makeStyles } from '@material-ui/core/styles'
+import { Container, Link, TextField } from '@material-ui/core'
+import { Link as RouterLink } from 'react-router-dom'
 
 const usePromoteAlarmtyles = makeStyles((theme) => ({
   pageTitle: {
@@ -37,32 +37,45 @@ const usePromoteAlarmtyles = makeStyles((theme) => ({
       color: '#666666',
     },
   },
-}));
+}))
 
 export default function PromoteAlarm(props) {
-  const classes = usePromoteAlarmtyles();
+  const classes = usePromoteAlarmtyles()
 
   return (
     <div>
       <div className={classes.pageTitle}>Promote</div>
       <Container className={classes.container} maxWidth="sm">
-        {
-          props.promotestate === 'get' &&
+        {props.promotestate === 'get' && (
           <div className={classes.content}>
-            "Congratulations. DTrust has sent a Promote token to your wallet address. Use it to create dtrusts and earn fees."
+            "Congratulations. DTrust has sent a Promote token to your wallet
+            address. Use it to create dtrusts and earn fees."
           </div>
-        }
-        {
-          props.promotestate === 'use' &&
+        )}
+        {props.promotestate === 'use' && (
           <>
             <div className={classes.content}>
-              "If a dtrust is formed with this link, then the first two years of 0.5% fees from that dtrust will go to your Promote token."
+              "If a dtrust is formed with this link, then the first two years of
+              0.5% fees from that dtrust will go to your Promote token."
             </div>
-            <TextField className={classes.input} label="" id="" variant="outlined" size="small" value={props.link} />
-            <Link className={classes.link} component={RouterLink} to="/formdtrust" >The link here would go to a page identical to the “Form a dtrust” page.</Link>
+            <TextField
+              className={classes.input}
+              label=""
+              id=""
+              variant="outlined"
+              size="small"
+            />
+            <Link
+              className={classes.link}
+              component={RouterLink}
+              to="/formdtrust"
+            >
+              The link here would go to a page identical to the “Form a dtrust”
+              page.
+            </Link>
           </>
-        }
+        )}
       </Container>
     </div>
-  );
+  )
 }
