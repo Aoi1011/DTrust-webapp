@@ -281,8 +281,10 @@ export default function Home() {
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <img src={avatar} alt="avatar"></img>
             <div className={classes.avatar_text}>
-              David Newman Brunk created DTrust after studying law at New York
-              Univeristy. You can download the initial whitepaper&nbsp;
+              David Newman Brunk created DTrust 
+              after studying law at New York
+              Univeristy. You can download the 
+              initial whitepaper&nbsp;
               <RouterLink
                 to="docs/DTrust_WhitePaper.docx"
                 target="_blank"
@@ -296,8 +298,8 @@ export default function Home() {
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <img src={avatar2} alt="avatar2"></img>
             <div className={classes.avatar_text}>
-              Aoi Kurokawa was the main solidity developer behind the
-              project.&nbsp;
+              Aoi Kurokawa was the main solidity 
+              developer behind the project.&nbsp;
             </div>
           </Grid>
         </Grid>
