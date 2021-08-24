@@ -28,9 +28,8 @@ export default function DTTokens() {
     <div className={classes.root}>
       <div className={classes.pageTitle}>DT Tokens</div>
       <Container>
-        <div className={classes.content}>DTrust takes 0.5% of all assets held in dtrusts each year in semiannual charges. If a promoter arranged the dtrust, then fees for the first two years go to the promoter and all subsequent fees go to DT tokens. If there was no promoter, then all fees go to DT tokens. The fees are split evenly among 1,000 DT tokens. There will never be any more DT tokens.</div>
-        <div className={classes.content}>Example: If there are assets worth $10 million in all the dtrusts, then all the DT tokens would receive assets worth $50,000 in aggregate each year (two $25,000 distributions). Each DT token would receive $50 worth of assets (two $25 distributions).</div>
-        <div className={classes.content}>If you are interested in purchasing DT tokens, fill out the contact form with the button at the bottom of the page.</div>
+         <div className={classes.content}>The DTrust protocol is governed by a decetralized autonomous organization (DAO) that votes on changes to the protocol and also receives the fees collected by the protocol. DTrust takes 0.5% of the value of all divisible assets held in dtrusts. Those fees are then distributed proportionally to the holders of the 1000 DT tokens, which all have equal voting power. NFT assets pay no DTrust fees.</div>
+         <div className={classes.content}>Example: If there are assets worth $1 million in a particular dtrust, then DTrust would take assets worth $5000 during that year from that dtrust. Each DT token would receive $5 worth of assets.</div>
       </Container>
     </div>
   );
