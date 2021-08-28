@@ -45,8 +45,8 @@ const useUsekeyStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
-  tableItem :{
-    cursor: 'pointer', 
+  tableItem: {
+    cursor: 'pointer',
     color: 'black',
   },
   modal: {
@@ -59,6 +59,7 @@ const useUsekeyStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    width: '60vw',
   },
 }));
 
@@ -95,11 +96,11 @@ export default function UseControlKey() {
       <Container className={classes.container}>
         <form noValidate autoComplete="off">
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={7}>
+            <Grid item xs={12} sm={6}>
               <InputLabel className={classes.label}>Enter the dtrust identification number</InputLabel>
             </Grid>
-            <Grid item xs={8} sm={4}>
-              <TextField className={classes.input} label="the dtrust address" id="" variant="outlined" size="small" />
+            <Grid item xs={10} sm={5}>
+              <TextField className={classes.input} label="The dtrust address" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} sm={1}>
               <Button className={classes.button}>Enter</Button>
@@ -148,10 +149,19 @@ export default function UseControlKey() {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">react-transition-group animates me.</p>
-          </div>
+          <form noValidate autoComplete="off">
+            <div className={classes.paper}>
+              <h2 id="transition-modal-title">Enter private key</h2>
+              <Grid container spacing={4}>
+                <Grid item xs={10} sm={9}>
+                  <TextField className={classes.input} label="Private Key" id="" variant="outlined" size="small" />
+                </Grid>
+                <Grid item xs={2} sm={3}>
+                  <Button className={classes.button}>Enter</Button>
+                </Grid>
+              </Grid>
+            </div>
+          </form> 
         </Fade>
       </Modal>
     </div>
