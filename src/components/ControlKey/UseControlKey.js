@@ -49,10 +49,10 @@ export default function UseControlKey() {
         <form noValidate autoComplete="off">
           <Grid container spacing={3}>
             <Grid item xs={12} sm={7}>
-              <InputLabel className={classes.label}>Enter the identification number (the wallet addres) for the dtrust.</InputLabel>
+              <InputLabel className={classes.label}>Enter the dtrust identification number</InputLabel>
             </Grid>
             <Grid item xs={8} sm={4}>
-              <TextField className={classes.input} label="ID number" id="" variant="outlined" size="small" />
+              <TextField className={classes.input} label="the dtrust address" id="" variant="outlined" size="small" />
             </Grid>
             <Grid item xs={4} sm={1}>
               <Button className={classes.button}>Enter</Button>
