@@ -1,8 +1,9 @@
-import React from 'react';
-import { InputLabel, TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@material-ui/core';
+import React, { useState } from 'react';
+import { InputLabel, TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Link, Modal, Fade } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
+import Backdrop from '@material-ui/core/Backdrop';
 
 const useUsekeyStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -44,6 +45,21 @@ const useUsekeyStyles = makeStyles((theme) => ({
   table: {
     minWidth: 650,
   },
+  tableItem :{
+    cursor: 'pointer', 
+    color: 'black',
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    border: '2px solid #000',
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
 }));
 
 function createData(name, calories) {
@@ -63,6 +79,15 @@ const rows = [
 
 export default function UseControlKey() {
   const classes = useUsekeyStyles();
+  const [open, setOpen] = useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  }
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     <div>
@@ -97,7 +122,9 @@ export default function UseControlKey() {
             {rows.map((row) => (
               <TableRow key={row.name}>
                 <TableCell component="th" scope="row" align="center">
-                  {row.name}
+                  <Link type="button" onClick={handleOpen} className={classes.tableItem}>
+                    {row.name}
+                  </Link>
                 </TableCell>
                 <TableCell align="center">{row.calories}</TableCell>
                 {/* <TableCell align="right">{row.fat}</TableCell>
@@ -108,6 +135,25 @@ export default function UseControlKey() {
           </TableBody>
         </Table>
       </TableContainer>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <h2 id="transition-modal-title">Transition modal</h2>
+            <p id="transition-modal-description">react-transition-group animates me.</p>
+          </div>
+        </Fade>
+      </Modal>
     </div>
   );
 }
