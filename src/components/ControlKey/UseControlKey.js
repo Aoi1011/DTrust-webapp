@@ -90,6 +90,10 @@ export default function UseControlKey() {
     setOpen(false);
   };
 
+  const handlePrivateKey = () => {
+    alert("Correct");
+  }
+
   return (
     <div>
       <div className={classes.pageTitle}>Use a Control Key</div>
@@ -157,7 +161,7 @@ export default function UseControlKey() {
                   <TextField className={classes.input} label="Private Key" id="" variant="outlined" size="small" />
                 </Grid>
                 <Grid item xs={2} sm={3}>
-                  <Button className={classes.button}>Enter</Button>
+                  <Button className={classes.button} onClick={handlePrivateKey}>Enter</Button>
                 </Grid>
               </Grid>
             </div>
