@@ -56,7 +56,6 @@ const useUsekeyStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     marginBottom: '5vh',
-    backgroundColor: 'antiquewhite',
   },
   table: {
     minWidth: 650,
@@ -103,6 +102,7 @@ export default function UseControlKey() {
   const [correctDtrust, setCorrectDtrust] = useState(false);
   const [open, setOpen] = useState(false);
   const [correctControlKey, setCorrectControlKey] = useState(true);
+  const [privateKey, setPrivateKey] = useState("");
 
   const checkDTrustAddress = () => {
     if (dtrustAddress === "abc123") {
@@ -136,10 +136,17 @@ export default function UseControlKey() {
   };
 
   const handlePrivateKey = () => {
-    if (correctControlKey) {
+    if (privateKey === "abc123") {
       history.push("/formdtrust");
     } else {
-      alert("Incorrect")
+      setPrivateKey("");
+      handleClose();
+      MySwal.fire({
+        title: 'Error!',
+        text: 'We can not find',
+        icon: 'error',
+        confirmButtonText: 'Okay'
+      })
     }
 
   }
@@ -175,9 +182,11 @@ export default function UseControlKey() {
         <Container style={{ width: "80%" }}>
           <TableContainer component={Paper} className={classes.tableContainer}>
             <Table className={classes.table} aria-label="simple table">
-              <TableHead>
+              <TableHead style={{ backgroundColor: '#FE8D49' }}>
                 <TableRow>
-                  <TableCell align="center">Relevant control keys</TableCell>
+                  <TableCell className={classes.label} align="center">
+                  <InputLabel className={classes.label}>Relevant control keys</InputLabel>
+                  </TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -213,7 +222,14 @@ export default function UseControlKey() {
               <h2 id="transition-modal-title">Enter private key</h2>
               <Grid container spacing={4}>
                 <Grid item xs={10} sm={9}>
-                  <TextField className={classes.input} label="Private Key" id="" variant="outlined" size="small" />
+                  <TextField
+                    className={classes.input}
+                    label="Private Key"
+                    id="" variant="outlined"
+                    size="small"
+                    value={privateKey}
+                    onChange={(e) => setPrivateKey(e.target.value)}
+                  />
                 </Grid>
                 <Grid item xs={2} sm={3}>
                   <Button className={classes.button} onClick={handlePrivateKey}>Enter</Button>
