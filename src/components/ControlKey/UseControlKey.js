@@ -91,7 +91,8 @@ export default function UseControlKey() {
   };
 
   const handlePrivateKey = () => {
-    alert("Correct");
+    alert("InCorrect");
+    handleClose();
   }
 
   return (
