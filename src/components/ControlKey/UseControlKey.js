@@ -106,7 +106,6 @@ export default function UseControlKey() {
   const checkDTrustAddress = () => {
     if (dtrustAddress === "abc123") {
       setCorrectDtrust(true);
-      
     } else {
       handleDtrustaddress(false);
     }
