@@ -40,7 +40,7 @@ const useUsekeyStyles = makeStyles((theme) => ({
     width: '100%',
   },
   tableContainer: {
-    paddingBottom: '5vh',
+    marginBottom: '5vh',
   },
   table: {
     minWidth: 650,
@@ -63,19 +63,19 @@ const useUsekeyStyles = makeStyles((theme) => ({
   },
 }));
 
-function createData(name, calories) {
-  return { name, calories };
+function createData(name) {
+  return { name };
 }
 
 const rows = [
-  createData(`Settlor's beneficiary address key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Trustee's beneficiary address key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Settlor's distribution schedule key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Trustee's distribution schedule key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Settlor's revocation key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Trustee's revocation key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Settlor's asset swap key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
-  createData(`Trustee's transaction key`, 0x71C7656EC7ab88b098defB751B7401B5f6d8976F),
+  createData(`Settlor's beneficiary address key`),
+  createData(`Trustee's beneficiary address key`),
+  createData(`Settlor's distribution schedule key`),
+  createData(`Trustee's distribution schedule key`),
+  createData(`Settlor's revocation key`),
+  createData(`Trustee's revocation key`),
+  createData(`Settlor's asset swap key`),
+  createData(`Trustee's transaction key`),
 ];
 
 export default function UseControlKey() {
@@ -113,34 +113,28 @@ export default function UseControlKey() {
           </Grid>
         </form>
       </Container>
-      <TableContainer component={Paper} className={classes.tableContainer}>
-        <Table className={classes.table} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell align="center">Relevant control keys</TableCell>
-              <TableCell align="center">Detail</TableCell>
-              {/* <TableCell align="right">Fat&nbsp;(g)</TableCell>
-              <TableCell align="right">Carbs&nbsp;(g)</TableCell>
-              <TableCell align="right">Protein&nbsp;(g)</TableCell> */}
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rows.map((row) => (
-              <TableRow key={row.name}>
-                <TableCell component="th" scope="row" align="center">
-                  <Link type="button" onClick={handleOpen} className={classes.tableItem}>
-                    {row.name}
-                  </Link>
-                </TableCell>
-                <TableCell align="center">{row.calories}</TableCell>
-                {/* <TableCell align="right">{row.fat}</TableCell>
-                <TableCell align="right">{row.carbs}</TableCell>
-                <TableCell align="right">{row.protein}</TableCell> */}
+      <Container style={{ width: "80%" }}>
+        <TableContainer component={Paper} className={classes.tableContainer}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">Relevant control keys</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rows.map((row) => (
+                <TableRow key={row.name}>
+                  <TableCell component="th" scope="row" align="center">
+                    <Link type="button" onClick={handleOpen} className={classes.tableItem}>
+                      {row.name}
+                    </Link>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -166,7 +160,7 @@ export default function UseControlKey() {
                 </Grid>
               </Grid>
             </div>
-          </form> 
+          </form>
         </Fade>
       </Modal>
     </div>
