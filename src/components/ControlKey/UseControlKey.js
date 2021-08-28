@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState,  } from 'react';
+import { useHistory } from 'react-router';
 import { InputLabel, TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Link, Modal, Fade } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Grid } from '@material-ui/core';
@@ -79,8 +80,10 @@ const rows = [
 ];
 
 export default function UseControlKey() {
+  const history = useHistory();
   const classes = useUsekeyStyles();
   const [open, setOpen] = useState(false);
+  const [correctControlKey, setCorrectControlKey] = useState(true);
 
   const handleOpen = () => {
     setOpen(true);
@@ -91,8 +94,12 @@ export default function UseControlKey() {
   };
 
   const handlePrivateKey = () => {
-    alert("InCorrect");
-    handleClose();
+    if (correctControlKey) {
+      history.push("/formdtrust");
+    } else {
+      alert("Incorrect")
+    }
+    
   }
 
   return (
