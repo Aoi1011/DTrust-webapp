@@ -1,10 +1,24 @@
-import React, { useState,  } from 'react';
+import React, { useState, } from 'react';
 import { useHistory } from 'react-router';
-import { InputLabel, TextField, TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Link, Modal, Fade } from '@material-ui/core';
+import {
+  InputLabel,
+  TextField,
+  TableContainer,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  Link,
+  Modal,
+  Fade
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Grid } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 import Backdrop from '@material-ui/core/Backdrop';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
 
 const useUsekeyStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -79,11 +93,39 @@ const rows = [
   createData(`Trustee's transaction key`),
 ];
 
+const MySwal = withReactContent(Swal)
+
 export default function UseControlKey() {
   const history = useHistory();
   const classes = useUsekeyStyles();
+  const [dtrustAddress, setDtrustAddress] = useState("");
+  const [correctDtrust, setCorrectDtrust] = useState(false);
   const [open, setOpen] = useState(false);
   const [correctControlKey, setCorrectControlKey] = useState(true);
+
+  const checkDTrustAddress = () => {
+    if (dtrustAddress === "abc123") {
+      setCorrectDtrust(true);
+      
+    } else {
+      handleDtrustaddress(false);
+    }
+
+  }
+
+  const handleDtrustaddress = (valid) => {
+    console.log(correctDtrust);
+    if (valid) {
+      console.log("DTrust is correct!")
+    } else {
+      MySwal.fire({
+        title: 'Error!',
+        text: 'We can not find',
+        icon: 'error',
+        confirmButtonText: 'Okay'
+      })
+    }
+  }
 
   const handleOpen = () => {
     setOpen(true);
@@ -99,7 +141,7 @@ export default function UseControlKey() {
     } else {
       alert("Incorrect")
     }
-    
+
   }
 
   return (
@@ -112,36 +154,47 @@ export default function UseControlKey() {
               <InputLabel className={classes.label}>Enter the dtrust identification number</InputLabel>
             </Grid>
             <Grid item xs={10} sm={5}>
-              <TextField className={classes.input} label="The dtrust address" id="" variant="outlined" size="small" />
+              <TextField
+                className={classes.input}
+                label="The dtrust address"
+                id=""
+                variant="outlined"
+                size="small"
+                value={dtrustAddress}
+                onChange={(e) => setDtrustAddress(e.target.value)}
+              />
             </Grid>
             <Grid item xs={4} sm={1}>
-              <Button className={classes.button}>Enter</Button>
+              <Button className={classes.button} onClick={checkDTrustAddress}>Enter</Button>
             </Grid>
           </Grid>
         </form>
       </Container>
-      <Container style={{ width: "80%" }}>
-        <TableContainer component={Paper} className={classes.tableContainer}>
-          <Table className={classes.table} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell align="center">Relevant control keys</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow key={row.name}>
-                  <TableCell component="th" scope="row" align="center">
-                    <Link type="button" onClick={handleOpen} className={classes.tableItem}>
-                      {row.name}
-                    </Link>
-                  </TableCell>
+      {
+        correctDtrust &&
+        <Container style={{ width: "80%" }}>
+          <TableContainer component={Paper} className={classes.tableContainer}>
+            <Table className={classes.table} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell align="center">Relevant control keys</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </Container>
+              </TableHead>
+              <TableBody>
+                {rows.map((row) => (
+                  <TableRow key={row.name}>
+                    <TableCell component="th" scope="row" align="center">
+                      <Link type="button" onClick={handleOpen} className={classes.tableItem}>
+                        {row.name}
+                      </Link>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Container>
+      }
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
