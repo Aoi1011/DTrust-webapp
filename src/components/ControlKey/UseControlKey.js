@@ -56,6 +56,7 @@ const useUsekeyStyles = makeStyles((theme) => ({
   },
   tableContainer: {
     marginBottom: '5vh',
+    backgroundColor: 'antiquewhite',
   },
   table: {
     minWidth: 650,
