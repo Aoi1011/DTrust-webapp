@@ -125,11 +125,6 @@ const AboutUs = () => {
                                             component="h2" 
                                             className={classes.role}
                                         >{card.role}</Typography>
-                                        {/* <Typography variant="body2" color="textSecondary" component="p">
-                                            <div className={classes.avatar_text}>
-                                                {card.content}
-                                            </div>
-                                        </Typography> */}
                                     </CardContent>
                                 </Card>
                             </>
