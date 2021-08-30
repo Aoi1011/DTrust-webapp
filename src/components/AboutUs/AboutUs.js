@@ -40,7 +40,7 @@ const useHometyles = makeStyles((theme) => ({
         justifyContent: "space-around"
     },
     cardRoot: {
-        maxWidth: '30%',
+        width: '15rem',
         height: '250px',
         padding: '30px',
     },
@@ -87,7 +87,7 @@ const cards = [
     },
     {
         image: avatar2,
-        name: "Aoi",
+        name: "Aoi Kurokawa",
         role: "Solidity Developer",
         content: `Aoi Kurokawa was the main solidity
         developer behind the project.&nbsp;`
