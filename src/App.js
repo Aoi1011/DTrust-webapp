@@ -15,6 +15,7 @@ import DTTokens from './components/DTTokens/DTTokens'
 import AddYourFunds from './components/DigitalAssets/AddYourFunds'
 import GiveYourFunds from './components/DigitalAssets/GiveYourFunds'
 import Contact from './components/Contact/Contact'
+import AboutUs from "./components/AboutUs/AboutUs";
 
 init('user_y2e2B4RkPGGgKgzhsVXSG')
 
@@ -59,6 +60,9 @@ function App() {
             </Route>
             <Route path="/contact" exact>
               <Contact />
+            </Route>
+            <Route path="/aboutus" exact>
+              <AboutUs />
             </Route>
           </Switch>
         </Template>
