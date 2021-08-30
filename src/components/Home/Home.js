@@ -93,7 +93,7 @@ const useHometyles = makeStyles((theme) => ({
     },
   },
   about: {
-    padding: '20px 0',
+    padding: '100px 0',
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
@@ -111,6 +111,9 @@ const useHometyles = makeStyles((theme) => ({
       },
     },
   },
+  link: {
+    textDecoration: "none",
+  }
 }))
 
 export default function Home() {
@@ -276,35 +279,9 @@ export default function Home() {
         </div>
       </div>
       <div className={classes.about}>
-        <Button variant="contained" href="#contained-buttons">
-          <Link to="/aboutus">About Us</Link>
+        <Button variant="contained" size="large">
+          <Link to="/aboutus" className={classes.link}>About Us</Link>
         </Button>
-        {/* <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} className={classes.subsec}>
-            <img src={avatar} alt="avatar"></img>
-            <div className={classes.avatar_text}>
-              David Newman Brunk created DTrust
-              after studying law at New York
-              Univeristy. You can download the
-              initial whitepaper&nbsp;
-              <RouterLink
-                to="docs/DTrust_WhitePaper.docx"
-                target="_blank"
-                download
-              >
-                here
-              </RouterLink>
-              .
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={6} className={classes.subsec}>
-            <img src={avatar2} alt="avatar2"></img>
-            <div className={classes.avatar_text}>
-              Aoi Kurokawa was the main solidity
-              developer behind the project.&nbsp;
-            </div>
-          </Grid>
-        </Grid> */}
       </div>
     </Container>
   )
