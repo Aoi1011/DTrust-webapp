@@ -6,7 +6,7 @@ import background from '../../img/background.jpg'
 import avatar from '../../img/avatar.png'
 import avatar2 from '../../img/avatar2.jpg'
 import { makeStyles } from '@material-ui/core/styles'
-import { Link as RouterLink } from 'react-router-dom'
+import { Link, Link as RouterLink } from 'react-router-dom'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { Carousel } from 'react-responsive-carousel'
 
@@ -276,14 +276,16 @@ export default function Home() {
         </div>
       </div>
       <div className={classes.about}>
-        <div>About Us</div>
-        <Grid container spacing={2}>
+        <Button variant="contained" href="#contained-buttons">
+          <Link to="/aboutus">About Us</Link>
+        </Button>
+        {/* <Grid container spacing={2}>
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <img src={avatar} alt="avatar"></img>
             <div className={classes.avatar_text}>
-              David Newman Brunk created DTrust 
+              David Newman Brunk created DTrust
               after studying law at New York
-              Univeristy. You can download the 
+              Univeristy. You can download the
               initial whitepaper&nbsp;
               <RouterLink
                 to="docs/DTrust_WhitePaper.docx"
@@ -298,11 +300,11 @@ export default function Home() {
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <img src={avatar2} alt="avatar2"></img>
             <div className={classes.avatar_text}>
-              Aoi Kurokawa was the main solidity 
+              Aoi Kurokawa was the main solidity
               developer behind the project.&nbsp;
             </div>
           </Grid>
-        </Grid>
+        </Grid> */}
       </div>
     </Container>
   )
