@@ -219,7 +219,7 @@ export default function Home() {
             <div className={classes.subdesc}>
               Anyone can earn income with DTrust as a promoter. If you arrange
               the formation of a dtrust, then you can recieve the first two
-              years 0.5%fee as a promoter. You can use this site to form receive
+              years 0.5% fee as a promoter. You can use this site to form receive
               your Promote token or to use your Promote token.
             </div>
             <Button
