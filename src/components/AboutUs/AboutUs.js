@@ -14,6 +14,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import background from '../../img/background.jpg'
 import avatar from '../../img/avatar.png'
 import avatar2 from '../../img/avatar2.jpg'
+import hackenlogo from '../../img/hackenlogo.png';
 
 const useHometyles = makeStyles((theme) => ({
     about: {
@@ -91,7 +92,14 @@ const cards = [
         role: "Solidity Developer",
         content: `Aoi Kurokawa was the main solidity
         developer behind the project.&nbsp;`
-    }
+    }, 
+    {
+        image: hackenlogo,
+        name: "HACKEN",
+        role: "Auditors",
+        content: ``
+    }, 
+    
 ]
 
 const AboutUs = () => {
