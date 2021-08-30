@@ -19,7 +19,6 @@ import {
 } from '@material-ui/core';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content'
-import { useHistory } from 'react-router-dom';
 
 const MySwal = withReactContent(Swal)
 
@@ -97,7 +96,6 @@ const rows = [
 ];
 
 export default function DestroyControlKey() {
-  const history = useHistory()
   const classes = useDestroykeyStyles();
   const [correctDtrust, setCorrectDtrust] = useState(false);
   const [open, setOpen] = useState(false);
