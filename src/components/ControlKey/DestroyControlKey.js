@@ -139,8 +139,7 @@ export default function DestroyControlKey() {
     if (privateKey === "abc123") {
       handleClose();
       MySwal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: 'Are you sure that you want to destroy this key?',
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
