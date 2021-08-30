@@ -149,7 +149,7 @@ export default function DestroyControlKey() {
         if (result.isConfirmed) {
           Swal.fire(
             'Deleted!',
-            'Your file has been deleted.',
+            'The key has been deleted.',
             'success'
           )
         }
