@@ -1,23 +1,18 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link as RouterLink } from 'react-router-dom'
-// import { MemoryRouter as Router } from "react-router";
-import { AppBar, Button, Grid, Link, Toolbar } from '@material-ui/core'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import { AppBar, Button, Grid, Link, Toolbar } from '@material-ui/core';
+import {
+  Instagram as InstagramIcon,
+  Twitter as TwitterIcon,
+  Telegram as TelegramIcon,
+} from '@material-ui/icons';
 
-// import FormDtrust from './FormDtrust.js';
-import logo from '../img/favicon.ico'
-// import { MemoryRouter as Router } from "react-router";
-
-// import FormDtrust from './FormDtrust.js';
-// import background from '../img/background.jpg';
+import logo from '../img/favicon.ico';
 
 const useTemplateStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    // backgroundImage: `url(${background})`,
-    // backgroundSize: 'cover',
-    // backgroundPosition: 'center',
-    // backgroundRepeat: 'no-repeat',
     backgroundColor: '#ffffff',
   },
   appBar: {
@@ -34,6 +29,7 @@ const useTemplateStyles = makeStyles((theme) => ({
     },
     textTransform: 'none',
     color: '#ffffff',
+    backgroundColor: '#fe7e34',
     fontSize: '24px',
     fontWeight: '600',
     padding: '10px 20px',
@@ -43,7 +39,6 @@ const useTemplateStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   link: {
-    // flexGrow: 1,
     margin: '0 30px',
     [theme.breakpoints.down('xs')]: {
       display: 'block',
@@ -147,10 +142,16 @@ const useTemplateStyles = makeStyles((theme) => ({
       backgroundColor: '#ffffffdd',
     },
   },
-}))
+  socialLink: {
+    color: '#fe8d4a',
+    padding: 10,
+    maring: 10,
+    fontSize: 50,
+  },
+}));
 
 export default function Template(props) {
-  const classes = useTemplateStyles()
+  const classes = useTemplateStyles();
 
   return (
     <div className={classes.root}>
@@ -160,27 +161,6 @@ export default function Template(props) {
             <img src={logo} alt="Logo" />
             &nbsp;DTrust
           </Button>
-          {/* <Router> */}
-          {/* <StyledMenu
-            id="customized-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <StyledMenuItem onClick={handleClose}>
-              <Link component={RouterLink} to="/formdtrust">Form a dtrust</Link>
-            </StyledMenuItem>
-            <StyledMenuItem onClick={handleClose}>
-              <Link component={RouterLink} to="/usecontrolkey">Use Control Key</Link>
-            </StyledMenuItem>
-            <StyledMenuItem onClick={handleClose}>
-              <Link component={RouterLink} to="/destroycontrolkey">Destroy Control Key</Link>
-            </StyledMenuItem>
-            <StyledMenuItem onClick={handleClose}>
-              <Link component={RouterLink} to="/promote">Promote</Link>
-            </StyledMenuItem>
-          </StyledMenu> */}
           <div className={classes.linksBar}>
             <Link
               component={RouterLink}
@@ -204,6 +184,9 @@ export default function Template(props) {
             >
               DT Tokens
             </Link>
+            <Link component={RouterLink} to="/aboutus" className={classes.link}>
+              About Us
+            </Link>
           </div>
           <Button
             className={classes.startButton}
@@ -212,7 +195,6 @@ export default function Template(props) {
           >
             Start
           </Button>
-          {/* </Router> */}
         </Toolbar>
       </AppBar>
       {props.children}
@@ -244,7 +226,6 @@ export default function Template(props) {
             <Grid item xs={12}>
               <h2>DTrust is about solving legal problems with technology.</h2>
             </Grid>
-            <Grid item xs />
             <Grid item xs={12}>
               <Button
                 className={classes.contactButton}
@@ -254,10 +235,36 @@ export default function Template(props) {
                 Contact
               </Button>
             </Grid>
-            <Grid item xs />
+            <Grid item xs={12}>
+              <RouterLink
+                to={{
+                  pathname:
+                    'https://twitter.com/DTrust_io](https://twitter.com/DTrust_io',
+                }}
+                target="_blank"
+              >
+                <TwitterIcon className={classes.socialLink} />
+              </RouterLink>
+              <RouterLink
+                to={{
+                  pathname: 'https://www.instagram.com/dtrust.io',
+                }}
+                target="_blank"
+              >
+                <InstagramIcon className={classes.socialLink} />
+              </RouterLink>
+              <RouterLink
+                to={{
+                  pathname: 'https://t.me/joinchat/TqpXTxXXRC4wMDUx',
+                }}
+                target="_blank"
+              >
+                <TelegramIcon className={classes.socialLink} />
+              </RouterLink>
+            </Grid>
           </Grid>
         </div>
       </div>
     </div>
-  )
+  );
 }

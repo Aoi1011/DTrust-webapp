@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
-import { Container, InputLabel, TextField } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import Button from '@material-ui/core/Button'
-import { Link } from 'react-router-dom'
-import './dtrustForm.css'
+import React, { useState } from 'react';
+import { Container, InputLabel, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
+import './dtrustForm.css';
 
 const usedtrustStyles = makeStyles((theme) => ({
   pageTitle: {
@@ -83,6 +83,11 @@ const usedtrustStyles = makeStyles((theme) => ({
   },
   input: {
     width: '100%',
+    [theme.breakpoints.down('xs')]: {
+      '& *': {
+        fontSize: '12px',
+      },
+    },
   },
   link: {
     color: '#fe8d4a',
@@ -94,24 +99,24 @@ const usedtrustStyles = makeStyles((theme) => ({
     textTecoration: 'none',
     backgroundColor: '#ffffff',
   },
-}))
+}));
 
 export default function DTrustForm(props) {
-  const classes = usedtrustStyles()
-  const [settlorCBWA, setSettlorCBWA] = useState(true)
-  const [settlorCDS, setSettlorCDS] = useState(true)
-  const [trusteeCDS, setTrusteeCDS] = useState(true)
-  const [settlorRD, setSettlorRD] = useState(true)
-  const [settlorSA, setSettlorSA] = useState(true)
-  const [trusteeTA, setTrusteeTA] = useState(true)
-  const [trusteeRD, setTrusteeRD] = useState(true)
-  const [trusteeCBWA, setTrusteeCBWA] = useState(true)
-  const [settlorILT, setSettlorILT] = useState(true)
+  const classes = usedtrustStyles();
+  const [settlorCBWA, setSettlorCBWA] = useState(true);
+  const [settlorCDS, setSettlorCDS] = useState(true);
+  const [trusteeCDS, setTrusteeCDS] = useState(true);
+  const [settlorRD, setSettlorRD] = useState(true);
+  const [settlorSA, setSettlorSA] = useState(true);
+  const [trusteeTA, setTrusteeTA] = useState(true);
+  const [trusteeRD, setTrusteeRD] = useState(true);
+  const [trusteeCBWA, setTrusteeCBWA] = useState(true);
+  const [settlorILT, setSettlorILT] = useState(true);
 
   const onSubmit = (e) => {
-    e.preventDefault()
-    props.setdtruststate('success')
-  }
+    e.preventDefault();
+    props.setdtruststate('success');
+  };
   return (
     <div>
       <div className={classes.pageTitle}>Form a dtrust</div>
@@ -131,6 +136,7 @@ export default function DTrustForm(props) {
                 id=""
                 variant="outlined"
                 size="small"
+                multiline
               />
             </Grid>
             <Grid item xs={4} md={2}>
@@ -153,9 +159,9 @@ export default function DTrustForm(props) {
               />
             </Grid>
             <Grid item xs={4} md={2}>
-              <Link className={classes.link}>
-                <Button className={classes.button}>Enter</Button>
-              </Link>
+              <Button component={Link} to="/" className={classes.button}>
+                Enter
+              </Button>
             </Grid>
           </Grid>
           <Grid container spacing={3}>
@@ -198,12 +204,14 @@ export default function DTrustForm(props) {
           </Grid>
           {[
             {
-              desc: '5. May the settlor change the beneficiary wallet address(es)?',
+              desc:
+                '5. May the settlor change the beneficiary wallet address(es)?',
               value: settlorCBWA,
               func: setSettlorCBWA,
             },
             {
-              desc: '6. May the trustee change the beneficiary wallet address(es)?',
+              desc:
+                '6. May the trustee change the beneficiary wallet address(es)?',
               value: trusteeCBWA,
               func: setTrusteeCBWA,
             },
@@ -217,7 +225,7 @@ export default function DTrustForm(props) {
                   className={classes.buttonYes}
                   choosen={item.value.toString()}
                   onClick={(e) => {
-                    item.func(true)
+                    item.func(true);
                   }}
                 >
                   Yes
@@ -228,7 +236,7 @@ export default function DTrustForm(props) {
                   className={classes.buttonNo}
                   choosen={item.value.toString()}
                   onClick={(e) => {
-                    item.func(false)
+                    item.func(false);
                   }}
                 >
                   No
@@ -243,19 +251,15 @@ export default function DTrustForm(props) {
                 distributed?
               </InputLabel>
             </Grid>
-            <Grid item xs={8} md={4}>
-              <TextField
-                className={classes.input}
-                label="Distribution Schedule"
-                id=""
-                variant="outlined"
-                size="small"
-              />
-            </Grid>
-            <Grid item xs={4} md={2}>
-              <Link to="/addyourfunds" className="link">
-                <Button className={classes.button}>Enter</Button>
-              </Link>
+            <Grid item xs={1} md={2} />
+            <Grid item xs={10} md={4}>
+              <Button
+                component={Link}
+                to="/addyourfunds"
+                className={classes.button}
+              >
+                Create Schedule
+              </Button>
             </Grid>
           </Grid>
           {[
@@ -270,32 +274,30 @@ export default function DTrustForm(props) {
               func: setTrusteeCDS,
             },
             {
-              desc: '10. May the settlor revoke the dtrust? (assets return to settlor wallet)',
+              desc:
+                '10. May the settlor revoke the dtrust? (assets return to settlor wallet)',
               value: settlorRD,
               func: setSettlorRD,
             },
             {
-              desc: '11. May the settlor swap the assets in the dtrust for assets of equivalent value?',
-              value: settlorSA,
-              func: setSettlorSA,
-            },
-            {
-              desc: '12. May the trustee transact with the assets?',
-              value: trusteeTA,
-              func: setTrusteeTA,
-            },
-            {
-              desc: '13. May the trustee revoke the dtrust?',
+              desc: '11. May the trustee revoke the dtrust?',
               value: trusteeRD,
               func: setTrusteeRD,
             },
             {
-              desc: '14. May the trustee change the beneficiary wallet address(es)?',
-              value: trusteeCBWA,
-              func: setTrusteeCBWA,
+              desc:
+                '12. May the settlor swap the assets in the dtrust for assets of equivalent value?',
+              value: settlorSA,
+              func: setSettlorSA,
             },
             {
-              desc: '15. Does the settlor intend that this dtrust is a legal trust?',
+              desc: '13. May the trustee transact with the assets?',
+              value: trusteeTA,
+              func: setTrusteeTA,
+            },
+            {
+              desc:
+                '14. Does the settlor intend that this dtrust is a legal trust?',
               value: settlorILT,
               func: setSettlorILT,
             },
@@ -309,7 +311,7 @@ export default function DTrustForm(props) {
                   className={classes.buttonYes}
                   choosen={item.value.toString()}
                   onClick={(e) => {
-                    item.func(true)
+                    item.func(true);
                   }}
                 >
                   Yes
@@ -320,7 +322,7 @@ export default function DTrustForm(props) {
                   className={classes.buttonNo}
                   choosen={item.value.toString()}
                   onClick={(e) => {
-                    item.func(false)
+                    item.func(false);
                   }}
                 >
                   No
@@ -331,7 +333,7 @@ export default function DTrustForm(props) {
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <InputLabel className={classes.label}>
-                16. Under what jurisdiction does the settlor intend that this
+                15. Under what jurisdiction does the settlor intend that this
                 dtrust be a legal trust?
               </InputLabel>
             </Grid>
@@ -351,7 +353,7 @@ export default function DTrustForm(props) {
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
               <InputLabel className={classes.label}>
-                17. What annual fee should the trustee recieve? (for one
+                16. What annual fee should the trustee recieve? (for one
                 percent, enter 1 not 0.01)
               </InputLabel>
             </Grid>
@@ -379,5 +381,5 @@ export default function DTrustForm(props) {
         </form>
       </Container>
     </div>
-  )
+  );
 }

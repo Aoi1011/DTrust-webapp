@@ -1,14 +1,9 @@
-import React from 'react'
-import { Button, Container, Grid } from '@material-ui/core'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-
-import background from '../../img/background.jpg'
-import avatar from '../../img/avatar.png'
-import avatar2 from '../../img/avatar2.jpg'
-import { makeStyles } from '@material-ui/core/styles'
-import { Link, Link as RouterLink } from 'react-router-dom'
-import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { Carousel } from 'react-responsive-carousel'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Button, Container, Grid } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
 
 const useHometyles = makeStyles((theme) => ({
   root: {
@@ -81,7 +76,7 @@ const useHometyles = makeStyles((theme) => ({
   },
   acknowledge: {
     padding: '150px 5vw 150px 5vw',
-    backgroundColor: '#fe8d4a',
+    backgroundColor: '#e6c5af',
     '& > div:first-child': {
       fontSize: '36px',
     },
@@ -92,32 +87,10 @@ const useHometyles = makeStyles((theme) => ({
       },
     },
   },
-  about: {
-    padding: '100px 0',
-    backgroundImage: `url(${background})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    textAlign: 'center',
-    '& > div:first-child': {
-      margin: '0 auto',
-      maxWidth: '400px',
-      fontSize: '36px',
-    },
-    '& img': {
-      height: '150px',
-      '& + div > a': {
-        color: '#000000',
-      },
-    },
-  },
-  link: {
-    textDecoration: "none",
-  }
-}))
+}));
 
 export default function Home() {
-  const classes = useHometyles()
+  const classes = useHometyles();
 
   return (
     <Container className={classes.root} maxWidth={false}>
@@ -156,22 +129,22 @@ export default function Home() {
       </div>
       <div className={classes.content}>
         <div className={classes.desc}>
-          Trust law enables estate administration, probate avoidance, asset
-          protection, tax planning, and other crucial legal functions. Now you
-          can do digital asset trusts on the etheruem virtual machine with
-          DTrust. On this site you can access the DTrust decentralized
-          application to form customized dtrusts, use control keys on existing
-          dtrusts, permanently destroy control keys and earn income as a dtrust
-          pomoter.
+          Trust law enables asset protection, probate avoidance, estate
+          administration, tax planning, structured giving, asset management, and
+          other crucial legal functions. Now you can do digital asset trusts on
+          the etheruem virtual machine with DTrust. On this site you can access
+          the DTrust decentralized application to form customized dtrusts, use
+          control keys on existing dtrusts, permanently destroy control keys and
+          earn income as a dtrust promoter..
         </div>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <div className={classes.subtitle}>Form a dtrust</div>
             <div className={classes.subdesc}>
               A series of input questions allow settlors and trustees to form
-              customized dtrusts for specific goals under different rules. Click
-              "Form a dtrust" to see the customization options and follow the
-              prompts to form your dtrust.
+              more than 500 different customized dtrusts to achieve different
+              goals in compliance with different rules and regulations. Follow
+              the prompts to form your dtrust.
               <Button
                 className={classes.sublink}
                 variant="outlined"
@@ -220,10 +193,10 @@ export default function Home() {
           <Grid item xs={12} sm={6} className={classes.subsec}>
             <div className={classes.subtitle}>Promote</div>
             <div className={classes.subdesc}>
-              Anyone can earn income with DTrust as a promoter. If you arrange
-              the formation of a dtrust, then you can recieve the first two
-              years 0.5% fee as a promoter. You can use this site to form receive
-              your Promote token or to use your Promote token.
+              Anyone can earn income with DTrust as a promoter. If someone forms
+              a dtrust associated with your promote token, then you will recieve
+              the first two years 0.5% fee as a promoter. You can use this site
+              to receive your Promote token or to use your Promote token.
             </div>
             <Button
               className={classes.sublink}
@@ -278,11 +251,6 @@ export default function Home() {
           </RouterLink>
         </div>
       </div>
-      <div className={classes.about}>
-        <Button variant="contained" size="large">
-          <Link to="/aboutus" className={classes.link}>About Us</Link>
-        </Button>
-      </div>
     </Container>
-  )
+  );
 }

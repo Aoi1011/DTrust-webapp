@@ -1,23 +1,26 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import { init } from 'emailjs-com'
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { init } from 'emailjs-com';
+import axios from 'axios';
 
-import './App.css'
-import Home from './components/Home/Home'
-import Template from './components/Template'
-import Start from './components/Start/Start'
-import Formdtrust from './components/dtrust/Formdtrust'
-import UseControlKey from './components/ControlKey/UseControlKey'
-import DestroyControlKey from './components/ControlKey/DestroyControlKey'
-import Promote from './components/Promote/Promote'
-import Docs from './components/Docs/Docs'
-import Legal from './components/Legal/Legal'
-import DTTokens from './components/DTTokens/DTTokens'
-import AddYourFunds from './components/DigitalAssets/AddYourFunds'
-import GiveYourFunds from './components/DigitalAssets/GiveYourFunds'
-import Contact from './components/Contact/Contact'
-import AboutUs from "./components/AboutUs/AboutUs";
+import './App.css';
+import AboutUs from './components/AboutUs/AboutUs';
+import Home from './components/Home/Home';
+import Template from './components/Template';
+import Start from './components/Start/Start';
+import Formdtrust from './components/dtrust/Formdtrust';
+import UseControlKey from './components/ControlKey/UseControlKey';
+import DestroyControlKey from './components/ControlKey/DestroyControlKey';
+import Promote from './components/Promote/Promote';
+import Docs from './components/Docs/Docs';
+import Legal from './components/Legal/Legal';
+import DTTokens from './components/DTTokens/DTTokens';
+import AddYourFunds from './components/DigitalAssets/AddYourFunds';
+import GiveYourFunds from './components/DigitalAssets/GiveYourFunds';
+import Contact from './components/Contact/Contact';
 
-init('user_y2e2B4RkPGGgKgzhsVXSG')
+init('user_y2e2B4RkPGGgKgzhsVXSG');
+
+axios.defaults.baseURL = 'http://localhost:8080/notion';
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
           <Switch>
             <Route path="/" exact>
               <Home />
+            </Route>
+            <Route path="/aboutus" exact>
+              <AboutUs />
             </Route>
             <Route path="/start" exact>
               <Start />
@@ -61,14 +67,11 @@ function App() {
             <Route path="/contact" exact>
               <Contact />
             </Route>
-            <Route path="/aboutus" exact>
-              <AboutUs />
-            </Route>
           </Switch>
         </Template>
       </BrowserRouter>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

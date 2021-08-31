@@ -1,5 +1,5 @@
-import React from "react";
-import { Switch, Route, useRouteMatch } from "react-router-dom";
+import React from 'react';
+import { Switch, Route, useRouteMatch } from 'react-router-dom';
 
 import PromoteMain from './PromoteMain';
 import GetPromote from './GetPromote';

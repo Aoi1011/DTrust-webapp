@@ -39,17 +39,27 @@ export default function PromoteMain() {
       <div className={classes.pageTitle}>Promote</div>
       <Container className={classes.container}>
         <Grid container spacing={3}>
-          <Grid item xs={1} sm={4}>
-          </Grid>
+          <Grid item xs={1} sm={4}></Grid>
           <Grid item xs={10} sm={4}>
-            <Button className={classes.button} component={RouterLink} to="/promote/get">Get a Promote Token</Button>
+            <Button
+              className={classes.button}
+              component={RouterLink}
+              to="/promote/get"
+            >
+              Get a Promote Token
+            </Button>
           </Grid>
         </Grid>
         <Grid container spacing={3}>
-          <Grid item xs={1} sm={4}>
-          </Grid>
+          <Grid item xs={1} sm={4}></Grid>
           <Grid item xs={10} sm={4}>
-            <Button className={classes.button} component={RouterLink} to="/promote/use">Use a Promote Token</Button>
+            <Button
+              className={classes.button}
+              component={RouterLink}
+              to="/promote/use"
+            >
+              Use a Promote Token
+            </Button>
           </Grid>
         </Grid>
       </Container>

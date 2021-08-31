@@ -1,7 +1,7 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { Container, Link, TextField } from '@material-ui/core'
-import { Link as RouterLink } from 'react-router-dom'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { Container, Link, TextField } from '@material-ui/core';
+import { Link as RouterLink } from 'react-router-dom';
 
 const usePromoteAlarmtyles = makeStyles((theme) => ({
   pageTitle: {
@@ -37,10 +37,10 @@ const usePromoteAlarmtyles = makeStyles((theme) => ({
       color: '#666666',
     },
   },
-}))
+}));
 
 export default function PromoteAlarm(props) {
-  const classes = usePromoteAlarmtyles()
+  const classes = usePromoteAlarmtyles();
 
   return (
     <div>
@@ -64,6 +64,7 @@ export default function PromoteAlarm(props) {
               id=""
               variant="outlined"
               size="small"
+              value={props.link}
             />
             <Link
               className={classes.link}
@@ -77,5 +78,5 @@ export default function PromoteAlarm(props) {
         )}
       </Container>
     </div>
-  )
+  );
 }
