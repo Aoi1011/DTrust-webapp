@@ -145,7 +145,7 @@ export default function UseControlKey() {
         title: 'Error!',
         text: 'We can not find',
         icon: 'error',
-        confirmButtonText: 'Okay'
+        showConfirmButton: false, 
       })
     }
 

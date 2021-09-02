@@ -120,7 +120,7 @@ export default function DestroyControlKey() {
         title: 'Error!',
         text: 'We can not find',
         icon: 'error',
-        confirmButtonText: 'Okay'
+        showConfirmButton: false, 
       })
     }
   }
