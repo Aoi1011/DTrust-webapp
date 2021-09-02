@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Button, Container, Grid } from '@material-ui/core';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link, Link as RouterLink } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
@@ -75,7 +75,7 @@ const useHometyles = makeStyles((theme) => ({
     marginBottom: '40px',
   },
   acknowledge: {
-    padding: '150px 5vw 150px 5vw',
+    padding: '100px 5vw 0px 5vw',
     backgroundColor: '#fe7e34',
     '& > div:first-child': {
       fontSize: '36px',
@@ -87,6 +87,11 @@ const useHometyles = makeStyles((theme) => ({
       },
     },
   },
+  aboutus: {
+    textAlign: 'center', 
+    padding: '50px',
+    fontSize: 'large'
+  }
 }));
 
 export default function Home() {
@@ -250,6 +255,12 @@ export default function Home() {
             See audit
           </RouterLink>
         </div>
+        <div className={classes.aboutus}>
+          <Link to="/aboutus">
+            About Us
+          </Link>
+        </div>
+
       </div>
     </Container>
   );
