@@ -333,7 +333,7 @@ function Legal(props) {
       >
         <StyledTab label="Legal" {...allyProps(0)} />
         <StyledTab label="Asset Protection" {...allyProps(1)} />
-        <StyledTab label="Probate Aviodance" {...allyProps(2)} />
+        <StyledTab label="Probate Avoidance" {...allyProps(2)} />
         <StyledTab label="Estate Administration" {...allyProps(3)} />
         <StyledTab label="Tax Planning" {...allyProps(4)} />
         <StyledTab label="Structured Giving" {...allyProps(5)} />
@@ -359,7 +359,7 @@ function Legal(props) {
         <RenderChildren data={assetProtection} setBackdrop={setBackdrop} />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={2}>
-        <div className="title">Probate Aviodance</div>
+        <div className="title">Probate Avoidance</div>
         <RenderChildren data={probateAvoidance} setBackdrop={setBackdrop} />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={3}>
