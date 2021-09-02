@@ -93,7 +93,7 @@ const rows = [
   createData(`Trustee's transaction key`),
 ];
 
-const MySwal = withReactContent(Swal)
+const MySwal = withReactContent(Swal);
 
 export default function UseControlKey() {
   const history = useHistory();

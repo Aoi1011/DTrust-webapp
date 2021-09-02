@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, InputLabel, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import emailjs from 'emailjs-com';
+
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content'
 
 const useContactStyles = makeStyles((theme) => ({
   root: {
@@ -47,19 +50,37 @@ const useContactStyles = makeStyles((theme) => ({
   },
 }));
 
+const MySwal = withReactContent(Swal);
+
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [message, setMessage] = useState("");
   const classes = useContactStyles();
+
 
   const onContact = e => {
     e.preventDefault();
     emailjs.send(
       'service_9ewdy8n', 'template_hr848up',
       {}
-    ).then(res => {
-      console.log('Email successfully sent!')
+    )
+    .then((res) => {
+      MySwal.fire({
+        title: 'Success!',
+        text: 'Success',
+        icon: 'success',
+        confirmButtonText: 'Okay'
+      })
     })
-      // Handle errors here however you like, or use a React error boundary
-      .catch(err => console.error('Oh well, you failed. Here some thoughts on the error that occured', err));
+    .catch((err) => {
+      MySwal.fire({
+        title: 'Error!',
+        text: 'Failed',
+        icon: 'error',
+        confirmButtonText: 'Okay'
+      })
+    });
   }
 
   return (
@@ -69,10 +90,16 @@ export default function Contact() {
         <form noValidate autoComplete="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={3}>
-              <InputLabel className={classes.label}>Name</InputLabel>
+              <InputLabel className={classes.label} >Name</InputLabel>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <TextField className={classes.input} label="Name" id="" variant="outlined" size="small" />
+              <TextField 
+                className={classes.input} 
+                label="Name" id="" 
+                variant="outlined" 
+                size="small"
+                onChange={(e) => setName(e.target.value)} 
+              />
             </Grid>
           </Grid>
           <Grid container spacing={2}>
@@ -80,7 +107,14 @@ export default function Contact() {
               <InputLabel className={classes.label}>Email Address</InputLabel>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <TextField className={classes.input} label="Email Address" id="" variant="outlined" size="small" />
+              <TextField 
+                className={classes.input} 
+                label="Email Address" 
+                id="" 
+                variant="outlined" 
+                size="small" 
+                onChange={(e) => setEmailAddress(e.target.value)}
+              />
             </Grid>
           </Grid>
           <Grid container spacing={2}>
@@ -88,7 +122,15 @@ export default function Contact() {
               <InputLabel className={classes.label}>Message</InputLabel>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <TextField className={classes.input} label="Message" id="" variant="outlined" size="small" multiline rows={12} />
+              <TextField 
+                className={classes.input} 
+                label="Message" 
+                id="" 
+                variant="outlined" 
+                size="small" 
+                multiline rows={12}
+                onChange={(e) => setMessage(e.target.value)} 
+              />
             </Grid>
           </Grid>
           <Grid container spacing={2}>
