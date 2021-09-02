@@ -5,6 +5,8 @@ import { Link, Link as RouterLink } from 'react-router-dom';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 
+import background from '../../img/background.jpg';
+
 const useHometyles = makeStyles((theme) => ({
   root: {
     padding: '0',
@@ -76,7 +78,8 @@ const useHometyles = makeStyles((theme) => ({
   },
   acknowledge: {
     padding: '100px 5vw 0px 5vw',
-    backgroundColor: '#fe7e34',
+    backgroundImage: `url(${background})`,
+    marginBottom: '30px',
     '& > div:first-child': {
       fontSize: '36px',
     },
