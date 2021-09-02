@@ -182,10 +182,7 @@ export default function Template(props) {
               to="/dttokens"
               className={classes.link}
             >
-              DT Tokens
-            </Link>
-            <Link component={RouterLink} to="/aboutus" className={classes.link}>
-              About Us
+              Gov
             </Link>
           </div>
           <Button
