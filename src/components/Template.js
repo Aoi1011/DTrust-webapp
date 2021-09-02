@@ -239,7 +239,7 @@ export default function Template(props) {
               <RouterLink
                 to={{
                   pathname:
-                    'https://twitter.com/DTrust_io](https://twitter.com/DTrust_io',
+                    'https://twitter.com/DTrust_io',
                 }}
                 target="_blank"
               >
