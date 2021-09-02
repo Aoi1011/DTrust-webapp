@@ -20,7 +20,7 @@ import Contact from './components/Contact/Contact';
 
 init('user_y2e2B4RkPGGgKgzhsVXSG');
 
-axios.defaults.baseURL = 'http://localhost:8080/notion';
+axios.defaults.baseURL = 'http://localhost:8080';
 
 function App() {
   return (
