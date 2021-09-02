@@ -12,7 +12,7 @@ const useHometyles = makeStyles((theme) => ({
   },
   cover: {
     padding: '30vh  0 10vh 0',
-    backgroundColor: '#fe8d4a',
+    backgroundColor: '#fe7e34',
   },
   carouselContainer: {
     textAlign: 'center',
@@ -76,7 +76,7 @@ const useHometyles = makeStyles((theme) => ({
   },
   acknowledge: {
     padding: '150px 5vw 150px 5vw',
-    backgroundColor: '#e6c5af',
+    backgroundColor: '#fe7e34',
     '& > div:first-child': {
       fontSize: '36px',
     },

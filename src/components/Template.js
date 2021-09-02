@@ -16,7 +16,7 @@ const useTemplateStyles = makeStyles((theme) => ({
     backgroundColor: '#ffffff',
   },
   appBar: {
-    backgroundColor: '#fe8d4a',
+    backgroundColor: '#fe7e34',
   },
   toolBar: {
     paddingLeft: '0',
