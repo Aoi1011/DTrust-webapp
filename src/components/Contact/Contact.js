@@ -85,15 +85,17 @@ export default function Contact() {
             title: 'Success!',
             text: 'Success',
             icon: 'success',
-            confirmButtonText: 'Okay'
+            position: 'top-end',
+            showConfirmButton: false, 
           })
         })
         .catch((err) => {
+          console.log(err);
           MySwal.fire({
             title: 'Error!',
-            text: 'Failed',
+            text: err.text,
             icon: 'error',
-            confirmButtonText: 'Okay'
+            showConfirmButton: false, 
           });
           setNameError(false);
           setNameHelperText("");
@@ -156,7 +158,6 @@ export default function Contact() {
                 variant="outlined"
                 size="small"
                 multiline rows={12}
-                required
                 onChange={(e) => setMessage(e.target.value)}
               />
             </Grid>
