@@ -56,31 +56,43 @@ export default function Contact() {
   const [name, setName] = useState("");
   const [emailAddress, setEmailAddress] = useState("");
   const [message, setMessage] = useState("");
+  const [nameError, setNameError] = useState(false);
+  const [nameHelperText, setNameHelperText] = useState("");
+  const [emailError, setEmailError] = useState(false);
+  const [emailHelperText, setEmailHelperText] = useState("");
   const classes = useContactStyles();
 
 
   const onContact = e => {
     e.preventDefault();
-    emailjs.send(
-      'service_9ewdy8n', 'template_hr848up',
-      {}
-    )
-    .then((res) => {
-      MySwal.fire({
-        title: 'Success!',
-        text: 'Success',
-        icon: 'success',
-        confirmButtonText: 'Okay'
-      })
-    })
-    .catch((err) => {
-      MySwal.fire({
-        title: 'Error!',
-        text: 'Failed',
-        icon: 'error',
-        confirmButtonText: 'Okay'
-      })
-    });
+    if (name === "") {
+      setNameError(true);
+      setNameHelperText("Required field");
+    } else if (emailAddress === "") {
+      setEmailError(true);
+      setEmailHelperText("Required field");
+    } else {
+      emailjs.send(
+        'service_9ewdy8n', 'template_hr848up',
+        {}
+      )
+        .then((res) => {
+          MySwal.fire({
+            title: 'Success!',
+            text: 'Success',
+            icon: 'success',
+            confirmButtonText: 'Okay'
+          })
+        })
+        .catch((err) => {
+          MySwal.fire({
+            title: 'Error!',
+            text: 'Failed',
+            icon: 'error',
+            confirmButtonText: 'Okay'
+          })
+        });
+    }
   }
 
   return (
@@ -90,15 +102,19 @@ export default function Contact() {
         <form noValidate autoComplete="off">
           <Grid container spacing={2}>
             <Grid item xs={12} sm={3}>
-              <InputLabel className={classes.label} >Name</InputLabel>
+              <InputLabel className={classes.label}>Name</InputLabel>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <TextField 
-                className={classes.input} 
-                label="Name" id="" 
-                variant="outlined" 
+              <TextField
+                className={classes.input}
+                label="Name"
+                id=""
+                variant="outlined"
                 size="small"
-                onChange={(e) => setName(e.target.value)} 
+                required
+                error={nameError}
+                helperText={nameHelperText}
+                onChange={(e) => setName(e.target.value)}
               />
             </Grid>
           </Grid>
@@ -107,12 +123,15 @@ export default function Contact() {
               <InputLabel className={classes.label}>Email Address</InputLabel>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <TextField 
-                className={classes.input} 
-                label="Email Address" 
-                id="" 
-                variant="outlined" 
-                size="small" 
+              <TextField
+                className={classes.input}
+                label="Email Address"
+                id=""
+                variant="outlined"
+                size="small"
+                required
+                error={emailError}
+                helperText={emailHelperText}
                 onChange={(e) => setEmailAddress(e.target.value)}
               />
             </Grid>
@@ -122,14 +141,15 @@ export default function Contact() {
               <InputLabel className={classes.label}>Message</InputLabel>
             </Grid>
             <Grid item xs={12} sm={9}>
-              <TextField 
-                className={classes.input} 
-                label="Message" 
-                id="" 
-                variant="outlined" 
-                size="small" 
+              <TextField
+                className={classes.input}
+                label="Message"
+                id=""
+                variant="outlined"
+                size="small"
                 multiline rows={12}
-                onChange={(e) => setMessage(e.target.value)} 
+                required
+                onChange={(e) => setMessage(e.target.value)}
               />
             </Grid>
           </Grid>

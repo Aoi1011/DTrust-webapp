@@ -252,7 +252,7 @@ export default function Template(props) {
               </RouterLink>
               <RouterLink
                 to={{
-                  pathname: 'https://t.me/joinchat/TqpXTxXXRC4wMDUx',
+                  pathname: 'https://t.me/joinchat/lVw8NzBxNUQyOTZh',
                 }}
                 target="_blank"
               >
