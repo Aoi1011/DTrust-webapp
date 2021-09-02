@@ -63,8 +63,12 @@ export default function Contact() {
   const classes = useContactStyles();
 
 
-  const onContact = e => {
+  const onContact = (e) => {
     e.preventDefault();
+    setNameError(false);
+    setNameHelperText("");
+    setEmailError(false);
+    setEmailHelperText("");
     if (name === "") {
       setNameError(true);
       setNameHelperText("Required field");
@@ -90,7 +94,11 @@ export default function Contact() {
             text: 'Failed',
             icon: 'error',
             confirmButtonText: 'Okay'
-          })
+          });
+          setNameError(false);
+          setNameHelperText("");
+          setEmailError(false);
+          setEmailHelperText("");
         });
     }
   }
