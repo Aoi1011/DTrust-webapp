@@ -79,7 +79,6 @@ const useHometyles = makeStyles((theme) => ({
   acknowledge: {
     padding: '100px 5vw 0px 5vw',
     backgroundImage: `url(${background})`,
-    marginBottom: '30px',
     '& > div:first-child': {
       fontSize: '36px',
     },
