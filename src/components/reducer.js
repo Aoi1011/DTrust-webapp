@@ -1,7 +1,7 @@
 export const initialState = [
   {
     type: 'paragraph',
-    text: [{ annotations: {}, plain_text: '...Coming Soon...' }],
+    text: [{ annotations: {}, plain_text: '...Coming Soon' }],
   }
 ];
 

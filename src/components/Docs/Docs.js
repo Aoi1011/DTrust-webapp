@@ -8,6 +8,7 @@ import axios from 'axios';
 
 import RenderChildren from '../RenderChildren';
 import reducer, { initialState } from '../reducer';
+import Knowledge from './Knowledge';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -115,6 +116,7 @@ function Docs(props) {
       })
       .then(function (response) {
         // handle success
+        console.log(response)
         dispatchKnowledgeBase({ type: 'reset', payload: [] });
         console.log('Knowledge Success');
         var items = response.data.results;
@@ -131,7 +133,7 @@ function Docs(props) {
       })
       .catch(function (error) {
         // handle error
-        console.log(error);
+        console.log("catch error");
       })
       .then(function () {
         // always executed
@@ -268,7 +270,7 @@ function Docs(props) {
         </div>
         <div className="paragraph">
           {' '}
-          “Testing” shows the results of our security testing. 
+          “Testing” shows the results of our security testing.
         </div>
         <div className="paragraph">
           “Audit” show the results of the DTrust audit from Hacken.io.
@@ -276,7 +278,8 @@ function Docs(props) {
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <div className="title">Knowledge Base</div>
-        <RenderChildren data={knowledgeBase} setBackdrop={setBackdrop} />
+        {/* <RenderChildren data={knowledgeBase} setBackdrop={setBackdrop} /> */}
+        <Knowledge />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={2}>
         <div className="title">Code</div>
