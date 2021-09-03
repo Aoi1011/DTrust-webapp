@@ -7,6 +7,7 @@ import axios from 'axios';
 
 import RenderChildren from '../RenderChildren';
 import reducer, { initialState } from '../reducer';
+import Region from './RegionalGuides';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -381,7 +382,8 @@ function Legal(props) {
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={7}>
         <div className="title">Regional Guides</div>
-        <RenderChildren data={regionalGuides} setBackdrop={setBackdrop} />
+        {/* <RenderChildren data={regionalGuides} setBackdrop={setBackdrop} /> */}
+        <Region />
       </TabPanel>
       <Backdrop className={classes.backdrop} open={backdrop}>
         <CircularProgress color="inherit" />
