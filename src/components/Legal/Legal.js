@@ -8,6 +8,9 @@ import axios from 'axios';
 import RenderChildren from '../RenderChildren';
 import reducer, { initialState } from '../reducer';
 import Region from './RegionalGuides';
+import AssetProtection from './AssetProtection';
+import ProbateAvoidance from './ProbateAvoidance';
+import EstateAdministration from './EstateAdministration';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -358,15 +361,18 @@ function Legal(props) {
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
         <div className="title">Asset Protection</div>
-        <RenderChildren data={assetProtection} setBackdrop={setBackdrop} />
+        {/* <RenderChildren data={assetProtection} setBackdrop={setBackdrop} /> */}
+        <AssetProtection />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={2}>
         <div className="title">Probate Avoidance</div>
-        <RenderChildren data={probateAvoidance} setBackdrop={setBackdrop} />
+        {/* <RenderChildren data={probateAvoidance} setBackdrop={setBackdrop} /> */}
+        <ProbateAvoidance />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={3}>
         <div className="title">Estate Administration</div>
-        <RenderChildren data={estateAdministration} setBackdrop={setBackdrop} />
+        {/* <RenderChildren data={estateAdministration} setBackdrop={setBackdrop} /> */}
+        <EstateAdministration />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={4}>
         <div className="title">Tax Planning</div>
