@@ -13,6 +13,7 @@ import ProbateAvoidance from './ProbateAvoidance';
 import EstateAdministration from './EstateAdministration';
 import TaxPlanning from './TaxPlanning';
 import StructuredGiving from './StructuredGiving';
+import AssetManagement from './AssetManagement';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -388,7 +389,8 @@ function Legal(props) {
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={6}>
         <div className="title">Asset Management</div>
-        <RenderChildren data={assetManagement} setBackdrop={setBackdrop} />
+        {/* <RenderChildren data={assetManagement} setBackdrop={setBackdrop} /> */}
+        <AssetManagement />
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={7}>
         <div className="title">Regional Guides</div>
