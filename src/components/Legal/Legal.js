@@ -349,6 +349,7 @@ function Legal(props) {
           context. These pages are only a basic discussion of an emerging field
           of law.
           
+          ### Disclaimer          
           This post is not legal advice. This post also does not encourage any 
           strategies to evade or avoid US taxes, as described here 
           https://www.irs.gov/businesses/small-businesses-self-employed/abusive-trust-tax-evasion-schemes. 
