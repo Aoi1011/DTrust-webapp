@@ -268,8 +268,10 @@ function Docs(props) {
         </div>
         <div className="paragraph">
           {' '}
-          “Testing” shows the results of our security testing. “Audit” show the
-          results of the DTrust audit from Hacken.io.
+          “Testing” shows the results of our security testing. 
+        </div>
+        <div className="paragraph">
+          “Audit” show the results of the DTrust audit from Hacken.io.
         </div>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
