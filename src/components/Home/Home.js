@@ -219,7 +219,7 @@ export default function Home() {
       <div className={classes.acknowledge}>
         <div>Audited and Verified</div>
         <div>
-          DTrust uses proven openzeppelin smart contrcats.&nbsp;
+          DTrust uses proven openzeppelin smart contracts.&nbsp;
           <RouterLink
             to={{
               pathname: '/docs',
