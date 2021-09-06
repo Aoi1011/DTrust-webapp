@@ -261,7 +261,7 @@ function Docs(props) {
           This documentation is a comprehsive source of DTrust public material.
         </div>
         <div className="paragraph">
-          “Knowledge Base” provides information to users to answer thier
+          “Knowledge Base” provides information to users to answer their
           functional questions.
         </div>
         <div className="paragraph">
