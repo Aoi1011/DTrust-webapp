@@ -129,7 +129,7 @@ export default function Home() {
           </Carousel>
         </div>
         <div className={classes.docsPart}>
-          DTrust does decentralized trust agreements on the ethereum virtual
+          DTrust generates decentralized trust agreements on the ethereum virtual
           machine.&nbsp;
           <RouterLink to="/docs">See Docs</RouterLink>
         </div>
@@ -142,7 +142,7 @@ export default function Home() {
           the etheruem virtual machine with DTrust. On this site you can access
           the DTrust decentralized application to form customized dtrusts, use
           control keys on existing dtrusts, permanently destroy control keys and
-          earn income as a dtrust promoter..
+          earn income as a dtrust promoter.
         </div>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} className={classes.subsec}>
