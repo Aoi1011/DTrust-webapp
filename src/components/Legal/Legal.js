@@ -355,6 +355,7 @@ function Legal(props) {
           some common uses of traditional legal trusts applied to the DTrust
           context. These pages are only a basic discussion of an emerging field
           of law.
+        <div>
         <div className="paragraph">
           Disclaimer.          
           This post is not legal advice. This post also does not encourage any 
