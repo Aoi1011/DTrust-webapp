@@ -351,7 +351,7 @@ function Legal(props) {
         <div className="title">Legal</div>
         <div className="paragraph">
           DTrust generates customized dtrusts that can effectuate a wide range
-          of legal strategies. These pages provide just a basic discussion of
+          of legal strategies. These pages provide a basic discussion of
           some common uses of traditional legal trusts applied to the DTrust
           context. These pages are only a basic discussion of an emerging field
           of law.
