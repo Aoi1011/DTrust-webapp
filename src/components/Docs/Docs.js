@@ -273,7 +273,7 @@ function Docs(props) {
           “Testing” shows the results of our security testing.
         </div>
         <div className="paragraph">
-          “Audit” show the results of the DTrust audit from Hacken.io.
+          “Audit” shows the results of the DTrust audit from Hacken.io.
         </div>
       </TabPanel>
       <TabPanel className={classes.tabPanel} value={value} index={1}>
