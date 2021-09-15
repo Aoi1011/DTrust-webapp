@@ -41,7 +41,7 @@ function GiveYourFunds(props) {
   return (
     <form className="form_container">
       <h2 className="form-container_title">
-        What digital assets will go into the dtrust?
+        When will the dtrust distribute each digital asset?
       </h2>
       {inputList.map((x, i) => {
         return (
@@ -133,9 +133,6 @@ function GiveYourFunds(props) {
         <button className="save_block_btn" onClick={handleSubmit} type="submit">
           Save
         </button>
-        <Link className="funds_rout" to="/">
-          When will the dtrust distribute the digital assets?
-        </Link>
       </div>
     </form>
   )
