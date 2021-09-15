@@ -107,7 +107,7 @@ function AddYourFunds() {
                 onChange={(e) => handleInputChange(e, i)}
                 />
               </div>
-            <div className="btn-box form-container_add">
+            <div> className="btn-box form-container_add">
               {inputList.length - 1 === i && (
                 <button
                   className="form-container_add_btn"
