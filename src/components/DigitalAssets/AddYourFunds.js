@@ -56,7 +56,7 @@ function AddYourFunds() {
       {inputList.map((x, i) => {
         return (
             <p className="form-container_label">Digital asset {i + 1}</p>
-            <div> className="form-container_inputs selectParent"
+            <div className="form-container_inputs selectParent">
               <React.fragment>
                 <select
                   className="form-container_input_item"
