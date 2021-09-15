@@ -124,9 +124,6 @@ function AddYourFunds() {
         <button className="save_block_btn" onClick={handleSubmit} type="submit">
           Save
         </button>
-        <Link className="funds_rout" to="/">
-          When will the dtrust distribute the digital assets?
-        </Link>
       </div>
     </form>
   )
