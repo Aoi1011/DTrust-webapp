@@ -63,7 +63,7 @@ export default function AboutUs() {
               </span>
             ),
           },
-          {
+          /**/{
             name: 'Aoi Kurokawa',
             avatar: avatar2,
             role: 'Solidity Developer',
@@ -75,7 +75,7 @@ export default function AboutUs() {
             avatar: null,
             role: 'Webapp Developer',
             desc: '',
-          },
+          /**/},
           {
             name: 'Hacken',
             avatar: null,
