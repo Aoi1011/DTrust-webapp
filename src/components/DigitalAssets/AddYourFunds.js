@@ -55,7 +55,6 @@ function AddYourFunds() {
       </h2>
       {inputList.map((x, i) => {
         return (
-          <div className="box">
             <p className="form-container_label">Digital asset {i + 1}</p>
             <div className="form-container_inputs selectParent">
               <select
@@ -118,7 +117,6 @@ function AddYourFunds() {
                   )}
                 </div>
               <React.fragment  
-          </box>
         )
       }  
       <div className="save_block">
