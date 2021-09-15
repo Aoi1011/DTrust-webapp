@@ -67,8 +67,24 @@ function AddYourFunds() {
                 onChange={(e) => handleInputChange(e, i)}
               >
                 <option>{'Digital asset'}</option>
-                <option>1</option>
-                <option>2</option>
+                <option>ETH</option>
+                <option>USDT</option>
+                <option>wBTC</option>
+                <option>wXMR</option>
+                <option>USDC</option>
+                <option>DAI</option>
+                <option>UNI</option>
+                <option>SUSHI</option>
+                <option>renDOGE</option>
+                <option>ENJ</option>
+                <option>SAND</option>
+                <option>ANT</option>
+                <option>CLV</option>
+                <option>NWC</option>
+                <option>CHR</option>
+                <option>LIT</option>
+                <option>CFG</option>
+                <option>DVI</option>
                 <option>NTF token</option>
               </select>
               <input
@@ -82,10 +98,15 @@ function AddYourFunds() {
             </div>
             {x.token && (
               <p className={x.token ? 'active_ntf' : 'ntf-blcok'}>
-                <strong>NTF token:</strong> Lorem ipsum dolor sit/ Lorem ipsum
-                dolor sit
+                <input
+                className="form-container_input_item"
+                name="nft_unique_ID_code"
+                placeholder="NFT Unique Identification Code"
+                value={x.amount}
+                required
+                onChange={(e) => handleInputChange(e, i)}
               </p>
-            )}
+            </div>
             <div className="btn-box form-container_add">
               {inputList.length - 1 === i && (
                 <button
