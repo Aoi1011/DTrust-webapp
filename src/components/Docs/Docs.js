@@ -9,6 +9,9 @@ import axios from 'axios';
 import RenderChildren from '../RenderChildren';
 import reducer, { initialState } from '../reducer';
 import Knowledge from './Knowledge';
+import Code from './Code';
+import Testing from './Testing';
+import Audit from './Audit';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
