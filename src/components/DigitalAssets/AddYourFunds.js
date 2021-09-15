@@ -56,35 +56,37 @@ function AddYourFunds() {
       {inputList.map((x, i) => {
         return (
             <p className="form-container_label">Digital asset {i + 1}</p>
-            <div className="form-container_inputs selectParent">
-              <select
-                className="form-container_input_item"
-                name="text"
-                placeholder="Enter First Name"
-                value={x.text}
-                required
-                onChange={(e) => handleInputChange(e, i)}
-              >
-                <option>{'Digital asset'}</option>
-                <option>ETH</option>
-                <option>USDT</option>
-                <option>wBTC</option>
-                <option>wXMR</option>
-                <option>USDC</option>
-                <option>DAI</option>
-                <option>UNI</option>
-                <option>SUSHI</option>
-                <option>renDOGE</option>
-                <option>ENJ</option>
-                <option>SAND</option>
-                <option>ANT</option>
-                <option>CLV</option>
-                <option>NWC</option>
-                <option>CHR</option>
-                <option>LIT</option>
-                <option>CFG</option>
-                <option>DVI</option>
-                <option>NTF token</option>
+            <div> className="form-container_inputs selectParent"
+              <React.fragment>
+                <select
+                  className="form-container_input_item"
+                  name="text"
+                  placeholder="Enter First Name"
+                  value={x.text}
+                  required
+                  onChange={(e) => handleInputChange(e, i)}
+                >
+                  <option>{'Digital asset'}</option>
+                  <option>ETH</option>
+                  <option>USDT</option>
+                  <option>wBTC</option>
+                  <option>wXMR</option>
+                  <option>USDC</option>
+                  <option>DAI</option>
+                  <option>UNI</option>
+                  <option>SUSHI</option>
+                  <option>renDOGE</option>
+                  <option>ENJ</option>
+                  <option>SAND</option>
+                  <option>ANT</option>
+                  <option>CLV</option>
+                  <option>NWC</option>
+                  <option>CHR</option>
+                  <option>LIT</option>
+                  <option>CFG</option>
+                  <option>DVI</option>
+                  <option>NTF token</option>
+              <React.fragment>    
               </select>
               <input
                 className="form-container_input_item"
@@ -116,7 +118,7 @@ function AddYourFunds() {
                     </button>
                   )}
                 </div>
-              <React.fragment  
+              </React.fragment>  
         )
       }  
       <div className="save_block">
