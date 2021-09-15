@@ -105,6 +105,7 @@ function AddYourFunds() {
                 value={x.amount}
                 required
                 onChange={(e) => handleInputChange(e, i)}
+                />
               </div>
             <div className="btn-box form-container_add">
               {inputList.length - 1 === i && (
