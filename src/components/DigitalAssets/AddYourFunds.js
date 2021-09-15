@@ -118,6 +118,9 @@ function AddYourFunds() {
                   )}
                 </div>
               <React.fragment  
+          </div>
+        )
+      }  
       <div className="save_block">
         <button className="save_block_btn" onClick={handleSubmit} type="submit">
           Save
