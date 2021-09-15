@@ -118,7 +118,7 @@ function AddYourFunds() {
                   )}
                 </div>
               <React.fragment  
-          </div>
+          </box>
         )
       }  
       <div className="save_block">
