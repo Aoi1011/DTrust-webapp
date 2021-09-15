@@ -87,7 +87,7 @@ function AddYourFunds() {
                     <option>CFG</option>
                     <option>DVI</option>
                     <option>NTF token</option>
-                <React.fragment>    
+                </React.fragment>    
                 </select>
                 <input
                   className="form-container_input_item"
@@ -120,7 +120,7 @@ function AddYourFunds() {
                   )}
                 </div>
               </React.fragment>  
-            <React.fragment>
+            </React.fragment>
         )
       }  
       <div className="save_block">
