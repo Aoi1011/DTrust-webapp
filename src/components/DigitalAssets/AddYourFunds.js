@@ -95,7 +95,7 @@ function AddYourFunds() {
                 required
                 onChange={(e) => handleInputChange(e, i)}
               />
-             </div>
+            </div>
               <React.fragment>
                 <div> className={x.token ? 'active_ntf' : 'ntf-blcok'}>
                   <input
