@@ -97,7 +97,7 @@ function AddYourFunds() {
               />
             </div>
             {x.token && (
-              <p className={x.token ? 'active_ntf' : 'ntf-blcok'}>
+              <div> className={x.token ? 'active_ntf' : 'ntf-blcok'}>
                 <input
                 className="form-container_input_item"
                 name="nft_unique_ID_code"
@@ -105,7 +105,7 @@ function AddYourFunds() {
                 value={x.amount}
                 required
                 onChange={(e) => handleInputChange(e, i)}
-              </p>
+              </div>
             <div className="btn-box form-container_add">
               {inputList.length - 1 === i && (
                 <button
