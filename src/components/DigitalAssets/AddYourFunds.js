@@ -97,26 +97,28 @@ function AddYourFunds() {
               />
             </div>
             {x.token && (
-              <div> className={x.token ? 'active_ntf' : 'ntf-blcok'}>
-                <input
-                className="form-container_input_item"
-                name="nft_unique_ID_code"
-                placeholder="NFT Unique Identification Code"
-                value={x.amount}
-                required
-                onChange={(e) => handleInputChange(e, i)}
-                />
-              </div>
-              <div> className="btn-box form-container_add">
-                {inputList.length - 1 === i && (
-                  <button
-                    className="form-container_add_btn"
-                    onClick={handleAddClick}
-                  >
-                    Add new
-                  </button>
-                )}
-              </div>
+              <React.fragment>
+                <div> className={x.token ? 'active_ntf' : 'ntf-blcok'}>
+                  <input
+                  className="form-container_input_item"
+                  name="nft_unique_ID_code"
+                  placeholder="NFT Unique Identification Code"
+                  value={x.amount}
+                  required
+                  onChange={(e) => handleInputChange(e, i)}
+                  />
+                </div>
+                <div> className="btn-box form-container_add">
+                  {inputList.length - 1 === i && (
+                    <button
+                      className="form-container_add_btn"
+                      onClick={handleAddClick}
+                    >
+                      Add new
+                    </button>
+                  )}
+                </div>
+              <React.fragment  
           </div>
         )
       })}
