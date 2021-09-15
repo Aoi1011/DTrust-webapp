@@ -56,9 +56,9 @@ function AddYourFunds() {
       {inputList.map((x, i) => {
         return (
             <p className="form-container_label">Digital asset {i + 1}</p>
-            <React.fragment>
+            <>
               <div className="form-container_inputs selectParent">
-                <React.fragment>
+                <>
                   <select
                     className="form-container_input_item"
                     name="text"
@@ -87,8 +87,8 @@ function AddYourFunds() {
                     <option>CFG</option>
                     <option>DVI</option>
                     <option>NTF token</option>
-                </React.fragment>    
-                </select>
+                  </select>
+                </>
                 <input
                   className="form-container_input_item"
                   name="amount"
@@ -98,7 +98,7 @@ function AddYourFunds() {
                   onChange={(e) => handleInputChange(e, i)}
                 />
               </div>
-              <React.fragment>
+              <>
                 <div> className={x.token ? 'active_ntf' : 'ntf-blcok'}>
                   <input
                   className="form-container_input_item"
@@ -119,8 +119,8 @@ function AddYourFunds() {
                     </button>
                   )}
                 </div>
-              </React.fragment>  
-            </React.fragment>
+              </>  
+            </>
         )
       }  
       <div className="save_block">
