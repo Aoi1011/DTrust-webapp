@@ -116,7 +116,7 @@ function AddYourFunds() {
                     Add new
                   </button>
                 )}
-              <div/>
+              </div>
           </div>
         )
       })}
