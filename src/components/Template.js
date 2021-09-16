@@ -172,7 +172,7 @@ export default function Template(props) {
      return null;}}/>
             </Link>
             <Link <Route path='/Gov' component={() => { 
-     window.location.href = 'https://dtrust.notion.site/Copy-of-Legal-52a9bf945880489ab9fde3152cedbfd1'; 
+     window.location.href = 'https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1'; 
      return null;}}/>
             </Link>
           </div>
