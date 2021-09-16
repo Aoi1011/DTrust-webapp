@@ -163,19 +163,19 @@ export default function Template(props) {
           </Button>
           <div className={classes.linksBar}>
             <Link to={{ pathname: "https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47" }} target="blank">
-               <Routerlink>
+               <RouterLink>
                Docs
-               </Routerlink>
+               </RouterLink>
             </Link>,
             <Link to={{ pathname: "https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95" }} target="Legal">
-              <Routerlink>
+              <RouterLink>
               Legal
-              </Routerlink>
+              </RouterLink>
             </Link>,
             <Link to={{ pathname: "https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1" }} target="Gov">
-              <Routerlink>
+              <RouterLink>
               Gov
-              </Routerlink>
+              </RouterLink>
             </Link>
           </div>
           <Button
