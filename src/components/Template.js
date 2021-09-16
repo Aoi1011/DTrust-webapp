@@ -163,26 +163,17 @@ export default function Template(props) {
           </Button>
           <div className={classes.linksBar}>
             <Link
-              component={RouterLink}
-              to={{
-                pathname: '/docs',
-                state: {
-                  tabIndex: 0,
-                },
-              }}
-              className={classes.link}
-            >
-              Docs
+              <Route path='/Docs' component={() => { 
+     window.location.href = 'https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47'; 
+     return null;}}/>
             </Link>
-            <Link component={RouterLink} to="/legal" className={classes.link}>
-              Legal
+            <Link <Route path='/Legal' component={() => { 
+     window.location.href = 'https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95'; 
+     return null;}}/>
             </Link>
-            <Link
-              component={RouterLink}
-              to="/dttokens"
-              className={classes.link}
-            >
-              Gov
+            <Link <Route path='/Gov' component={() => { 
+     window.location.href = 'https://dtrust.notion.site/Copy-of-Legal-52a9bf945880489ab9fde3152cedbfd1'; 
+     return null;}}/>
             </Link>
           </div>
           <Button
