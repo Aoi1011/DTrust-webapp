@@ -220,19 +220,19 @@ export default function Home() {
         <div>Audited and Verified</div>
         <div>
           DTrust uses proven openzeppelin smart contracts.&nbsp;
-            <a href='https://dtrust.notion.site/DTrust-Source-Code-d83a8f5f6b8f4d7e9e03772430703846'>external>
+            <a href='https://dtrust.notion.site/DTrust-Source-Code-d83a8f5f6b8f4d7e9e03772430703846'>
                See Contracts   
             </a>
         </div>
         <div>
           DTrust underwent rigorous security analysis.&nbsp;
-            <a href='https://dtrust.notion.site/DTrust-Testing-dad9b472ad0743e7b7068fda1ca4b9b2'>external>
+            <a href='https://dtrust.notion.site/DTrust-Testing-dad9b472ad0743e7b7068fda1ca4b9b2'>
                See Testing   
             </a>  
         </div>
         <div>
           DTrust received an audit from Hacken.io.&nbsp;
-            <a href='https://dtrust.notion.site/DTrust-Audit-bbf4aca8598b4460a78da62cda849eb9'>external>
+            <a href='https://dtrust.notion.site/DTrust-Audit-bbf4aca8598b4460a78da62cda849eb9'>
                See Audit   
             </a>
         </div>
