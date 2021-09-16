@@ -162,13 +162,13 @@ export default function Template(props) {
             &nbsp;DTrust
           </Button>
           <div className={classes.linksBar}>
-            <Link to={{ pathname: "https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47" }} style={{ textDecoration: 'none' }}>
+            <Link to="https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47">
                Docs
             </Link>   
-            <Link to={{ pathname: "https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95" }} style={{ textDecoration: 'none' }}>
+            <Link to="https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95">
               Legal
             </Link>   
-            <Link to={{ pathname: "https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1" }} style={{ textDecoration: 'none' }}>
+            <Link to="https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1">
               Gov
             </Link>
           </div>
