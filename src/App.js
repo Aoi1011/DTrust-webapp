@@ -11,9 +11,6 @@ import Formdtrust from './components/dtrust/Formdtrust';
 import UseControlKey from './components/ControlKey/UseControlKey';
 import DestroyControlKey from './components/ControlKey/DestroyControlKey';
 import Promote from './components/Promote/Promote';
-import Docs from './components/Docs/Docs';
-import Legal from './components/Legal/Legal';
-import DTTokens from './components/DTTokens/DTTokens';
 import AddYourFunds from './components/DigitalAssets/AddYourFunds';
 import GiveYourFunds from './components/DigitalAssets/GiveYourFunds';
 import Contact from './components/Contact/Contact';
@@ -54,15 +51,6 @@ function App() {
             </Route>
             <Route path="/promote">
               <Promote />
-            </Route>
-            <Route path="/docs/:tabIndex([0-4])?" exact>
-              <Docs />
-            </Route>
-            <Route path="/legal" exact>
-              <Legal />
-            </Route>
-            <Route path="/dttokens" exact>
-              <DTTokens />
             </Route>
             <Route path="/contact" exact>
               <Contact />
