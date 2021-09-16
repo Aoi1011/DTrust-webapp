@@ -163,6 +163,7 @@ export default function Template(props) {
             &nbsp;DTrust
           </Button>
           <div className={classes.linksBar}>
+            const Spacer = require('react-spacer')
             <a href='https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47' style={{ textDecoration: 'none' }}>
                Docs   
             </a>   
