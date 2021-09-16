@@ -220,42 +220,27 @@ export default function Home() {
         <div>Audited and Verified</div>
         <div>
           DTrust uses proven openzeppelin smart contracts.&nbsp;
-          <RouterLink
-            to={{
-              pathname: '/docs',
-              state: {
-                tabIndex: 2,
-              },
-            }}
-          >
-            See contracts
-          </RouterLink>
+          <Link to={{ pathname: "https://dtrust.notion.site/DTrust-Source-Code-d83a8f5f6b8f4d7e9e03772430703846" }} target="blank">
+               <button type="button">
+               See Contracts
+               </button>
+            </Link>
         </div>
         <div>
           DTrust underwent rigorous security analysis.&nbsp;
-          <RouterLink
-            to={{
-              pathname: '/docs',
-              state: {
-                tabIndex: 3,
-              },
-            }}
-          >
-            See testing
-          </RouterLink>
+          <Link to={{ pathname: "https://dtrust.notion.site/DTrust-Testing-dad9b472ad0743e7b7068fda1ca4b9b2" }} target="blank">
+               <button type="button">
+               See Testing
+               </button>
+           </Link>
         </div>
         <div>
           DTrust received an audit from Hacken.io.&nbsp;
-          <RouterLink
-            to={{
-              pathname: '/docs',
-              state: {
-                tabIndex: 4,
-              },
-            }}
-          >
-            See audit
-          </RouterLink>
+          <Link to={{ pathname: "https://dtrust.notion.site/DTrust-Audit-bbf4aca8598b4460a78da62cda849eb9" }} target="blank">
+               <button type="button">
+               See Audit
+               </button>
+           </Link>
         </div>
         <div className={classes.aboutus}>
           <Link to="/aboutus">
