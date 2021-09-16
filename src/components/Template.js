@@ -162,19 +162,30 @@ export default function Template(props) {
             &nbsp;DTrust
           </Button>
           <div className={classes.linksBar}>
-            <Link
-              <Route path='/Docs' component={() => { 
-     window.location.href = 'https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47'; 
-     return null;}}/>
-            </Link>
-            <Link <Route path='/Legal' component={() => { 
-     window.location.href = 'https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95'; 
-     return null;}}/>
-            </Link>
-            <Link <Route path='/Gov' component={() => { 
-     window.location.href = 'https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1'; 
-     return null;}}/>
-            </Link>
+            <RouterLink
+                to={{
+                  pathname: 'https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47',
+                }}
+                target="_blank"
+              >
+                <Docs} />
+            </RouterLink>
+            <RouterLink
+                to={{
+                  pathname: 'https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95',
+                }}
+                target="_blank"
+              >
+                <Legal} />
+            </RouterLink>
+            <RouterLink
+                to={{
+                  pathname: 'https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1',
+                }}
+                target="_blank"
+              >
+                <Gov} />
+            </RouterLink>
           </div>
           <Button
             className={classes.startButton}
