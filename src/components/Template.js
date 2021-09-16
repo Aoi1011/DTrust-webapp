@@ -36,6 +36,7 @@ const useTemplateStyles = makeStyles((theme) => ({
   },
   linksBar: {
     flexGrow: 5,
+    color: '#000000',
     textAlign: 'center',
   },
   link: {
@@ -162,15 +163,15 @@ export default function Template(props) {
             &nbsp;DTrust
           </Button>
           <div className={classes.linksBar}>
-            <RouterLink to="https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47">
+            <a href='https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47'>external>
                Docs   
-            </RouterLink>   
-            <RouterLink to="https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95">
-              Legal   
-            </RouterLink>   
-            <RouterLink to="https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1">
-              Gov   
-            </RouterLink>
+            </a>   
+            <a href='https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95'>external>
+               Legal   
+            </a>  
+            <a href='https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1'>external>
+               Gov   
+            </a>  
           </div>
           <Button
             className={classes.startButton}
