@@ -131,7 +131,9 @@ export default function Home() {
         <div className={classes.docsPart}>
           DTrust generates decentralized trust agreements on the ethereum virtual
           machine.&nbsp;
-          <RouterLink to="/docs">See Docs</RouterLink>
+            <a href='https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47'>
+               Docs   
+            </a> 
         </div>
       </div>
       <div className={classes.content}>
