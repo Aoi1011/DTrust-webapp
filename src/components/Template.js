@@ -164,13 +164,13 @@ export default function Template(props) {
           </Button>
           <div className={classes.linksBar}>
             <a href='https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47' style={{ textDecoration: 'none' }}>
-               Docs   
+               <MenuItem style={{ paddingLeft: 13 }}>Docs</MenuItem>   
             </a>   
             <a href='https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95' style={{ textDecoration: 'none' }}>
-               Legal   
+               <MenuItem style={{ paddingLeft: 13 }}>Legal</MenuItem>   
             </a>  
             <a href='https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1' style={{ textDecoration: 'none' }}>
-               Gov   
+               <MenuItem style={{ paddingLeft: 13 }}>Gov</MenuItem>   
             </a>  
           </div>
           <Button
