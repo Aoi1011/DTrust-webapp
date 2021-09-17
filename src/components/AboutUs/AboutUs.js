@@ -54,8 +54,9 @@ export default function AboutUs() {
             role: 'Creator',
             desc: (
               <span>
-                David Newman Brunk created DTrust after studying law at New York
-                Univeristy. You can download the initial whitepaper&nbsp;
+                David Newman Brunk worked with a small global team to create 
+                DTrust after studying law at New YorkUniveristy. You can 
+                download the initial whitepaper&nbsp;
                 <Link to="docs/DTrust_WhitePaper.docx" target="_blank" download>
                   here
                 </Link>
@@ -63,19 +64,6 @@ export default function AboutUs() {
               </span>
             ),
           },
-          /**/{
-            name: 'Aoi Kurokawa',
-            avatar: avatar2,
-            role: 'Solidity Developer',
-            desc:
-              'Aoi Kurokawa was the main solidity developer behind the project.',
-          },
-          {
-            name: 'Michael',
-            avatar: null,
-            role: 'Webapp Developer',
-            desc: '',
-          /**/},
           {
             name: 'Hacken',
             avatar: null,
