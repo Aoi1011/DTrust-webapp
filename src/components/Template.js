@@ -163,13 +163,13 @@ export default function Template(props) {
             &nbsp;DTrust
           </Button>
           <div className={classes.linksBar}>
-            <a style={{ textDecoration: 'none', color: black, margin-inline: 10px 20px}} href='https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47'>
+            <a style={{ textDecoration: 'none', color: black, margin: 10px 20px}} href='https://dtrust.notion.site/Docs-4264b09c1b1f4a028a7d069c62e1ea47'>
                Docs   
             </a>   
-            <a style={{ textDecoration: 'none', color: black, margin-inline: 10px 20px}} href='https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95'>
+            <a style={{ textDecoration: 'none', color: black, margin: 10px 20px}} href='https://dtrust.notion.site/Legal-c70f0ca35b584e9a96a4c1767c73aa95'>
                Legal   
             </a>  
-            <a style={{ textDecoration: 'none', color: black, margin-inline: 10px 20px}} href='https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1'>
+            <a style={{ textDecoration: 'none', color: black, margin: 10px 20px}} href='https://dtrust.notion.site/Gov-52a9bf945880489ab9fde3152cedbfd1'>
                Gov  
             </a>  
           </div>
