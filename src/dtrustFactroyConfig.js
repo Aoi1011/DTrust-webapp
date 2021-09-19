@@ -1,191 +1,200 @@
-export const ADDRESS = '0xf3B6A0F4560cD929dF31DE716e476D81801c419a'
+export const ADDRESS = '0x3a24D9E604AFB3F6eb60e36041A37e0731161560'
 
 export const ABI = [
   {
-    anonymous: false,
-    inputs: [
+    "inputs": [
       {
-        indexed: false,
-        internalType: 'string',
-        name: 'contractSymbol',
-        type: 'string',
-      },
-      {
-        indexed: true,
-        internalType: 'string',
-        name: 'newuri',
-        type: 'string',
-      },
-      {
-        indexed: true,
-        internalType: 'string',
-        name: 'contractName',
-        type: 'string',
-      },
+        "internalType": "address",
+        "name": "_governanceAddress",
+        "type": "address"
+      }
     ],
-    name: 'CreateDTRUST',
-    type: 'event',
+    "stateMutability": "nonpayable",
+    "type": "constructor"
   },
   {
-    anonymous: false,
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        indexed: true,
-        internalType: 'uint256',
-        name: 'prTokenId',
-        type: 'uint256',
+        "indexed": false,
+        "internalType": "contract DTRUST",
+        "name": "createdDtrust",
+        "type": "address"
       },
       {
-        indexed: false,
-        internalType: 'string',
-        name: 'prTokenKey',
-        type: 'string',
-      },
-      {
-        indexed: false,
-        internalType: 'bool',
-        name: 'isSucceed',
-        type: 'bool',
-      },
+        "indexed": true,
+        "internalType": "string",
+        "name": "newuri",
+        "type": "string"
+      }
     ],
-    name: 'CreatePrToken',
-    type: 'event',
+    "name": "CreateDTRUST",
+    "type": "event"
   },
   {
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
+        "indexed": false,
+        "internalType": "uint256",
+        "name": "basispoint",
+        "type": "uint256"
+      }
     ],
-    name: 'deployedDTRUSTs',
-    outputs: [
-      {
-        internalType: 'contract DTRUST',
-        name: '',
-        type: 'address',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-    constant: true,
+    "name": "UpdateBasisPoint",
+    "type": "event"
   },
   {
-    inputs: [
+    "anonymous": false,
+    "inputs": [
       {
-        internalType: 'string',
-        name: '_contractSymbol',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: '_newuri',
-        type: 'string',
-      },
-      {
-        internalType: 'string',
-        name: '_contractName',
-        type: 'string',
-      },
-      {
-        internalType: 'address',
-        name: '_settlor',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: '_beneficiary',
-        type: 'address',
-      },
-      {
-        internalType: 'address',
-        name: '_trustee',
-        type: 'address',
-      },
+        "indexed": false,
+        "internalType": "bytes32[]",
+        "name": "allQuestions",
+        "type": "bytes32[]"
+      }
     ],
-    name: 'createDTRUST',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-    payable: true,
+    "name": "UpdateQuestion",
+    "type": "event"
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "basisPoint",
+    "outputs": [
       {
-        internalType: 'contract DTRUST',
-        name: '_dtrust',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: '_tokenKey',
-        type: 'string',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'createPrToken',
-    outputs: [],
-    stateMutability: 'payable',
-    type: 'function',
-    payable: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [
       {
-        internalType: 'contract DTRUST',
-        name: '_dtrust',
-        type: 'address',
-      },
-      {
-        internalType: 'string',
-        name: '_tokenKey',
-        type: 'string',
-      },
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    name: 'usePrToken',
-    outputs: [
+    "name": "deployedDTRUSTs",
+    "outputs": [
       {
-        internalType: 'string',
-        name: '',
-        type: 'string',
-      },
+        "internalType": "contract DTRUST",
+        "name": "",
+        "type": "address"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [
+    "inputs": [],
+    "name": "governanceAddress",
+    "outputs": [
       {
-        internalType: 'contract DTRUST',
-        name: '_dtrust',
-        type: 'address',
-      },
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    name: 'getCurrentPromoteToken',
-    outputs: [
-      {
-        internalType: 'uint256',
-        name: '',
-        type: 'uint256',
-      },
-    ],
-    stateMutability: 'view',
-    type: 'function',
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
   {
-    inputs: [],
-    name: 'getAllDeployedDTRUSTs',
-    outputs: [
+    "inputs": [],
+    "name": "getQuestions",
+    "outputs": [
       {
-        internalType: 'contract DTRUST[]',
-        name: '',
-        type: 'address[]',
-      },
+        "internalType": "bytes32[]",
+        "name": "",
+        "type": "bytes32[]"
+      }
     ],
-    stateMutability: 'view',
-    type: 'function',
-    constant: true,
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
   },
-]
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_newuri",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_settlor",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_beneficiary",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_trustee",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "_hasPromoter",
+        "type": "bool"
+      },
+      {
+        "internalType": "address",
+        "name": "promoter",
+        "type": "address"
+      }
+    ],
+    "name": "createDTRUST",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getAllDeployedDTRUSTs",
+    "outputs": [
+      {
+        "internalType": "contract DTRUST[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "constant": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_basisPoint",
+        "type": "uint256"
+      }
+    ],
+    "name": "updateBasisPoint",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_content",
+        "type": "bytes32"
+      }
+    ],
+    "name": "updateQuestion",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+];
