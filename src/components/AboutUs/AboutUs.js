@@ -65,6 +65,13 @@ export default function AboutUs() {
             ),
           },
           {
+             name: 'Aoi Kurokawa',
+             avatar: avatar2,
+             role: 'Solidity Developer',
+             desc:
+               'Aoi Kurokawa was the main solidity developer behind the project.',
+           },
+          {
             name: 'Hacken',
             avatar: null,
             role: 'Audits',
